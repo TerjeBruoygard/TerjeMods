@@ -161,7 +161,7 @@ modded class TerjePlayerSkillsAccessor
 			}
 		}
 		
-		m_Player.GetTerjeProfile().SetSkillExperience(skillId, value);
+		m_Player.GetTerjeProfile().SetSkillExperience(skillId, newExp);
 	}
 	
 	override int GetSkillPerkPoints(string skillId)
