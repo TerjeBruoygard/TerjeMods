@@ -1,0 +1,9 @@
+name      = "Terje Medicine";
+picture   = "TerjeMedicine/Textures/mod_icon.edds";// picture in expanded description
+logoSmall = "TerjeMedicine/Textures/mod_icon.edds";// icon next to mod name when description is not expanded
+logo      = "TerjeMedicine/Textures/mod_icon.edds";// logo below game menu
+logoOver  = "TerjeMedicine/Textures/mod_icon.edds";// on mouse hover over logo
+tooltip   = "";
+overview  = "";
+action    = "https://steamcommunity.com/id/streatman/myworkshopfiles/";
+author    = "Terje Bruoygard";

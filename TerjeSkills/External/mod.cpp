@@ -1,0 +1,9 @@
+name      = "Terje Skills";
+picture   = "TerjeSkills/Textures/mod_icon.edds";// picture in expanded description
+logoSmall = "TerjeSkills/Textures/mod_icon.edds";// icon next to mod name when description is not expanded
+logo      = "TerjeSkills/Textures/mod_icon.edds";// logo below game menu
+logoOver  = "TerjeSkills/Textures/mod_icon.edds";// on mouse hover over logo
+tooltip   = "";
+overview  = "";
+action    = "https://steamcommunity.com/id/streatman/myworkshopfiles/";
+author    = "Terje Bruoygard";

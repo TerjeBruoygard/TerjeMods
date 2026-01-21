@@ -16,39 +16,39 @@ class CfgMods
 {
 	class TerjeRadiation
 	{
-		dir = "TerjeRadiation";
-		picture = "TerjeRadiation/Textures/mod_icon.edds";
-		action = "https://steamcommunity.com/id/terjebruoygard/myworkshopfiles/";
-		hideName = 0;
-		hidePicture = 0;
-		name = "Terje Radiation";
-		credits = "Terje Bruoygard";
-		version = "1.0.0";
-		author = "TerjeBruoygard";
-		dependencies[] = {"Core","Game","World","Mission"};
-		defines[] = { "TERJE_RADIATION_MOD" };
-		extra = 0;
-		type = "mod"; 
+		dir="TerjeRadiation";
+		hideName=0;
+		hidePicture=0;
+		version="1.0.0";
+		extra=0;
+		
+		defines[]={"TERJE_RADIATION_MOD"};
+		type="mod";
+		dependencies[]={"gui","Game","World","Mission"};
 		
 		class defs
 		{
 			class imageSets
 			{
-				files[] = {"TerjeRadiation/Textures/icon_radiation.imageset"};
+				files[]=
+				{
+					"TerjeRadiation/Textures/icon_radiation.imageset"
+				};
 			};
-			class gameScriptModule {
-				value = "";
-				files[] = {"TerjeRadiation/Scripts/3_Game"};
+			class gameScriptModule
+			{
+				value="";
+				files[]={"TerjeRadiation/Scripts/3_Game"};
 			};
-			
-			class worldScriptModule {
-				value = "";
-				files[] = {"TerjeRadiation/Scripts/4_World", "TerjeRadiation/Scripts/4_Compatibility"};
+			class worldScriptModule
+			{
+				value="";
+				files[]={"TerjeRadiation/Scripts/4_World", "TerjeRadiation/Scripts/4_Compatibility"};
 			};
-
-			class missionScriptModule {
-				value = "";
-				files[] = {"TerjeRadiation/Scripts/5_Mission"};
+			class missionScriptModule
+			{
+				value="";
+				files[]={"TerjeRadiation/Scripts/5_Mission"};
 			};
 		};
 	};

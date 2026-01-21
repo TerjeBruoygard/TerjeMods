@@ -16,39 +16,39 @@ class CfgMods
 {
 	class TerjeStartScreen
 	{
-		dir = "TerjeStartScreen";
-		picture = "TerjeStartScreen/Textures/mod_icon.edds";
-		action = "https://steamcommunity.com/id/terjebruoygard/myworkshopfiles/";
-		hideName = 0;
-		hidePicture = 0;
-		name = "Terje Start Screen";
-		credits = "Terje Bruoygard";
-		version = "1.0.0";
-		author = "TerjeBruoygard";
-		dependencies[] = {"Core","Game","World","Mission"};
-		defines[] = { "TERJE_START_SCREEN_MOD" };
-		extra = 0;
-		type = "mod"; 
+		dir="TerjeStartScreen";
+		hideName=0;
+		hidePicture=0;
+		version="1.0.0";
+		extra=0;
+		
+		defines[]={"TERJE_START_SCREEN_MOD"};
+		type="mod";
+		dependencies[]={"gui","Game","World","Mission"};
 		
 		class defs
 		{
 			class imageSets
 			{
-				files[] = {"TerjeStartScreen/Textures/startscreen_icons.imageset"};
+				files[]=
+				{
+					"TerjeStartScreen/Textures/startscreen_icons.imageset"
+				};
 			};
-			class gameScriptModule {
-				value = "";
-				files[] = {"TerjeStartScreen/Scripts/3_Game"};
+			class gameScriptModule
+			{
+				value="";
+				files[]={"TerjeStartScreen/Scripts/3_Game"};
 			};
-			
-			class worldScriptModule {
-				value = "";
-				files[] = {"TerjeStartScreen/Scripts/4_World", "TerjeStartScreen/Scripts/4_Compatibility"};
+			class worldScriptModule
+			{
+				value="";
+				files[]={"TerjeStartScreen/Scripts/4_World", "TerjeStartScreen/Scripts/4_Compatibility"};
 			};
-
-			class missionScriptModule {
-				value = "";
-				files[] = {"TerjeStartScreen/Scripts/5_Mission", "TerjeStartScreen/Scripts/5_Compatibility"};
+			class missionScriptModule
+			{
+				value="";
+				files[]={"TerjeStartScreen/Scripts/5_Mission", "TerjeStartScreen/Scripts/5_Compatibility"};
 			};
 		};
 	};

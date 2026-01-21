@@ -5,7 +5,12 @@ class CfgPatches
 		units[]={};
 		weapons[]={};
 		requiredVersion=0.1;
-		requiredAddons[]={ "DZ_Data", "DZ_Gear_Books", "DZ_Scripts" };
+		requiredAddons[]=
+		{
+			"DZ_Data",
+			"DZ_Gear_Books",
+			"DZ_Scripts"
+		};
 	};
 };
 
@@ -13,35 +18,32 @@ class CfgMods
 {
 	class TerjeCore
 	{
-		dir = "TerjeCore";
-		picture = "TerjeCore/Textures/mod_icon.edds";
-		action = "https://steamcommunity.com/id/terjebruoygard/myworkshopfiles/";
-		hideName = 1;
-		hidePicture = 1;
-		name = "Terje Core";
-		credits = "Terje Bruoygard";
-		version = "1.0.0";
-		author = "TerjeBruoygard";
-		dependencies[] = {"Core","Game","World","Mission"};
-		defines[] = { "TERJE_CORE_MOD" };
-		extra = 0;
-		type = "mod";
+		dir="TerjeCore";
+		hideName=1;
+		hidePicture=1;
+		version="1.0.0";
+		extra=0;
+		
+		defines[]={"TERJE_CORE_MOD"};
+		type="mod";
+		dependencies[]={"Game","World","Mission"};
 		
 		class defs
 		{
-			class gameScriptModule {
-				value = "";
-				files[] = {"TerjeCore/Scripts/3_Game"};
+			class gameScriptModule
+			{
+				value="";
+				files[]={"TerjeCore/Scripts/3_Game"};
 			};
-			
-			class worldScriptModule {
-				value = "";
-				files[] = {"TerjeCore/Scripts/4_World"};
+			class worldScriptModule
+			{
+				value="";
+				files[]={"TerjeCore/Scripts/4_World"};
 			};
-
-			class missionScriptModule {
-				value = "";
-				files[] = {"TerjeCore/Scripts/5_Mission"};
+			class missionScriptModule
+			{
+				value="";
+				files[]={"TerjeCore/Scripts/5_Mission"};
 			};
 		};
 	};
@@ -58,8 +60,15 @@ class CfgVehicles
 			{
 				class Health
 				{
-					hitpoints = 100;
-					healthLevels[] = {{1.0,{"DZ\gear\books\Data\book.rvmat"}},{0.7,{"DZ\gear\books\Data\book.rvmat"}},{0.5,{"DZ\gear\books\Data\book_damage.rvmat"}},{0.3,{"DZ\gear\books\Data\book_damage.rvmat"}},{0.0,{"DZ\gear\books\Data\book_destruct.rvmat"}}};
+					hitpoints=100;
+					healthLevels[]=
+					{
+						{1.0,{"DZ\gear\books\Data\book.rvmat"}},
+						{0.7,{"DZ\gear\books\Data\book.rvmat"}},
+						{0.5,{"DZ\gear\books\Data\book_damage.rvmat"}},
+						{0.3,{"DZ\gear\books\Data\book_damage.rvmat"}},
+						{0.0,{"DZ\gear\books\Data\book_destruct.rvmat"}}
+					};
 				};
 			};
 		};
@@ -67,12 +76,13 @@ class CfgVehicles
 	
 	class HouseNoDestruct;
 	class TerjeSoundEmitter : HouseNoDestruct { };
-	class TerjeScriptableArea : HouseNoDestruct {
-		terjeInnerRadius = 35.0; // Players inside this radius will receive full damage
-		terjeOuterRadius = 100.0; // Players inside this radius will receive proportional damage depends on distance between two radiuses
-		terjeHeightMin = -100.0; // Lower range of the area cylinder
-		terjeHeightMax = 100.0; // Upper range of the area cylinder
-		terjePower = 1.0; // Area power modifier
+	class TerjeScriptableArea : HouseNoDestruct
+	{
+		terjeInnerRadius=35.0; // Players inside this radius will receive full damage
+		terjeOuterRadius=100.0; // Players inside this radius will receive proportional damage depends on distance between two radiuses
+		terjeHeightMin=-100.0; // Lower range of the area cylinder
+		terjeHeightMax=100.0; // Upper range of the area cylinder
+		terjePower=1.0; // Area power modifier
 	};
 	
 	class Edible_Base;

@@ -1,0 +1,9 @@
+name      = "Terje Core";
+picture   = "TerjeCore/Textures/mod_icon.edds";// picture in expanded description
+logoSmall = "TerjeCore/Textures/mod_icon.edds";// icon next to mod name when description is not expanded
+logo      = "TerjeCore/Textures/mod_icon.edds";// logo below game menu
+logoOver  = "TerjeCore/Textures/mod_icon.edds";// on mouse hover over logo
+tooltip   = "";
+overview  = "";
+action    = "https://steamcommunity.com/id/streatman/myworkshopfiles/";
+author    = "Terje Bruoygard";

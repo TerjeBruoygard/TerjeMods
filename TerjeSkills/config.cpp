@@ -16,44 +16,43 @@ class CfgMods
 {
 	class TerjeSkills
 	{
-		dir = "TerjeSkills";
-		picture = "TerjeSkills/Textures/mod_icon.edds";
-		action = "https://steamcommunity.com/id/terjebruoygard/myworkshopfiles/";
-		hideName = 0;
-		hidePicture = 0;
-		name = "Terje Skills";
-		credits = "Terje Bruoygard";
-		version = "1.0.0";
-		author = "TerjeBruoygard";
-		dependencies[] = {"Core","Game","World","Mission"};
-		defines[] = { "TERJE_SKILLS_MOD" };
-		extra = 0;
-		type = "mod"; 
+		dir="TerjeSkills";
+		hideName=0;
+		hidePicture=0;
+		version="1.0.0";
+		extra=0;
+		
+		defines[]={"TERJE_SKILLS_MOD"};
+		type="mod";
+		dependencies[]={"gui","Game","World","Mission"};
 		
 		class defs
 		{
 			class imageSets
 			{
-				files[] = {
+				files[] =
+				{
 					"TerjeSkills/Textures/Icons/TerjeSkills.imageset", 
 					"TerjeSkills/Textures/Icons/PerkBorders.imageset", 
 					"TerjeSkills/Textures/Icons/PerkLevels.imageset", 
 					"TerjeSkills/Textures/Icons/TerjePerk.imageset",
-					"TerjeSkills/Textures/Icons/TerjePerkBlack.imageset"};
+					"TerjeSkills/Textures/Icons/TerjePerkBlack.imageset"
+				};
 			};
-			class gameScriptModule {
-				value = "";
-				files[] = {"TerjeSkills/Scripts/3_Game"};
+			class gameScriptModule
+			{
+				value="";
+				files[]={"TerjeSkills/Scripts/3_Game"};
 			};
-			
-			class worldScriptModule {
-				value = "";
-				files[] = {"TerjeSkills/Scripts/4_World"};
+			class worldScriptModule
+			{
+				value="";
+				files[]={"TerjeSkills/Scripts/4_World"};
 			};
-
-			class missionScriptModule {
-				value = "";
-				files[] = {"TerjeSkills/Scripts/5_Mission"};
+			class missionScriptModule
+			{
+				value="";
+				files[]={"TerjeSkills/Scripts/5_Mission"};
 			};
 		};
 	};
