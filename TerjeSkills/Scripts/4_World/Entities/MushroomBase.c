@@ -4,7 +4,18 @@ modded class MushroomBase
 	
 	override bool IsTerjeClientUpdateRequired()
 	{
-		return true;
+		// Only update if player is nearby and has mushroom premium perk to reduce performance impact
+		PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
+		if (!player || !player.GetTerjeSkills())
+			return false;
+
+		// Check if player has mushroom premium perk
+		if (player.GetTerjeSkills().GetPerkLevel("surv", "mushprem") <= 0)
+			return false;
+
+		// Only update mushrooms within reasonable distance
+		float distance = vector.Distance(player.GetWorldPosition(), GetWorldPosition());
+		return distance <= 50.0; // 50m range for mushroom foraging
 	}
 	
 	override void EEDelete(EntityAI parent)
