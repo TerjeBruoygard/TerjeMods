@@ -169,7 +169,6 @@ class TerjePlayerModifierPoison : TerjePlayerModifierBase
 	
 	float TransferVanillaAgents(PlayerBase player, eAgents agent, int terjeSetting)
 	{
-		float streatman_value = 0;
 		int poisonVanillaAgents = player.GetSingleAgentCount(agent);
 		if (poisonVanillaAgents > 0)
 		{
@@ -178,12 +177,9 @@ class TerjePlayerModifierPoison : TerjePlayerModifierBase
 			float poisonTransferAgentsModifier = 0;
 			if (GetTerjeSettingFloat(terjeSetting, poisonTransferAgentsModifier))
 			{
-				streatman_value = poisonTransferAgentsModifier * (float)poisonVanillaAgents;
+				return Math.Clamp(poisonTransferAgentsModifier * (float)poisonVanillaAgents, 0.0, poisonTransferAgentsModifier * 3);
 			}
 		}
-		
-		float streatman_ceiling = 0;
-		GetTerjeSettingFloat(terjeSetting, streatman_ceiling);
-		return Math.Clamp(streatman_value, 0.0, streatman_ceiling * 3);
+		return 0;
 	}
 }
