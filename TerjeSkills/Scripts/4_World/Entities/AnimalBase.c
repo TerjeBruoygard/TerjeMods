@@ -64,7 +64,18 @@ modded class AnimalBase
 	
 	override bool IsTerjeClientUpdateRequired()
 	{
-		return true;
+		// Only update if player is nearby and has pathfinder perk to reduce performance impact
+		PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
+		if (!player || !player.GetTerjeSkills())
+			return false;
+
+		// Check if player has pathfinder perk
+		if (player.GetTerjeSkills().GetPerkLevel("hunt", "pathfindr") <= 0)
+			return false;
+
+		// Only update animals within reasonable distance
+		float distance = vector.Distance(player.GetWorldPosition(), GetWorldPosition());
+		return distance <= 200.0; // 200m range for hunting visibility
 	}
 	
 	override void OnTerjeClientUpdate(float deltaTime)
