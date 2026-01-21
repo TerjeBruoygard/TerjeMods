@@ -15,7 +15,7 @@ class PluginTerjeClientAnimalsCore : PluginBase
 		super.OnUpdate(delta_time);
 		
 		m_currentUpdateTimer += delta_time;
-		if (m_currentUpdateTimer >= 1)
+		if (m_currentUpdateTimer >= 2)
 		{
 			foreach (int index, AnimalBase animal : m_updatableClientAnimals)
 			{
