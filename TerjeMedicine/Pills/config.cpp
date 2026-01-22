@@ -783,7 +783,7 @@ class CfgVehicles
 						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
 						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
 						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}
+						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
 					};
 				};
 			};
