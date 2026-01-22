@@ -1026,46 +1026,39 @@ class CfgVehicles
 		hiddenSelections[]={"zbytek"};
 		hiddenSelectionsTextures[]={"TerjeMedicine\Tools\syringe\data\syringe_new_co.paa"};
 	};
-	class StaticObj_TerjeExpressTestRabiesPack : HouseNoDestruct
+	class StaticObj_TerjeExpressTest : HouseNoDestruct
 	{
-		scope=1;
 		model="TerjeMedicine\Tools\expresstest\expresstestpack.p3d";
 		hiddenSelections[]={"zbytek"};
+	};
+	class StaticObj_TerjeExpressTestRabiesPack : StaticObj_TerjeExpressTest
+	{
+		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Tools\expresstest\data\expresstest_rab_co.paa"};
 	};
-	class StaticObj_TerjeExpressTestSepsisPack : HouseNoDestruct
+	class StaticObj_TerjeExpressTestSepsisPack : StaticObj_TerjeExpressTest
 	{
 		scope=1;
-		model="TerjeMedicine\Tools\expresstest\expresstestpack.p3d";
-		hiddenSelections[]={"zbytek"};
 		hiddenSelectionsTextures[]={"TerjeMedicine\Tools\expresstest\data\expresstest_sep_co.paa"};
 	};
-	class StaticObj_TerjeExpressTestVirusZPack : HouseNoDestruct
+	class StaticObj_TerjeExpressTestVirusZPack : StaticObj_TerjeExpressTest
 	{
 		scope=1;
-		model="TerjeMedicine\Tools\expresstest\expresstestpack.p3d";
-		hiddenSelections[]={"zbytek"};
 		hiddenSelectionsTextures[]={"TerjeMedicine\Tools\expresstest\data\expresstest_zed_co.paa"};
 	};
-	class StaticObj_TerjeExpressTestRabies: HouseNoDestruct
+	class StaticObj_TerjeExpressTestRabies: StaticObj_TerjeExpressTest
 	{
 		scope=1;
-		model="TerjeMedicine\Tools\expresstest\expresstest.p3d";
-		hiddenSelections[]={"zbytek"};
 		hiddenSelectionsTextures[]={"TerjeMedicine\Tools\expresstest\data\expresstest_rab_co.paa"};
 	};
-	class StaticObj_TerjeExpressTestSepsis: HouseNoDestruct
+	class StaticObj_TerjeExpressTestSepsis: StaticObj_TerjeExpressTest
 	{
 		scope=1;
-		model="TerjeMedicine\Tools\expresstest\expresstest.p3d";
-		hiddenSelections[]={"zbytek"};
 		hiddenSelectionsTextures[]={"TerjeMedicine\Tools\expresstest\data\expresstest_sep_co.paa"};
 	};
-	class StaticObj_TerjeExpressTestVirusZ: HouseNoDestruct
+	class StaticObj_TerjeExpressTestVirusZ: StaticObj_TerjeExpressTest
 	{
 		scope=1;
-		model="TerjeMedicine\Tools\expresstest\expresstest.p3d";
-		hiddenSelections[]={"zbytek"};
 		hiddenSelectionsTextures[]={"TerjeMedicine\Tools\expresstest\data\expresstest_zed_co.paa"};
 	};
 	class StaticObj_TerjeExpressTestAgents : HouseNoDestruct
