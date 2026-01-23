@@ -1,8 +1,8 @@
-ambient[]={0.82745099,0.82745099,0.82745099,1};
-diffuse[]={0.82745099,0.82745099,0.82745099,1};
+ambient[]={0.83,0.83,0.83,1};
+diffuse[]={0.83,0.83,0.83,1};
 forcedDiffuse[]={0,0,0,0};
 emmisive[]={0,0,0,1};
-specular[]={0.050000001,0.050000001,0.050000001,1};
+specular[]={0.05,0.05,0.05,1};
 specularPower=100;
 PixelShaderID="Super";
 VertexShaderID="Super";
@@ -69,24 +69,10 @@ class Stage5
 class Stage6
 {
 	texture="#(ai,64,64,1)fresnel(1,1.7)";
-	uvSource="tex";
-	class uvTransform
-	{
-		aside[]={1,0,0};
-		up[]={0,1,0};
-		dir[]={0,0,0};
-		pos[]={0,0,0};
-	};
+	uvSource="none";
 };
 class Stage7
 {
 	texture="dz\data\data\env_land_co.paa";
-	uvSource="tex";
-	class uvTransform
-	{
-		aside[]={1,0,0};
-		up[]={0,1,0};
-		dir[]={0,0,0};
-		pos[]={0,0,0};
-	};
+	uvSource="none";
 };

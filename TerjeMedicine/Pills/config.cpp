@@ -85,7 +85,7 @@ class CfgVehicles
 			};
 		};
 	};
-	class TerjePills_Capsule : TerjePillsBase
+	class TerjePills_Capsule: TerjePillsBase
 	{
 		model="TerjeMedicine\Pills\capsule\capsule.p3d";
 		class DamageSystem
@@ -107,7 +107,7 @@ class CfgVehicles
 			};
 		};
 	};
-	class TerjePills_Oval : TerjePillsBase
+	class TerjePills_Oval: TerjePillsBase
 	{
 		model="TerjeMedicine\Pills\oval\oval.p3d";
 		class DamageSystem
@@ -129,7 +129,7 @@ class CfgVehicles
 			};
 		};
 	};
-	class TerjePills_Circle : TerjePillsBase
+	class TerjePills_Circle: TerjePillsBase
 	{
 		model="TerjeMedicine\Pills\circle\circle.p3d";
 		class DamageSystem
@@ -152,7 +152,6 @@ class CfgVehicles
 		};
 	};
 	
-
 	class CharcoalTablets: Edible_Base
 	{
 		descriptionShort="#STR_TERJEMED_TABLETS_DESC";
@@ -187,7 +186,6 @@ class CfgVehicles
 			};
 		};
 	};
-	
 	class ChelatingTablets: Edible_Base
 	{
 		descriptionShort="#STR_TERJEMED_TABLETS_DESC";
@@ -198,7 +196,6 @@ class CfgVehicles
 		medSkillExpAddToSelf=15;
 		medicalPillsCategory=1;
 	};
-	
 	class PainkillerTablets: Edible_Base
 	{
 		descriptionShort="#STR_TERJEMED_TABLETS_DESC";
@@ -233,7 +230,6 @@ class CfgVehicles
 			};
 		};
 	};
-	
 	class TetracyclineAntibiotics: Edible_Base
 	{
 		descriptionShort="#STR_TERJEMED_TABLETS_DESC";
@@ -269,837 +265,319 @@ class CfgVehicles
 		};
 	};
 	
-	class TerjePillsMagnesiumSulfate : TerjePillsBase
+	class TerjePillsMagnesiumSulfate: TerjePills_Capsule
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_MAGNESIUMSULFATE";
-		model="TerjeMedicine\Pills\capsule\capsule.p3d";
 		medBloodRegenValue=2.5;
 		medBloodRegenTimeSec=120;
 		overdosedIncrement=0.3;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_4_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsAdepress : TerjePillsBase
+	class TerjePillsAdepress: TerjePills_Capsule
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_ADEPRESS";
-		model="TerjeMedicine\Pills\capsule\capsule.p3d";
 		medAntidepresantLevel=1;
 		medAntidepresantTimer=150;
 		overdosedIncrement=0.2;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_5_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsB190 : TerjePillsBase
+	class TerjePillsB190: TerjePills_Capsule
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_B190";
-		model="TerjeMedicine\Pills\capsule\capsule.p3d";
 		medAntiradLevel=1;
 		medAntiradTimer=140;
 		overdosedIncrement=0.3;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_6_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
 	
 	// ADVANCED PILLS
-	class TerjePillsAnalgin : TerjePillsBase
+	class TerjePillsAnalgin: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_ANALGIN";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medPainkillerLevel=1;
 		medPainkillerTimeSec=500;
 		overdosedIncrement=0.15;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_7_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsNimesulid : TerjePillsBase
+	class TerjePillsNimesulid: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_NIMESULID";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medPainkillerLevel=1;
 		medPainkillerTimeSec=600;
 		overdosedIncrement=0.25;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_8_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsParacetamol : TerjePillsBase
+	class TerjePillsParacetamol: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_PARACETAMOL";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medPainkillerLevel=1;
 		medPainkillerTimeSec=200;
 		overdosedIncrement=0.45;
 		medAntibioticLevel=1;
 		medAntibioticsTimeSec=120;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_10_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsIbuprofen : TerjePillsBase
+	class TerjePillsIbuprofen: TerjePills_Capsule
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_IBUPROFEN";
-		model="TerjeMedicine\Pills\capsule\capsule.p3d";
 		medPainkillerLevel=1;
 		medPainkillerTimeSec=600;
 		medAntibioticLevel=2;
 		medAntibioticsTimeSec=300;
 		overdosedIncrement=0.35;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_11_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsNurofen : TerjePillsBase
+	class TerjePillsNurofen: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_NUROFEN";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medPainkillerLevel=1;
 		medPainkillerTimeSec=350;
 		medAntibioticLevel=2;
 		medAntibioticsTimeSec=300;
 		overdosedIncrement=0.52;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_6_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsAmoxiclav : TerjePillsBase
+	class TerjePillsAmoxiclav: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_AMOXICLAV";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medAntibioticLevel=2;
 		medAntibioticsTimeSec=1200;
 		overdosedIncrement=0.75;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_5_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsPiperacylin : TerjePillsBase
+	class TerjePillsPiperacylin: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_PIPERACYLIN";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medAntibioticLevel=2;
 		medAntibioticsTimeSec=1100;
 		overdosedIncrement=0.45;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_4_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsAmibaktam : TerjePillsBase
+	class TerjePillsAmibaktam: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_AMIBAKTAM";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medAntibioticLevel=1;
 		medAntibioticsTimeSec=60;
 		overdosedIncrement=0.05;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_3_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsPolisorb : TerjePillsBase
+	class TerjePillsPolisorb: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_POLISORB";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medAntipoisonLevel=1;
 		medAntipoisonTimeSec=300;
 		overdosedIncrement=0.05;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_2_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsMesalazin : TerjePillsBase
+	class TerjePillsMesalazin: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_MESALAZIN";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medAntipoisonLevel=2;
 		medAntipoisonTimeSec=600;
 		overdosedIncrement=0.35;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_1_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsFtalazol : TerjePillsBase
+	class TerjePillsFtalazol: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_FTALAZOL";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medAntipoisonLevel=1;
 		medAntipoisonTimeSec=1200;
 		overdosedIncrement=0.25;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_2_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsNoopept : TerjePillsBase
+	class TerjePillsNoopept: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_NOOPEPT";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medPainkillerLevel=1;
 		medPainkillerTimeSec=380;
 		medConcussionHealTimeSec=380;
 		overdosedIncrement=0.35;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_3_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsVikasol : TerjePillsBase
+	class TerjePillsVikasol: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_VIKASOL";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medBloodHemostaticValue=1;
 		medBloodHemostaticTimeSec=300;
 		overdosedIncrement=0.15;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_4_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsIrovit : TerjePillsBase
+	class TerjePillsIrovit: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_IROVIT";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medBloodRegenValue=1;
 		medBloodRegenTimeSec=120;
 		overdosedIncrement=0.3;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_5_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsPotassiumIodide : TerjePillsBase
+	class TerjePillsPotassiumIodide: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_POTASIUM_IODIDE";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medAntiradLevel=1;
 		medAntiradTimer=60;
 		overdosedIncrement=0.2;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_6_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsHexacyanoferrate : TerjePillsBase
+	class TerjePillsHexacyanoferrate: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_HEXACYANOFERRATE";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medAntiradLevel=1;
 		medAntiradTimer=120;
 		overdosedIncrement=0.3;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_7_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsMexamine : TerjePillsBase
+	class TerjePillsMexamine: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_MEXAMINE";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medAntiradLevel=2;
 		medAntiradTimer=25;
 		overdosedIncrement=0.75;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_8_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsAgteminol : TerjePillsBase
+	class TerjePillsAgteminol: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_AGTEMINOL";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medAntidepresantLevel=1;
 		medAntidepresantTimer=120;
 		overdosedIncrement=0.2;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_9_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsVenlafaxine : TerjePillsBase
+	class TerjePillsVenlafaxine: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_VANLAFAXINE";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medAntidepresantLevel=1;
 		medAntidepresantTimer=250;
 		overdosedIncrement=0.3;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_10_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsRombiopental : TerjePillsBase
+	class TerjePillsRombiopental: TerjePills_Capsule
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_ROMBIOPENTAL";
-		model="TerjeMedicine\Pills\capsule\capsule.p3d";
 		medAntibiohazardLevel=1;
 		medAntibiohazardTimeSec=30;
 		overdosedIncrement=0.15;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_7_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\capsule\data\capsule_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\capsule\data\capsule_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\capsule\data\capsule_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsPotassiumCyanide : TerjePillsBase
+	class TerjePillsPotassiumCyanide: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_CYANIDE";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medFoodPoisonIncrement=5;
 		overdosedIncrement=1.5;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_1_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsArsenic : TerjePillsBase
+	class TerjePillsArsenic: TerjePills_Circle
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_ARSENIC";
-		model="TerjeMedicine\Pills\circle\circle.p3d";
 		medFoodPoisonIncrement=3.5;
 		overdosedIncrement=2.5;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\circle\data\circle_3_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\circle\data\circle_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\circle\data\circle_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\circle\data\circle_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
-	
-	class TerjePillsIversan : TerjePillsBase
+	class TerjePillsIversan: TerjePills_Oval
 	{
 		scope=2;
 		displayName="#STR_TERJEMED_IVERSAN";
-		model="TerjeMedicine\Pills\oval\oval.p3d";
 		medFoodPoisonIncrement=2.2;
 		overdosedIncrement=0.5;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_4_co.paa"};
-		class DamageSystem
-		{
-			class GlobalHealth
-			{
-				class Health
-				{
-					hitpoints=100;
-					healthLevels[]=
-					{
-						{1.0,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.7,{"TerjeMedicine\Pills\oval\data\oval_mat.rvmat"}},
-						{0.5,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.3,{"TerjeMedicine\Pills\oval\data\oval_mat_damage.rvmat"}},
-						{0.0,{"TerjeMedicine\Pills\oval\data\oval_mat_destruct.rvmat"}}
-					};
-				};
-			};
-		};
 	};
 
 	class HouseNoDestruct;
-	class StaticObj_TerjePills_capsule : HouseNoDestruct
+	class StaticObj_TerjePills_capsule: HouseNoDestruct
 	{
 		model="TerjeMedicine\Pills\capsule\capsule.p3d";
 		hiddenSelections[]={"zbytek"};
 	};
-	class StaticObj_TerjePills_oval : HouseNoDestruct
+	class StaticObj_TerjePills_oval: HouseNoDestruct
 	{
 		model="TerjeMedicine\Pills\oval\oval.p3d";
 		hiddenSelections[]={"zbytek"};
 	};
-	class StaticObj_TerjePills_circle : HouseNoDestruct
+	class StaticObj_TerjePills_circle: HouseNoDestruct
 	{
 		model="TerjeMedicine\Pills\circle\circle.p3d";
 		hiddenSelections[]={"zbytek"};
 	};
-	class StaticObj_TerjePillsMagnesiumSulfate : StaticObj_TerjePills_capsule
+	class StaticObj_TerjePillsMagnesiumSulfate: StaticObj_TerjePills_capsule
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_4_co.paa"};
 	};
-	class StaticObj_TerjePillsAdepress : StaticObj_TerjePills_capsule
+	class StaticObj_TerjePillsAdepress: StaticObj_TerjePills_capsule
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_5_co.paa"};
 	};
-	class StaticObj_TerjePillsB190 : StaticObj_TerjePills_capsule
+	class StaticObj_TerjePillsB190: StaticObj_TerjePills_capsule
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_6_co.paa"};
 	};
-	class StaticObj_TerjePillsAnalgin : StaticObj_TerjePills_oval
+	class StaticObj_TerjePillsAnalgin: StaticObj_TerjePills_oval
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_7_co.paa"};
 	};
-	class StaticObj_TerjePillsNimesulid : StaticObj_TerjePills_oval
+	class StaticObj_TerjePillsNimesulid: StaticObj_TerjePills_oval
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_8_co.paa"};
 	};
-	class StaticObj_TerjePillsParacetamol : StaticObj_TerjePills_oval
+	class StaticObj_TerjePillsParacetamol: StaticObj_TerjePills_oval
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_10_co.paa"};
 	};
-	class StaticObj_TerjePillsIbuprofen : StaticObj_TerjePills_capsule
+	class StaticObj_TerjePillsIbuprofen: StaticObj_TerjePills_capsule
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\capsule\data\capsule_11_co.paa"};
 	};
-	class StaticObj_TerjePillsNurofen : StaticObj_TerjePills_oval
+	class StaticObj_TerjePillsNurofen: StaticObj_TerjePills_oval
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_6_co.paa"};
 	};
-	class StaticObj_TerjePillsAmoxiclav : StaticObj_TerjePills_oval
+	class StaticObj_TerjePillsAmoxiclav: StaticObj_TerjePills_oval
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_5_co.paa"};
 	};
-	class StaticObj_TerjePillsPiperacylin : StaticObj_TerjePills_oval
+	class StaticObj_TerjePillsPiperacylin: StaticObj_TerjePills_oval
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_4_co.paa"};
 	};
-	class StaticObj_TerjePillsAmibaktam : StaticObj_TerjePills_oval
+	class StaticObj_TerjePillsAmibaktam: StaticObj_TerjePills_oval
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_3_co.paa"};
 	};
-	class StaticObj_TerjePillsPolisorb : StaticObj_TerjePills_oval
+	class StaticObj_TerjePillsPolisorb: StaticObj_TerjePills_oval
 	{
 		scope=1;
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\oval\data\oval_2_co.paa"};
