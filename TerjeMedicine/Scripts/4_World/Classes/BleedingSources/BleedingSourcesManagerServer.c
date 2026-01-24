@@ -536,58 +536,60 @@ modded class BleedingSourcesManagerServer
 		else if (ammoType == "FragGrenade")
 		{
 			playerTakeDammage = true;
-			if (!isInKnockout && TerjeOverrideProcessHit_FragGrenade(damage, source, component, zone, ammo, modelPos, playerTakeDammage) && playerTakeDammage)
+			if (ammo == "FlashGrenade_Ammo")
 			{
-				float explosionContusionChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_CONTUSION_CHANCE);
-				if (Math.RandomFloat01() < explosionContusionChance)
+				if (!isInKnockout && TerjeOverrideProcessHit_FlashGrenade(damage, source, component, zone, ammo, modelPos, playerTakeDammage) && playerTakeDammage)
 				{
-					m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
-				}
-				
-				int explosionStubsMaxCount = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_STUB_MAX);
-				float explosionStubsChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_STUB_CHANCE);
-				for (int stubId = 0; stubId < explosionStubsMaxCount; stubId++)
-				{
-					if (Math.RandomFloat01() < explosionStubsChance)
+					if (Math.RandomFloat01() < GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_FLASHBANG_HEAVY_CONTUSION_CHANCE))
 					{
-						m_Player.GetTerjeStats().SetStubWounds(m_Player.GetTerjeStats().GetStubWounds() + 1);
+						m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_HEAVY);
 					}
-				}
-				
-				int explosionScratchMaxCount = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_SCRATCH_MAX);
-				float explosionScratchChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_SCRATCH_CHANCE);
-				
-				if (explosionScratchMaxCount > GetRegisteredSourcesCount())
-				{
-					explosionScratchMaxCount = GetRegisteredSourcesCount();
-				}
-				
-				for (int scratchBit = 0; scratchBit < explosionScratchMaxCount; scratchBit++)
-				{
-					if (Math.RandomFloat01() < explosionScratchChance)
+					else if (Math.RandomFloat01() < GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_FLASHBANG_LIGHT_CONTUSION_CHANCE))
 					{
-						AttemptAddBleedingSourceDirectly(scratchBit);
+						m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
 					}
 				}
 			}
-			
-			if (isInKnockout && playerTakeDammage && (finisherType == 0))
+			else if (ammo != "Fireworks_Ammo")
 			{
-				m_Player.GetTerjeStats().IncrementKnockoutFinisher();
-			}
-		}
-		else if (ammoType == "FlashGrenade_Ammo")
-		{
-			playerTakeDammage = true;
-			if (!isInKnockout && TerjeOverrideProcessHit_FlashGrenade(damage, source, component, zone, ammo, modelPos, playerTakeDammage) && playerTakeDammage)
-			{
-				if (Math.RandomFloat01() < GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_FLASHBANG_HEAVY_CONTUSION_CHANCE))
+				if (!isInKnockout && TerjeOverrideProcessHit_FragGrenade(damage, source, component, zone, ammo, modelPos, playerTakeDammage) && playerTakeDammage)
 				{
-					m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_HEAVY);
+					float explosionContusionChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_CONTUSION_CHANCE);
+					if (Math.RandomFloat01() < explosionContusionChance)
+					{
+						m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
+					}
+					
+					int explosionStubsMaxCount = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_STUB_MAX);
+					float explosionStubsChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_STUB_CHANCE);
+					for (int stubId = 0; stubId < explosionStubsMaxCount; stubId++)
+					{
+						if (Math.RandomFloat01() < explosionStubsChance)
+						{
+							m_Player.GetTerjeStats().SetStubWounds(m_Player.GetTerjeStats().GetStubWounds() + 1);
+						}
+					}
+					
+					int explosionScratchMaxCount = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_SCRATCH_MAX);
+					float explosionScratchChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_SCRATCH_CHANCE);
+					
+					if (explosionScratchMaxCount > GetRegisteredSourcesCount())
+					{
+						explosionScratchMaxCount = GetRegisteredSourcesCount();
+					}
+					
+					for (int scratchBit = 0; scratchBit < explosionScratchMaxCount; scratchBit++)
+					{
+						if (Math.RandomFloat01() < explosionScratchChance)
+						{
+							AttemptAddBleedingSourceDirectly(scratchBit);
+						}
+					}
 				}
-				else if (Math.RandomFloat01() < GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_FLASHBANG_LIGHT_CONTUSION_CHANCE))
+				
+				if (isInKnockout && playerTakeDammage && (finisherType == 0))
 				{
-					m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
+					m_Player.GetTerjeStats().IncrementKnockoutFinisher();
 				}
 			}
 		}
