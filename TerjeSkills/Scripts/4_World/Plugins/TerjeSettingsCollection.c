@@ -73,6 +73,8 @@ modded class TerjeSettingsCollection
 	
 	static ref map<string, int> SKILLS_INITIAL_EXP = new map<string, int>;
 	static ref map<string, int> SKILLS_ACTIVE_SKILLS = new map<string, int>;
+	// Add hidden abbility to hide skills/perks from UI
+	static ref map<string, int> SKILLS_HIDDEN_SKILLS = new map<string, int>;
 	static ref map<string, int> SKILLS_ACTIVE_PERKS = new map<string, int>;
 	
 	override void OnInit()
@@ -171,6 +173,7 @@ modded class TerjeSettingsCollection
 		{
 			SKILLS_ACTIVE_SKILLS.Set(skill_2.GetId(), RegisterSettingBool("Skills.EnableSkill_" + skill_2.GetId(), "Skills", "Sets is " + skill_2.GetId() + " skill enabled on the server.", true, false));
 		}
+
 		
 		RegisterRegion("Skills", "Enabled perks");
 		foreach (ref TerjeSkillCfg skill_3 : registeredSkills)
@@ -181,6 +184,13 @@ modded class TerjeSettingsCollection
 			{
 				SKILLS_ACTIVE_PERKS.Set(skill_3.GetId() + ":" + perk.GetId(), RegisterSettingBool("Skills.EnablePerk_" + skill_3.GetId() + "_" + perk.GetId(), "Skills", "Sets is perk " + perk.GetId() + " enabled for skill " + skill_3.GetId() + ".", true, false));
 			}
+		}
+
+		// Add hidden abbility to hide skills from UI
+		RegisterRegion("Skills", "Hide skills");
+		foreach (ref TerjeSkillCfg skill_4 : registeredSkills)
+		{
+			SKILLS_HIDDEN_SKILLS.Set(skill_4.GetId(), RegisterSettingBool("Skills.HideSkill_" + skill_4.GetId(), "Skills", "Sets is " + skill_4.GetId() + " skill hidden on the server.", false, false));
 		}
 	}
 	

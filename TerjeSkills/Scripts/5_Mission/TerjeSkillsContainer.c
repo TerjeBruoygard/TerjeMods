@@ -7,6 +7,12 @@ class TerjeSkillsContainer : CollapsibleContainer
 	
 	void InitializeSkills(PlayerBase player)
 	{
+		
+		int settingKey;
+		bool settingValue;
+		array<ref TerjeSkillCfg> hiddenSkills();
+		GetTerjeSkillsRegistry().GetSkills(hiddenSkills);
+		
 		// Insert spacer
 		Insert(new TerjeSkillBlankSpacer(this));
 		
@@ -17,6 +23,12 @@ class TerjeSkillsContainer : CollapsibleContainer
 		{
 			TerjeSkillWidget widget = new TerjeSkillWidget(this);
 			widget.InitializeSkill(skill, player);
+			
+			// Check if skill need to be hidden
+			if (TerjeSettingsCollection.SKILLS_HIDDEN_SKILLS.Find(skill.GetId(), settingKey) && GetTerjeSettingBool(settingKey, settingValue) && settingValue)
+			{
+				widget.GetMainWidget().Show(false);
+			}
 			Insert(widget);
 		}
 	}
