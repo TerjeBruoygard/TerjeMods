@@ -13,6 +13,6 @@ RichTextWidgetClass TerjeWidgetText {
  "exact text" 1
  "exact text size" 16
  "size to text h" 0
- "size to text v" 1
+ "size to text v" 0
  wrap 1
 }
