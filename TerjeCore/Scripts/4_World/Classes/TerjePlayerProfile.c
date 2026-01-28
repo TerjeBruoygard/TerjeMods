@@ -1,6 +1,7 @@
 class TerjePlayerProfile : TerjePlayerRecordsBase
 {
 	protected ref set<string> m_serverFlags = new set<string>;
+	private int m_BloodType;
 	
 	bool HasServerFlag(string flag)
 	{
@@ -25,7 +26,9 @@ class TerjePlayerProfile : TerjePlayerRecordsBase
 	override void OnInit()
 	{
 		super.OnInit();
-		RegisterRecordString("core", "1.0.0", true);
+		//RegisterRecordString("core", "1.0.0", true);
+		//Add blood type record
+		m_BloodType = RegisterRecordInt("c.bt", -1, true);	
 	}
 	
 	void OnStoreSaveFile(string path)
@@ -60,5 +63,15 @@ class TerjePlayerProfile : TerjePlayerRecordsBase
 		bool result = this.OnStoreLoad(ctx);
 		ctx.Close();
 		return result;
+	}
+
+	void SetBloodType(int bloodType)
+	{
+		SetIntValue(m_BloodType, bloodType);
+	}
+
+	int GetBloodType()
+	{
+		return GetIntValue(m_BloodType);
 	}
 }

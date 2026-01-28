@@ -316,6 +316,7 @@ class TerjeSettingsCollection
 	static int CORE_USE_CUSTOM_PROTECTION_CONFIGS;
 	static int CORE_USE_CUSTOM_CRAFT_CONFIGS;
 	static int CORE_FIX_KILL_ON_DISCONNECT;
+	static int CORE_PERSIST_BLOOD_TYPE;
 	
 	void OnInit()
 	{
@@ -332,6 +333,8 @@ class TerjeSettingsCollection
 		CORE_USE_CUSTOM_PROTECTION_CONFIGS = RegisterSettingBool("Core.UseCustomProtectionConfigs", "Core", "Enable this parameter to use additional configuration files are created in the 'TerjeSettings/CustomProtection' folder. Write in these files SteamIDs of players so that they have absolute protection from specific modded effects (radiation, for example).", false, true);
 		CORE_USE_CUSTOM_CRAFT_CONFIGS = RegisterSettingBool("Core.UseCustomCraftConfigs", "Core", "Enable this parameter to use additional craft configs. They will be created in the 'TerjeSettings/CustomCrafting' folder. For more details please read 'TerjeSettings/CustomCrafting/Recipes.xml'.", false, true);
 		CORE_FIX_KILL_ON_DISCONNECT = RegisterSettingBool("Core.FixKillOnDisconnect", "Core", "Kills a player when he disconnects from the server while unconscious or restrained. Vanilla logic just delete the player without killing him, so player can abuse mods logic from EEKilled to do not loss skill experience or souls. Enabling this setting fixes this.", true, true);
+		//Adding persiste blood type setting, saves blood type to the terje profile
+		CORE_PERSIST_BLOOD_TYPE = RegisterSettingBool("Core.PersistBloodType", "Core", "Saves bloodtype of the player, player will always spawn with same blood type.", false, true);
 	}
 	
 	protected void RegisterRegion(string category, string description)
