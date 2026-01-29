@@ -345,7 +345,7 @@ class CfgVehicles
 		model="TerjeMedicine\Pills\capsule.p3d";
 		rotationFlags=1;
 		hiddenSelections[]={"tablets"};
-		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\oval_11_co.paa"};
+		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\capsule_2_co.paa"};
 		class DamageSystem
 		{
 			class GlobalHealth
@@ -446,7 +446,7 @@ class CfgVehicles
 		model="TerjeMedicine\Pills\capsule.p3d";
 		rotationFlags=1;
 		hiddenSelections[]={"tablets"};
-		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\oval_11_co.paa"};
+		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\capsule_3_co.paa"};
 		class DamageSystem
 		{
 			class GlobalHealth
@@ -775,17 +775,17 @@ class CfgVehicles
 	class StaticObj_TerjePills_capsule: HouseNoDestruct
 	{
 		model="TerjeMedicine\Pills\capsule.p3d";
-		hiddenSelections[]={"zbytek"};
+		hiddenSelections[]={"tablets"};
 	};
 	class StaticObj_TerjePills_oval: HouseNoDestruct
 	{
 		model="TerjeMedicine\Pills\oval.p3d";
-		hiddenSelections[]={"zbytek"};
+		hiddenSelections[]={"tablets"};
 	};
 	class StaticObj_TerjePills_circle: HouseNoDestruct
 	{
 		model="TerjeMedicine\Pills\circle.p3d";
-		hiddenSelections[]={"zbytek"};
+		hiddenSelections[]={"tablets"};
 	};
 	class StaticObj_TerjePillsMagnesiumSulfate: StaticObj_TerjePills_capsule
 	{
