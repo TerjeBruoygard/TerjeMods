@@ -1,4 +1,4 @@
-modded class CharcoalTablets
+class TerjePillsCharcoalTablets: CharcoalTablets
 {
 	override bool SetQuantity(float value, bool destroy_config = true, bool destroy_forced = false, bool allow_client = false, bool clamp_to_stack_max = true)
 	{
@@ -34,7 +34,7 @@ modded class CharcoalTablets
 	}
 }
 
-modded class TetracyclineAntibiotics
+class TerjePillsPainkillerTablets: PainkillerTablets
 {
 	override bool SetQuantity(float value, bool destroy_config = true, bool destroy_forced = false, bool allow_client = false, bool clamp_to_stack_max = true)
 	{
@@ -70,7 +70,7 @@ modded class TetracyclineAntibiotics
 	}
 }
 
-modded class PainkillerTablets
+class TerjePillsTetracyclineAntibiotics: TetracyclineAntibiotics
 {
 	override bool SetQuantity(float value, bool destroy_config = true, bool destroy_forced = false, bool allow_client = false, bool clamp_to_stack_max = true)
 	{

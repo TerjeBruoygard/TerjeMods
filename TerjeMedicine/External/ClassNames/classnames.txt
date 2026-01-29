@@ -1,3 +1,7 @@
+TerjePillsCharcoalTablets
+TerjePillsPainkillerTablets
+TerjePillsTetracyclineAntibiotics
+
 TerjeExpressTestAgents
 TerjeExpressTestVirusZPack
 TerjeExpressTestSepsisPack

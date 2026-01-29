@@ -218,8 +218,6 @@ class CfgVehicles
 	class CharcoalTablets: Edible_Base
 	{
 		descriptionShort="#STR_TERJEMED_TABLETS_DESC";
-		model="TerjeMedicine\Pills\oval.p3d";
-		rotationFlags=1;
 		varQuantityInit=10;
 		varQuantityMin=0;
 		varQuantityMax=10;
@@ -229,6 +227,11 @@ class CfgVehicles
 		medicalItem=1;
 		medSkillExpAddToSelf=5;
 		medicalPillsCategory=1;
+	};
+	class TerjePillsCharcoalTablets: CharcoalTablets
+	{
+		model="TerjeMedicine\Pills\oval.p3d";
+		rotationFlags=1;
 		hiddenSelections[]={"tablets"};
 		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\oval_11_co.paa"};
 		class DamageSystem
@@ -327,8 +330,6 @@ class CfgVehicles
 	class PainkillerTablets: Edible_Base
 	{
 		descriptionShort="#STR_TERJEMED_TABLETS_DESC";
-		model="TerjeMedicine\Pills\capsule.p3d";
-		rotationFlags=1;
 		varQuantityInit=10;
 		varQuantityMin=0;
 		varQuantityMax=10;
@@ -338,8 +339,13 @@ class CfgVehicles
 		overdosedIncrement=0.2;
 		medicalItem=1;
 		medicalPillsCategory=1;
+	};
+	class TerjePillsPainkillerTablets: PainkillerTablets
+	{
+		model="TerjeMedicine\Pills\capsule.p3d";
+		rotationFlags=1;
 		hiddenSelections[]={"tablets"};
-		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\capsule_2_co.paa"};
+		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\oval_11_co.paa"};
 		class DamageSystem
 		{
 			class GlobalHealth
@@ -425,8 +431,6 @@ class CfgVehicles
 	class TetracyclineAntibiotics: Edible_Base
 	{
 		descriptionShort="#STR_TERJEMED_TABLETS_DESC";
-		model="TerjeMedicine\Pills\capsule.p3d";
-		rotationFlags=1;
 		varQuantityInit=10;
 		varQuantityMin=0;
 		varQuantityMax=10;
@@ -436,8 +440,13 @@ class CfgVehicles
 		overdosedIncrement=0.45;
 		medicalItem=1;
 		medicalPillsCategory=1;
+	};
+	class TerjePillsTetracyclineAntibiotics: TetracyclineAntibiotics
+	{
+		model="TerjeMedicine\Pills\capsule.p3d";
+		rotationFlags=1;
 		hiddenSelections[]={"tablets"};
-		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\capsule_3_co.paa"};
+		hiddenSelectionsTextures[]={"TerjeMedicine\Pills\data\oval_11_co.paa"};
 		class DamageSystem
 		{
 			class GlobalHealth
