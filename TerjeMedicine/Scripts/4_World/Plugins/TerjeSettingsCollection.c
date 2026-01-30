@@ -145,7 +145,8 @@ modded class TerjeSettingsCollection
 	static int MEDICINE_BIOHAZARD_SKIN_IRRITATION;
 	static int MEDICINE_BIOHAZARD_DEC_PER_SEC;
 	static int MEDICINE_BIOHAZARD_ANTIDOTE_HEAL_MULTIPLIER;
-	static int MEDICINE_BIOHAZARD_SYMPTOM_CHANCE;
+	static int MEDICINE_BIOHAZARD_LIGHT_SYMPTOM_CHANCE;
+	static int MEDICINE_BIOHAZARD_HEAVY_SYMPTOM_CHANCE;
 	static int MEDICINE_BIOHAZARD_CRITICAL_DMG_MULTIPLIER;
 	static int MEDICINE_BIOHAZARD_VOMIT_FORCE_MODIFIER;
 	static int MEDICINE_BIOHAZARD_TRANSFER_AGENTS_MODIFIER;
@@ -496,7 +497,8 @@ modded class TerjeSettingsCollection
 		MEDICINE_BIOHAZARD_SKIN_IRRITATION = RegisterSettingBool("Medicine.BiohazardSkinIrritation", "Medicine", "Enables or disables the skin irritation when player stay in a toxic (biohazard) area.", false, true);
 		MEDICINE_BIOHAZARD_DEC_PER_SEC = RegisterSettingFloat("Medicine.BiohazardDecPerSec", "Medicine", "The number of biohazard agents the player loses every second.", 0.001, true);
 		MEDICINE_BIOHAZARD_ANTIDOTE_HEAL_MULTIPLIER = RegisterSettingFloat("Medicine.BiohazardAntidoteHealMultiplier", "Medicine", "A modifier that affects the strength of medicines against biohazard poisoning. Affects the lose force of poisonous biohazard agents from the body.", 3.0, true);
-		MEDICINE_BIOHAZARD_SYMPTOM_CHANCE = RegisterSettingFloat("Medicine.BiohazardSymptomChance", "Medicine", "Chance to make heavy (level 2+) biohazard symptoh. Value from 0 to 1.", 0.05, true);
+		MEDICINE_BIOHAZARD_LIGHT_SYMPTOM_CHANCE = RegisterSettingFloat("Medicine.BiohazardLightSymptomChance", "Medicine", "Chance to make light (level 1+) biohazard symptoh. Value from 0 to 1.", 0.5, true);
+		MEDICINE_BIOHAZARD_HEAVY_SYMPTOM_CHANCE = RegisterSettingFloat("Medicine.BiohazardHeavySymptomChance", "Medicine", "Chance to make heavy (level 2+) biohazard symptoh. Value from 0 to 1.", 0.05, true);
 		MEDICINE_BIOHAZARD_CRITICAL_DMG_MULTIPLIER = RegisterSettingFloat("Medicine.BiohazardCriticalDmgMultiplier", "Medicine", "Damage modifier received by a player during terminal stage of biohazard.", 0.35, true);
 		MEDICINE_BIOHAZARD_VOMIT_FORCE_MODIFIER = RegisterSettingFloat("Medicine.BiohazardVomitForceModifier", "Medicine", "Modifier responsible for the strength of vomiting. The higher value make more draining of water adn energy the player will receive.", 2.5, true);
 		MEDICINE_BIOHAZARD_TRANSFER_AGENTS_MODIFIER = RegisterSettingFloat("Medicine.BiohazardTransferAgentsModifier", "Medicine", "A modifier responsible for converting classic chemical agents into biohazard agents of the Terje medicine system.", 0.01, true);

@@ -40,12 +40,12 @@ class TerjePlayerModifierBiohazard : TerjePlayerModifierBase
 		
 		if (m_firstSymptomTime > 0)
 		{
-			m_firstSymptomTime = m_firstSymptomTime + deltaTime;
+			m_firstSymptomTime += deltaTime;
 		}
 		
 		if (m_biohazardImmunityInterval > 0)
 		{
-			m_biohazardImmunityInterval = m_biohazardImmunityInterval - deltaTime;
+			m_biohazardImmunityInterval -= deltaTime;
 		}
 		
 		float biohazardValue = player.GetTerjeStats().GetBiohazardValue();
@@ -73,7 +73,7 @@ class TerjePlayerModifierBiohazard : TerjePlayerModifierBase
 			float perkResistMod;
 			if (player.GetTerjeSkills() && player.GetTerjeSkills().GetPerkValue("immunity", "biohzres", perkResistMod))
 			{
-				perkResistMod = 1.0 + perkResistMod;
+				perkResistMod += 1.0;
 			}
 			else
 			{
@@ -82,21 +82,31 @@ class TerjePlayerModifierBiohazard : TerjePlayerModifierBase
 			
 			float biohazardDecPerSec = 0;
 			GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BIOHAZARD_DEC_PER_SEC, biohazardDecPerSec);	
-			biohazardValue = biohazardValue - (perkResistMod * biohazardDecPerSec * deltaTime);
+			biohazardValue -= (perkResistMod * biohazardDecPerSec * deltaTime);
 
 			if (antibiohazardLevel > 0)
 			{
 				float biohazardAntidoteHealMultiplier = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BIOHAZARD_ANTIDOTE_HEAL_MULTIPLIER);
-				biohazardValue = biohazardValue - (perkResistMod * antibiohazardLevel * biohazardDecPerSec * biohazardAntidoteHealMultiplier * deltaTime);	
+				biohazardValue -= (perkResistMod * antibiohazardLevel * biohazardDecPerSec * biohazardAntidoteHealMultiplier * deltaTime);	
 			}
 			
 			player.GetTerjeStats().SetBiohazardValue(biohazardValue);
-
+			
+			if (biohazardLevel >= 1)
+			{
+				float biohazardLightSymptomChance = 0;
+				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BIOHAZARD_LIGHT_SYMPTOM_CHANCE, biohazardLightSymptomChance);
+				if (Math.RandomFloat01() < biohazardLightSymptomChance * deltaTime)
+				{
+					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_COUGH);
+				}
+			}
+			
 			if (biohazardLevel >= 2)
 			{
-				float biohazardSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BIOHAZARD_SYMPTOM_CHANCE, biohazardSymptomChance);
-				if (Math.RandomFloat01() < biohazardSymptomChance * deltaTime || m_firstSymptomTime > 5)
+				float biohazardHeavySymptomChance = 0;
+				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BIOHAZARD_HEAVY_SYMPTOM_CHANCE, biohazardHeavySymptomChance);
+				if (Math.RandomFloat01() < biohazardHeavySymptomChance * deltaTime || m_firstSymptomTime > 5)
 				{
 					float biohazardVomitForceModifier = 1.0;
 					GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BIOHAZARD_VOMIT_FORCE_MODIFIER, biohazardVomitForceModifier);
