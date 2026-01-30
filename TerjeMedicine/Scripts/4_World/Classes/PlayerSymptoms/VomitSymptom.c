@@ -21,6 +21,6 @@ modded class VomitSymptom
 	
 	override bool IsContaminationActive()
 	{
-		return m_Player.GetTerjeStats().GetBiohazardLevel() >= 2;
+		return (m_Player.GetTerjeStats().GetBiohazardLevel() >= 2);
 	}
 }
