@@ -2,6 +2,8 @@ modded class CoughSymptom
 {
 	override bool IsContaminationActive()
 	{
-		return (m_Player.GetTerjeStats().GetBiohazardLevel() >= 1);
+		if (m_Player.GetTerjeStats().GetBiohazardValue() > 0)
+			return true;
+		return false;
 	}
 }
