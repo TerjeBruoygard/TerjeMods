@@ -20,9 +20,8 @@ class TerjePlayerModifierSleeping : TerjePlayerModifierBase
 			m_sleepingLastValue = currentSleepingValue;
 		}
 		
-		int sleepTendency = 0;
-		int sleepLevel = 0;
 		float sleepingDiffTend = currentSleepingValue - m_sleepingLastValue;
+		int sleepTendency = 0;
 		if (sleepingDiffTend < 0)
 		{
 			if      (sleepingDiffTend > TerjeMedicineConstants.SLEEPING_TENDENCY_MINUS_STAGE1) sleepTendency = -1;
@@ -35,13 +34,14 @@ class TerjePlayerModifierSleeping : TerjePlayerModifierBase
 			else if (sleepingDiffTend < TerjeMedicineConstants.SLEEPING_TENDENCY_PLUS_STAGE2) sleepTendency = 2;
 			else                                                                              sleepTendency = 3;
 		}
-
+		
+		int sleepLevel = 0;
 		if      (currentSleepingValue < TerjeMedicineConstants.SLEEPING_LEVEL5) sleepLevel = 5;
 		else if (currentSleepingValue < TerjeMedicineConstants.SLEEPING_LEVEL4) sleepLevel = 4;
 		else if (currentSleepingValue < TerjeMedicineConstants.SLEEPING_LEVEL3) sleepLevel = 3;
 		else if (currentSleepingValue < TerjeMedicineConstants.SLEEPING_LEVEL2) sleepLevel = 2;
 		else                                                                    sleepLevel = 1;
-
+		
 		// Handle wake-up conditions
 		bool isEnergedMarker = false;
 		int lastSleepingStateInt = player.GetTerjeStats().GetSleepingState();
