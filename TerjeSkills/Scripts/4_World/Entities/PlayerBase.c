@@ -118,6 +118,48 @@ modded class PlayerBase
 				GetTerjeSkills().ResetSkill(perkResetParams.param1);
 			}
 		}
+		// New RPCs for adding and decreasing perk levels
+		else if (id == TerjeSkillsConstants.TRPC_PLAYER_PERK_DEC)
+		{
+			if (GetGame().IsDedicatedServer())
+			{
+				Param2<string, string> perkDecParams;
+				if (!ctx.Read(perkDecParams))
+				{
+					return;
+				}
+				
+				ref TerjeSkillCfg skillCfg;
+
+				if (!GetTerjeSkillsRegistry().FindSkill(perkDecParams.param1, skillCfg))
+				{
+					return;
+				}
+
+				ref TerjePerkCfg perkCfg;
+				if (!skillCfg.FindPerk(perkDecParams.param2, perkCfg))
+				{
+					return;
+				}
+				int level = GetTerjeProfile().GetSkillPerk(perkDecParams.param1, perkDecParams.param2);
+				if (level <= 0)
+				{
+					return;
+				}
+				else if (level > perkCfg.GetStagesCount())
+				{
+					return;
+				}
+				
+				int stage = level - 1;
+				int requiredPerkPoints = perkCfg.GetRequiredPerkPoints(stage);
+				int newlevel = level - 1;
+				int myPerkPoints = GetTerjeProfile().GetSkillPerkPoints(perkDecParams.param1);
+				myPerkPoints = myPerkPoints + requiredPerkPoints;
+				GetTerjeProfile().SetSkillPerkPoints(perkDecParams.param1, myPerkPoints);
+				GetTerjeSkills().SetPerkLevel(perkDecParams.param1, perkDecParams.param2, newlevel);
+			}
+		}
 	}
 	
 	override void OnTerjePlayerKilledEvent()
