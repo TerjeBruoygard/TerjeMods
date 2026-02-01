@@ -84,8 +84,13 @@ modded class JMPlayerForm
 			UIActionManager.CreateText( skillBlock, skillCfg.GetDisplayName(), "" );
 			array<ref TerjePerkCfg> perks = new array<ref TerjePerkCfg>;
 			skillCfg.GetPerks(perks);
-			int perkCount = perks.Count();
-			if (perkCount < 1) perkCount = 1;
+			array<ref TerjePerkCfg> visiblePerks = new array<ref TerjePerkCfg>;
+			foreach (ref TerjePerkCfg perkCfgFilter : perks)
+			{
+				if (perkCfgFilter) visiblePerks.Insert(perkCfgFilter);
+			}
+			int perkCount = visiblePerks.Count();
+			if (perkCount < 1) continue;
 			int offset = 0;
 			while (offset < perkCount)
 			{
@@ -94,7 +99,7 @@ modded class JMPlayerForm
 				GridSpacerWidget perkRow = GridSpacerWidget.Cast(GetGame().GetWorkspace().CreateWidgets(TERJE_GRID_LAYOUT,skillBlock));
 				for (int j = offset; j < offset + chunkSize; j++)
 				{
-					ref TerjePerkCfg perkCfgMain = perks.Get(j);
+					ref TerjePerkCfg perkCfgMain = visiblePerks.Get(j);
 					Widget perkWidget = GetGame().GetWorkspace().CreateWidgets("TerjeSkills/Layouts/TerjePerkLayout.layout", perkRow);
 					if (perkWidget)
 					{
