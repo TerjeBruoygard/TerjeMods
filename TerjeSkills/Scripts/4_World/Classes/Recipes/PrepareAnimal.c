@@ -2,10 +2,39 @@ modded class PrepareChicken
 {
 	override void Do(ItemBase ingredients[], PlayerBase player, array<ItemBase> results, float specialty_weight)
 	{
-		player.m_terjeSkillsSpawnEntityOnGroundCache = new array<ItemBase>;
-		super.Do(ingredients, player, results, specialty_weight);
-		TerjeSkillsSpecificLogic(ingredients, player, results);
-		player.m_terjeSkillsSpawnEntityOnGroundCache = null;
+		ItemBase deadChicken = ingredients[0];
+		Bone resultBones = Bone.Cast(results[0]);
+		array<ItemBase> spawnedItems = new array<ItemBase>;
+		ItemBase result;
+		
+		int steakCount = Math.RandomIntInclusive(2,4);
+		for (int i = 0; i < steakCount; ++i)
+		{
+			result = ItemBase.Cast(player.SpawnEntityOnGroundRaycastDispersed("ChickenBreastMeat"));
+			if (result)
+			{
+				MiscGameplayFunctions.TransferItemProperties(deadChicken, result);
+				result.SetQuantityNormalized(Math.RandomFloatInclusive(0.8,1));
+				spawnedItems.Insert(result);
+			}
+		}
+		
+		result = ItemBase.Cast(player.SpawnEntityOnGroundRaycastDispersed("ChickenFeather"));
+		if (result)
+		{
+			MiscGameplayFunctions.TransferItemProperties(deadChicken, result);
+			result.SetQuantity(Math.RandomIntInclusive(5,15));
+			spawnedItems.Insert(result);
+		}
+		
+		if (resultBones)
+		{
+			MiscGameplayFunctions.TransferItemProperties(deadChicken, resultBones);
+			resultBones.SetQuantity(Math.RandomIntInclusive(2,5));		
+		}
+		
+		SetBloodyHands(ingredients, player);
+		TerjeSkillsSpecificLogicChicken(ingredients, player, results, spawnedItems);
 	}
 }
 
@@ -190,6 +219,17 @@ modded class PrepareAnimal
 					}
 				}
 			}
+		}
+	}
+	
+	protected void TerjeSkillsSpecificLogicChicken(ItemBase ingredients[], PlayerBase player, array<ItemBase> results, array<ItemBase> spawnedItems)
+	{
+		if (player && spawnedItems != null)
+		{
+			array<ItemBase> originalSpawnCache = player.m_terjeSkillsSpawnEntityOnGroundCache;
+			player.m_terjeSkillsSpawnEntityOnGroundCache = spawnedItems;
+			TerjeSkillsSpecificLogic(ingredients, player, results);
+			player.m_terjeSkillsSpawnEntityOnGroundCache = originalSpawnCache;
 		}
 	}
 	
