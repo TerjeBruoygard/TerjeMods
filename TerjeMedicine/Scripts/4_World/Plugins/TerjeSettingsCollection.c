@@ -296,6 +296,10 @@ modded class TerjeSettingsCollection
 	static int MEDICINE_KNOCKOUT_REVIVE_BY_DEF;
 	static int MEDICINE_KNOCKOUT_SHOW_INFO;
 	static int MEDICINE_ENABLE_BODY_DRAG_ACTION;
+	static int MEDICINE_LOG_EXTEND_ENABLED;
+	static int MEDICINE_LOG_EXTEND_RECENT_PVP_WINDOW_MS;
+	static int MEDICINE_LOG_EXTEND_LOG_POSITIONS;
+	static int MEDICINE_LOG_EXTEND_REQUIRE_DEFERRED_STATE;
 
 	override void OnInit()
 	{
@@ -662,5 +666,11 @@ modded class TerjeSettingsCollection
 		
 		RegisterRegion("Medicine", "Bodies interaction settings");
 		MEDICINE_ENABLE_BODY_DRAG_ACTION = RegisterSettingBool("Medicine.EnableBodyDragAction", "Medicine", "Enable the ability to drag dead and unconscious player bodies.", true, false);
+
+		RegisterRegion("MedicineLogExtend", "Deferred PvP kill recovery logging settings");
+		MEDICINE_LOG_EXTEND_ENABLED = RegisterSettingBool("MedicineLogExtend.Enabled", "MedicineLogExtend", "Enable custom server logging that recovers the original PvP aggressor when TerjeMedicine converts a lethal hit into a deferred death.", true, true);
+		MEDICINE_LOG_EXTEND_RECENT_PVP_WINDOW_MS = RegisterSettingInt("MedicineLogExtend.RecentPvpWindowMs", "MedicineLogExtend", "Maximum age in milliseconds of the remembered PvP hit that can still be linked to a deferred death.", 180000, true);
+		MEDICINE_LOG_EXTEND_LOG_POSITIONS = RegisterSettingBool("MedicineLogExtend.LogPositions", "MedicineLogExtend", "Include last hit position and final death position in the deferred PvP recovery log.", true, true);
+		MEDICINE_LOG_EXTEND_REQUIRE_DEFERRED_STATE = RegisterSettingBool("MedicineLogExtend.RequireDeferredState", "MedicineLogExtend", "Only write the recovery log if the victim is in a Terje deferred-damage state such as knockout, bullet wound, stub wound, viscera or configured wound DOT states.", true, true);
 	}
 }

@@ -12,7 +12,14 @@ enum TerjeMedicineWoundsMask
 modded class PlayerBase
 {
 	private int m_terjeMedWoundsMask = 0;
-	
+	private static const int TERJE_KILLFIX_RECENT_PVP_WINDOW_DEFAULT_MS = 180000;
+	private string m_terjeKillFixLastAggressorId = "";
+	private string m_terjeKillFixLastAggressorName = "";
+	private string m_terjeKillFixLastAmmo = "";
+	private string m_terjeKillFixLastZone = "";
+	private vector m_terjeKillFixLastHitPosition = vector.Zero;
+	private int m_terjeKillFixLastHitTime = -1;
+
 	override void Init()
 	{
 		super.Init();
@@ -347,8 +354,19 @@ modded class PlayerBase
 		}
 	}
 	
+	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
+	{
+		if (GetGame() && GetGame().IsServer())
+		{
+			TerjeKillFixRememberAggressor(source, dmgZone, ammo, modelPos);
+		}
+
+		super.EEHitBy(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
+	}
+
 	override void EEKilled(Object killer)
 	{
+		TerjeKillFixLogDeferredPvPDeath(killer);
 		super.EEKilled(killer);
 		
 		EntityAI entityKiller = EntityAI.Cast(killer);
@@ -379,8 +397,251 @@ modded class PlayerBase
 				}
 			}
 		}
+
+		TerjeKillFixClearAggressor();
+	}
+
+	private bool TerjeKillFixIsEnabled()
+	{
+		return GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_LOG_EXTEND_ENABLED);
+	}
+
+	private int TerjeKillFixGetRecentPvpWindowMs()
+	{
+		int value = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_LOG_EXTEND_RECENT_PVP_WINDOW_MS);
+		if (value <= 0)
+		{
+			return TERJE_KILLFIX_RECENT_PVP_WINDOW_DEFAULT_MS;
+		}
+
+		return value;
 	}
 	
+	private bool TerjeKillFixShouldLogPositions()
+	{
+		return GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_LOG_EXTEND_LOG_POSITIONS);
+	}
+
+	private bool TerjeKillFixRequireDeferredState()
+	{
+		return GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_LOG_EXTEND_REQUIRE_DEFERRED_STATE);
+	}
+
+	private vector TerjeKillFixResolveHitPosition(vector modelPos)
+	{
+		if ((modelPos[0] != 0) || (modelPos[1] != 0) || (modelPos[2] != 0))
+		{
+			return ModelToWorld(modelPos);
+		}
+
+		return GetWorldPosition();
+	}
+
+	private string TerjeKillFixVectorToString(vector value)
+	{
+		return value[0].ToString() + " " + value[1].ToString() + " " + value[2].ToString();
+	}
+
+	private void TerjeKillFixRememberAggressor(EntityAI source, string dmgZone, string ammo, vector modelPos)
+	{
+		if (!TerjeKillFixIsEnabled())
+		{
+			return;
+		}
+
+		if (!source)
+		{
+			TerjeKillFixClearAggressor();
+			return;
+		}
+
+		PlayerBase aggressorPlayer = PlayerBase.Cast(source.GetHierarchyRootPlayer());
+		if (!aggressorPlayer || aggressorPlayer == this)
+		{
+			TerjeKillFixClearAggressor();
+			return;
+		}
+
+		PlayerIdentity aggressorIdentity = aggressorPlayer.GetIdentity();
+		if (!aggressorIdentity)
+		{
+			TerjeKillFixClearAggressor();
+			return;
+		}
+
+		m_terjeKillFixLastAggressorId = aggressorIdentity.GetId();
+		m_terjeKillFixLastAggressorName = aggressorIdentity.GetName();
+		m_terjeKillFixLastAmmo = ammo;
+		m_terjeKillFixLastZone = dmgZone;
+		m_terjeKillFixLastHitPosition = TerjeKillFixResolveHitPosition(modelPos);
+		m_terjeKillFixLastHitTime = GetGame().GetTime();
+	}
+
+	private void TerjeKillFixClearAggressor()
+	{
+		m_terjeKillFixLastAggressorId = "";
+		m_terjeKillFixLastAggressorName = "";
+		m_terjeKillFixLastAmmo = "";
+		m_terjeKillFixLastZone = "";
+		m_terjeKillFixLastHitPosition = vector.Zero;
+		m_terjeKillFixLastHitTime = -1;
+	}
+
+	private bool TerjeKillFixHasDamageOverTime(int healthSettingId, int bloodSettingId)
+	{
+		float healthLose = 0;
+		float bloodLose = 0;
+		GetTerjeSettingFloat(healthSettingId, healthLose);
+		GetTerjeSettingFloat(bloodSettingId, bloodLose);
+		return (healthLose > 0) || (bloodLose > 0);
+	}
+
+	private bool TerjeKillFixHasEnabledDamageOverTime(int enabledSettingId, int healthSettingId, int bloodSettingId)
+	{
+		return GetTerjeSettingBool(enabledSettingId) && TerjeKillFixHasDamageOverTime(healthSettingId, bloodSettingId);
+	}
+
+	private bool TerjeKillFixHasDeferredDamageState()
+	{
+		if (!GetTerjeStats())
+		{
+			return false;
+		}
+
+		if (GetTerjeStats().IsInKnockout() && GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_ENABLE_MEDICAL_COMA) && GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_ENABLE_KNOCKOUT_TO_COMA))
+		{
+			return true;
+		}
+
+		if ((GetTerjeStats().GetBulletWounds() > 0) && TerjeKillFixHasEnabledDamageOverTime(TerjeSettingsCollection.MEDICINE_BULLETS_ENABLED, TerjeSettingsCollection.MEDICINE_BULLETS_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_BULLETS_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		if ((GetTerjeStats().GetStubWounds() > 0) && TerjeKillFixHasEnabledDamageOverTime(TerjeSettingsCollection.MEDICINE_STUBS_ENABLED, TerjeSettingsCollection.MEDICINE_STUBS_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_STUBS_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		if (GetTerjeStats().GetViscera() && TerjeKillFixHasEnabledDamageOverTime(TerjeSettingsCollection.MEDICINE_VISCERA_ENABLED, TerjeSettingsCollection.MEDICINE_VISCERA_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_VISCERA_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		if ((GetTerjeStats().GetBandagesClean() > 0) && TerjeKillFixHasDamageOverTime(TerjeSettingsCollection.MEDICINE_CLEAN_BANDAGED_WOUNDS_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_CLEAN_BANDAGED_WOUNDS_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		if ((GetTerjeStats().GetBandagesDirty() > 0) && TerjeKillFixHasDamageOverTime(TerjeSettingsCollection.MEDICINE_DIRTY_BANDAGED_WOUNDS_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_DIRTY_BANDAGED_WOUNDS_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		if ((GetTerjeStats().GetSuturesClean() > 0) && TerjeKillFixHasDamageOverTime(TerjeSettingsCollection.MEDICINE_CLEAN_SUTURE_WOUNDS_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_CLEAN_SUTURE_WOUNDS_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		if (HasTerjeSuturesDirtySelf() && TerjeKillFixHasDamageOverTime(TerjeSettingsCollection.MEDICINE_DIRTY_SUTURE_WOUNDS_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_DIRTY_SUTURE_WOUNDS_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		if ((GetTerjeStats().GetSuturesBandagedClean() > 0) && TerjeKillFixHasDamageOverTime(TerjeSettingsCollection.MEDICINE_CLEAN_SUTURE_BANDAGED_WOUNDS_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_CLEAN_SUTURE_BANDAGED_WOUNDS_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		if ((GetTerjeStats().GetSuturesBandagedDirty() > 0) && TerjeKillFixHasDamageOverTime(TerjeSettingsCollection.MEDICINE_DIRTY_SUTURE_BANDAGED_WOUNDS_HEALTH_LOSE, TerjeSettingsCollection.MEDICINE_DIRTY_SUTURE_BANDAGED_WOUNDS_BLOOD_LOSE))
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	private void TerjeKillFixLogDeferredPvPDeath(Object killer)
+	{
+		if (!GetGame() || !GetGame().IsServer())
+		{
+			return;
+		}
+
+		if (!TerjeKillFixIsEnabled())
+		{
+			return;
+		}
+
+		if (m_terjeKillFixLastHitTime < 0 || m_terjeKillFixLastAggressorId == "")
+		{
+			return;
+		}
+
+		if (TerjeKillFixRequireDeferredState() && !TerjeKillFixHasDeferredDamageState())
+		{
+			return;
+		}
+
+		PlayerBase resolvedKiller;
+		EntityAI entityKiller = EntityAI.Cast(killer);
+		if (entityKiller)
+		{
+			resolvedKiller = PlayerBase.Cast(entityKiller.GetHierarchyRootPlayer());
+		}
+
+		if (resolvedKiller && resolvedKiller != this)
+		{
+			return;
+		}
+
+		if (killer && !resolvedKiller && killer != this)
+		{
+			return;
+		}
+
+		int delayMs = GetGame().GetTime() - m_terjeKillFixLastHitTime;
+		if (delayMs < 0 || delayMs > TerjeKillFixGetRecentPvpWindowMs())
+		{
+			return;
+		}
+
+		string victimName = GetType();
+		string victimId = "offline";
+		if (GetIdentity())
+		{
+			victimName = GetIdentity().GetName();
+			victimId = GetIdentity().GetId();
+		}
+
+		string originalKillerType = "null";
+		if (killer)
+		{
+			originalKillerType = killer.GetType();
+		}
+
+		string hitPositionStr = "disabled";
+		string deathPositionStr = "disabled";
+		if (TerjeKillFixShouldLogPositions())
+		{
+			vector deathPosition = GetWorldPosition();
+			hitPositionStr = TerjeKillFixVectorToString(m_terjeKillFixLastHitPosition);
+			deathPositionStr = TerjeKillFixVectorToString(deathPosition);
+		}
+
+		PrintFormat("[TerjeKillFix] deferred_pvp_death victim=%1 victim_id=%2 killer=%3 killer_id=%4 ammo=%5 zone=%6 delay_ms=%7 last_hit_pos=%8 death_pos=%9 original_killer=%10",
+			victimName,
+			victimId,
+			m_terjeKillFixLastAggressorName,
+			m_terjeKillFixLastAggressorId,
+			m_terjeKillFixLastAmmo,
+			m_terjeKillFixLastZone,
+			delayMs,
+			hitPositionStr,
+			deathPositionStr,
+			originalKillerType);
+	}
+
 	override void SetActionsRemoteTarget(out TInputActionMap InputActionMap)
 	{
 		AddAction(ActionStethoscopeInspect, InputActionMap);
