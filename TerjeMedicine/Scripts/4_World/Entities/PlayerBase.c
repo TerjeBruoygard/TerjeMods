@@ -320,7 +320,7 @@ modded class PlayerBase
 	
 	void UpdateTerjeWoundsBitmask()
 	{
-		if (GetGame().IsDedicatedServer())
+		if (g_Game.IsDedicatedServer())
 		{
 			int bitmask = m_terjeMedWoundsMask;
 			bitmask = TerjeBitmaskHelper.SetBit(bitmask, TerjeMedicineWoundsMask.TERJE_MED_WOUNDS_MASK_STUB, HasTerjeStubWoundsSelf());
@@ -343,7 +343,6 @@ modded class PlayerBase
 	{
 		super.OnCallTerjeVomitSymptom(symptom, duration, drainForce);
 		
-		if (GetGame() && GetGame().IsDedicatedServer() && GetTerjeStats())
 		{
 			float poisonValue = GetTerjeStats().GetPoisonValue();
 			if (poisonValue > 2)
