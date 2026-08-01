@@ -343,6 +343,7 @@ modded class PlayerBase
 	{
 		super.OnCallTerjeVomitSymptom(symptom, duration, drainForce);
 		
+		if (g_Game && g_Game.IsDedicatedServer() && GetTerjeStats())
 		{
 			float poisonValue = GetTerjeStats().GetPoisonValue();
 			if (poisonValue > 2)
@@ -355,7 +356,7 @@ modded class PlayerBase
 	
 	override void EEHitBy(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
 	{
-		if (GetGame() && GetGame().IsServer())
+		if (g_Game && g_Game.IsServer())
 		{
 			TerjeKillFixRememberAggressor(source, dmgZone, ammo, modelPos);
 		}
@@ -416,6 +417,22 @@ modded class PlayerBase
 		return value;
 	}
 	
+	private bool TerjeKillFixIsEnabled()
+	{
+		return GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_LOG_EXTEND_ENABLED);
+	}
+
+	private int TerjeKillFixGetRecentPvpWindowMs()
+	{
+		int value = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_LOG_EXTEND_RECENT_PVP_WINDOW_MS);
+		if (value <= 0)
+		{
+			return TERJE_KILLFIX_RECENT_PVP_WINDOW_DEFAULT_MS;
+		}
+
+		return value;
+	}
+
 	private bool TerjeKillFixShouldLogPositions()
 	{
 		return GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_LOG_EXTEND_LOG_POSITIONS);
@@ -473,7 +490,7 @@ modded class PlayerBase
 		m_terjeKillFixLastAmmo = ammo;
 		m_terjeKillFixLastZone = dmgZone;
 		m_terjeKillFixLastHitPosition = TerjeKillFixResolveHitPosition(modelPos);
-		m_terjeKillFixLastHitTime = GetGame().GetTime();
+		m_terjeKillFixLastHitTime = g_Game.GetTime();
 	}
 
 	private void TerjeKillFixClearAggressor()
@@ -562,7 +579,7 @@ modded class PlayerBase
 
 	private void TerjeKillFixLogDeferredPvPDeath(Object killer)
 	{
-		if (!GetGame() || !GetGame().IsServer())
+		if (!g_Game || !g_Game.IsServer())
 		{
 			return;
 		}
@@ -599,7 +616,7 @@ modded class PlayerBase
 			return;
 		}
 
-		int delayMs = GetGame().GetTime() - m_terjeKillFixLastHitTime;
+		int delayMs = g_Game.GetTime() - m_terjeKillFixLastHitTime;
 		if (delayMs < 0 || delayMs > TerjeKillFixGetRecentPvpWindowMs())
 		{
 			return;
@@ -651,8 +668,8 @@ modded class PlayerBase
 	override bool Consume(ItemBase source, float amount, EConsumeType consume_type)
 	{
 		if (super.Consume(source, amount, consume_type))
-		{	
-			if (GetGame() && GetGame().IsDedicatedServer() && HasBloodyHands() && !GetItemOnSlot("Gloves"))
+		{
+			if (g_Game && g_Game.IsDedicatedServer() && HasBloodyHands() && !GetItemOnSlot("Gloves"))
 			{
 				if (Math.RandomFloat01() < GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_DIRTY_HANDS_CONSUME_CHANCE))
 				{
@@ -672,7 +689,7 @@ modded class PlayerBase
 
 		if (id == "tm.mind.weaponfire")
 		{
-			if (GetGame().IsDedicatedServer())
+			if (g_Game.IsDedicatedServer())
 			{
 				Weapon_Base weapon;
 				if (Weapon_Base.CastTo(weapon, GetItemInHands()))
@@ -691,8 +708,8 @@ modded class PlayerBase
 			if (!ctx.Read(dragPayload))
 				return;
 			
-			GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).Remove(this.OnTerjeBodyDragProgress);
-			OnTerjeBodyDragProgress(dragPayload.param1, dragPayload.param2, GetGame().GetTime());
+			g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).Remove(this.OnTerjeBodyDragProgress);
+			OnTerjeBodyDragProgress(dragPayload.param1, dragPayload.param2, g_Game.GetTime());
 		}
 	}
 	
@@ -709,19 +726,19 @@ modded class PlayerBase
 			DisableSimulation(false);
 		}
 		
-		if (GetGame())
+		if (g_Game)
 		{
-			if (GetGame().IsDedicatedServer())
+			if (g_Game.IsDedicatedServer())
 			{
 				SetPosition(to);
 			}
 			else
 			{
-				float progress = ((float)(GetGame().GetTime() - startTime)) * 0.002;
+				float progress = ((float)(g_Game.GetTime() - startTime)) * 0.002;
 				SetPosition(vector.Lerp(from, to, Math.Clamp(progress, 0, 1)));
 				if (progress < 1.0)
 				{
-					GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(this.OnTerjeBodyDragProgress, 15, false, from, to, startTime);
+					g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(this.OnTerjeBodyDragProgress, 15, false, from, to, startTime);
 				}
 			}
 		}
