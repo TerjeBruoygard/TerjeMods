@@ -1,7 +1,5 @@
 modded class CraftFishingRod
 {
-	bool TerjeDo = true;
-	
 	override bool CanDo(ItemBase ingredients[], PlayerBase player)
 	{
 		return super.CanDo(ingredients, player) && TerjeCanDo(player);
@@ -10,19 +8,22 @@ modded class CraftFishingRod
 	override void Do(ItemBase ingredients[], PlayerBase player, array<ItemBase> results, float specialty_weight)//gets called upon recipe's completion
 	{
 		super.Do(ingredients, player, results, specialty_weight);
-		if (TerjeDo) TerjeSkillsCraftingHelper.GetInstance().DoCraftPerkRequired(this, player, results, "fish", "craftsman", true);
+		if (TerjeDo()) TerjeSkillsCraftingHelper.GetInstance().DoCraftPerkRequired(this, player, results, "fish", "craftsman", true);
 	}
 	
 	bool TerjeCanDo(PlayerBase player)
 	{
 		return TerjeSkillsCraftingHelper.GetInstance().CanDoCraftPerkRequired(this, player, "fish", "craftsman");
+	}
+	
+	bool TerjeDo()
+	{
+		return true;
 	}
 }
 
 modded class CraftFishNetTrap
 {
-	bool TerjeDo = true;
-	
 	override bool CanDo(ItemBase ingredients[], PlayerBase player)
 	{
 		return super.CanDo(ingredients, player) && TerjeCanDo(player);
@@ -31,19 +32,22 @@ modded class CraftFishNetTrap
 	override void Do(ItemBase ingredients[], PlayerBase player, array<ItemBase> results, float specialty_weight)//gets called upon recipe's completion
 	{
 		super.Do(ingredients, player, results, specialty_weight);
-		if (TerjeDo) TerjeSkillsCraftingHelper.GetInstance().DoCraftPerkRequired(this, player, results, "fish", "craftsman", true);
+		if (TerjeDo()) TerjeSkillsCraftingHelper.GetInstance().DoCraftPerkRequired(this, player, results, "fish", "craftsman", true);
 	}
 	
 	bool TerjeCanDo(PlayerBase player)
 	{
 		return TerjeSkillsCraftingHelper.GetInstance().CanDoCraftPerkRequired(this, player, "fish", "craftsman");
+	}
+	
+	bool TerjeDo()
+	{
+		return true;
 	}
 }
 
 modded class CraftBoneHook
 {
-	bool TerjeDo = true;
-	
 	override bool CanDo(ItemBase ingredients[], PlayerBase player)
 	{
 		return super.CanDo(ingredients, player) && TerjeCanDo(player);
@@ -52,19 +56,22 @@ modded class CraftBoneHook
 	override void Do(ItemBase ingredients[], PlayerBase player, array<ItemBase> results, float specialty_weight)//gets called upon recipe's completion
 	{
 		super.Do(ingredients, player, results, specialty_weight);
-		if (TerjeDo) TerjeSkillsCraftingHelper.GetInstance().DoCraftPerkRequired(this, player, results, "fish", "craftsman", true);
+		if (TerjeDo()) TerjeSkillsCraftingHelper.GetInstance().DoCraftPerkRequired(this, player, results, "fish", "craftsman", true);
 	}
 	
 	bool TerjeCanDo(PlayerBase player)
 	{
 		return TerjeSkillsCraftingHelper.GetInstance().CanDoCraftPerkRequired(this, player, "fish", "craftsman");
+	}
+	
+	bool TerjeDo()
+	{
+		return true;
 	}
 }
 
 modded class CraftWoodenHook
 {
-	bool TerjeDo = true;
-	
 	override bool CanDo(ItemBase ingredients[], PlayerBase player)
 	{
 		return super.CanDo(ingredients, player) && TerjeCanDo(player);
@@ -73,11 +80,16 @@ modded class CraftWoodenHook
 	override void Do(ItemBase ingredients[], PlayerBase player, array<ItemBase> results, float specialty_weight)//gets called upon recipe's completion
 	{
 		super.Do(ingredients, player, results, specialty_weight);
-		if (TerjeDo) TerjeSkillsCraftingHelper.GetInstance().DoCraftPerkRequired(this, player, results, "fish", "craftsman", true);
+		if (TerjeDo()) TerjeSkillsCraftingHelper.GetInstance().DoCraftPerkRequired(this, player, results, "fish", "craftsman", true);
 	}
 	
 	bool TerjeCanDo(PlayerBase player)
 	{
 		return TerjeSkillsCraftingHelper.GetInstance().CanDoCraftPerkRequired(this, player, "fish", "craftsman");
+	}
+	
+	bool TerjeDo()
+	{
+		return true;
 	}
 }
