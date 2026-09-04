@@ -76,7 +76,7 @@ Skills included in the mod:
 
 ### PERKS
 + Surgery of stab wounds
-+ Surgery of field wounds
++ Surgery of bullet wounds
 + Surgery of internal organs
 + Cleanliness and sterility
 + Improved medications
