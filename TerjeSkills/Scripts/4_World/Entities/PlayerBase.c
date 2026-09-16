@@ -22,6 +22,21 @@ modded class PlayerBase
 		RegisterNetSyncVariableInt("m_terjeSkillsStealthMask");
 	}
 	
+	override bool GetInColdArea()
+	{
+		if (!super.GetInColdArea())
+		{
+			return false;
+		}
+		
+		if (GetTerjeSkills() && GetTerjeSkills().GetPerkLevel("farm", "coldgrnd") > 0)
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
 	override void OnTerjePlayerRespawned()
 	{
 		super.OnTerjePlayerRespawned();

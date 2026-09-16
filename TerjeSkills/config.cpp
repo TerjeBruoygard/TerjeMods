@@ -81,4 +81,5 @@ class CfgTerjeSkills
 	#include "survival.hpp"
 	#include "hunting.hpp"
 	#include "fishing.hpp"
+	#include "farming.hpp"
 };

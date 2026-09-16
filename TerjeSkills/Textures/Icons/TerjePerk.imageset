@@ -776,6 +776,72 @@ ImageSetClass {
    Size 80 80
    Flags 0
   }
+  ImageSetDefClass tp_remrotv {
+   Name "tp_remrotv"
+   Pos 942 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_richsoil {
+   Name "tp_richsoil"
+   Pos 850 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_quickdig {
+   Name "tp_quickdig"
+   Pos 296 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_fastgrow {
+   Name "tp_fastgrow"
+   Pos 201 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_richhrv {
+   Name "tp_richhrv"
+   Pos 18 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_freshhrv {
+   Name "tp_freshhrv"
+   Pos 109 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_toughcrp {
+   Name "tp_toughcrp"
+   Pos 386 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_wtrbal {
+   Name "tp_wtrbal"
+   Pos 479 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_weathprf {
+   Name "tp_weathprf"
+   Pos 571 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_hothouse {
+   Name "tp_hothouse"
+   Pos 664 1008
+   Size 80 80
+   Flags 0
+  }
+  ImageSetDefClass tp_seedgain {
+   Name "tp_seedgain"
+   Pos 757 1008
+   Size 80 80
+   Flags 0
+  }
  }
  Groups {
  }
