@@ -27,7 +27,7 @@ modded class ActionFishingNew
 			if (TerjeProcessingSpawnCatch(action_data, result))
 			{
 				vector pos = action_data.m_Player.GetPosition();
-				EntityAI extra = g_Game.CreateObjectEx(result.GetType(), pos, ECE_PLACE_ON_SURFACE);
+				EntityAI extra = EntityAI.Cast(g_Game.CreateObjectEx(result.GetType(), pos, ECE_PLACE_ON_SURFACE));
 			}
 		}
 		return result;

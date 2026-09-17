@@ -58,7 +58,15 @@ modded class ItemBase
 	
 	bool IsDisinfected()
 	{
+#ifdef DAYZ_1_29
 		return m_Cleanness > m_CleannessMin && m_Cleanness <= m_CleannessMax;
+#else
+		ItemBaseType itemBaseType = ItemBaseType.Cast(GetEntityType());
+		if (!itemBaseType)
+			return false;
+		
+		return m_Cleanness > itemBaseType.m_CleannessMin && m_Cleanness <= itemBaseType.m_CleannessMax;
+#endif
 	}
 	
 	bool AddTerjeRadiation(float rAmount)

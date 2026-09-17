@@ -82,13 +82,21 @@ modded class ItemBase
 		return GetTerjeSettingBool(TerjeSettingsCollection.RADIATION_DO_ITEMS_ACCUMULATE);
 	}
 	
+#ifdef DAYZ_1_29
 	override void ProcessVariables()
 	{
 		super.ProcessVariables();
-		TerjeProcessRadiationVariables();
+		TerjeProcessRadiationVariables(m_ElapsedSinceLastUpdate);
 	}
+#else
+	override void ProcessVariables(float elapsedTime)
+	{
+		super.ProcessVariables(elapsedTime);
+		TerjeProcessRadiationVariables(elapsedTime);
+	}
+#endif
 	
-	protected void TerjeProcessRadiationVariables()
+	protected void TerjeProcessRadiationVariables(float elapsedTime)
 	{
 		if (g_Game.IsDedicatedServer())
 		{
@@ -101,7 +109,7 @@ modded class ItemBase
 					parent = this.GetHierarchyParent();
 					if (parent != null)
 					{
-						float consumeAmount = m_terjeStaticRadiation * m_ElapsedSinceLastUpdate * GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_TRANSFER_THRESHOLD);
+						float consumeAmount = m_terjeStaticRadiation * elapsedTime * GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_TRANSFER_THRESHOLD);
 						if (HasQuantity())
 						{
 							consumeAmount *= GetQuantityNormalized();
@@ -126,19 +134,19 @@ modded class ItemBase
 					float rAmount = plugin.CalculateTerjeEffectValue(this, "rad") * radioactiveGlobalModifier;
 					rAmount -= GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ITEM_LOSE_PER_SEC);
 					
-					if (m_ElapsedSinceLastUpdate > 0)
+					if (elapsedTime > 0)
 					{
 						if (rAmount > 0)
 						{
 							float maxAccumulatedRadLimit = rAmount * GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ZONE_POWER_TO_RAD_LIMIT);
 							if (currentRadiation < maxAccumulatedRadLimit)
 							{
-								AddTerjeRadiation(Math.Clamp(rAmount * m_ElapsedSinceLastUpdate, 0, maxAccumulatedRadLimit - currentRadiation));
+								AddTerjeRadiation(Math.Clamp(rAmount * elapsedTime, 0, maxAccumulatedRadLimit - currentRadiation));
 							}
 						}
 						else
 						{
-							AddTerjeRadiation(rAmount * m_ElapsedSinceLastUpdate);
+							AddTerjeRadiation(rAmount * elapsedTime);
 						}
 					}
 					
@@ -150,7 +158,7 @@ modded class ItemBase
 							float maxTransferAmount;
 							float finalTransferAmount;
 							float transferThreshold = GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_TRANSFER_THRESHOLD);
-							float transferAmount = GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_TRANSFER_PER_SECOND) * m_ElapsedSinceLastUpdate;
+							float transferAmount = GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_TRANSFER_PER_SECOND) * elapsedTime;
 							float isolation = Math.Clamp(1.0 - GetTerjeRadiationInventoryIsolation(), 0, 1);
 							float parentRadiation = plugin.GetTerjeRadiationFromEntity(parent);
 							
