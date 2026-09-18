@@ -26,6 +26,7 @@ modded class PlayerBase
 		modifiers.Insert(new TerjePlayerModifierPsionicScriptableAreas());
 		modifiers.Insert(new TerjePlayerModifierSleeping());
 		modifiers.Insert(new TerjePlayerModifierMind());
+		modifiers.Insert(new TerjePlayerModifierHand());
 		modifiers.Insert(new TerjePlayerModifierPain());
 		modifiers.Insert(new TerjePlayerModifierSepsis());
 		modifiers.Insert(new TerjePlayerModifierZVirus());

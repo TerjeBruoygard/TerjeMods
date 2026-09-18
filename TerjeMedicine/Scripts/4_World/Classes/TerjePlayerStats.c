@@ -97,6 +97,9 @@ modded class TerjePlayerStats
 	private int m_TerjeMed_KnockoutIndicator;
 	private int m_TerjeMed_HealthgainTime;
 	private int m_TerjeMed_HealthgainIndicator;
+	private int m_TerjeMed_HandValue;
+	private int m_TerjeMed_HandLevel;
+	private int m_TerjeMed_HandTendency;
 	
 	override void OnInit()
 	{
@@ -116,6 +119,9 @@ modded class TerjePlayerStats
 		m_TerjeMed_MindTendency = RegisterRecordInt("tm.mnd_t", 0, false); // Mind tendency
 		m_TerjeMed_MindDegValue = RegisterRecordFloat("tm.mnd_dv", 0, true); // Mind degradation value
 		m_TerjeMed_MindDegTimer = RegisterRecordFloat("tm.mnd_dt", 0, true); // Mind degradation time
+		
+		m_TerjeMed_HandValue = RegisterRecordFloat("tm.hnd_v", TerjeMedicineConstants.HAND_MAX_VALUE, true); // Hand value
+		m_TerjeMed_HandLevel = RegisterRecordInt("tm.hnd_l", 1, false); // Hand level
 		
 		m_TerjeMed_HematomasCount = RegisterRecordInt("tm.hmt_c", 0, false); // Hematomas count
 		m_TerjeMed_HematomasValue = RegisterRecordFloat("tm.hmt_v", 0, true); // Hematomas value
@@ -476,6 +482,34 @@ modded class TerjePlayerStats
 		value = Math.Clamp(value, 0, TerjeMedicineConstants.BIOHAZARD_MAX_VALUE);
 		SetFloatValue(this.m_TerjeMed_BiohazardValue, value);
 		SetIntValue(this.m_TerjeMed_BiohazardLevel, TerjeMathHelper.ClampInt((int)value, 0, 3));
+	}
+	
+	// Detailed Disinfected
+	void SetHandLevelAndTendency(int handLevel, int handTendency)
+	{
+		SetIntValue(this.m_TerjeMed_HandLevel, TerjeMathHelper.ClampInt(handLevel, 1, 4));
+	//	SetIntValue(this.m_TerjeMed_HandTendency, TerjeMathHelper.ClampInt(handTendency, -3, 3));
+	}
+	int GetHandLevel()
+	{
+		return TerjeMathHelper.ClampInt(GetIntValue(this.m_TerjeMed_HandLevel), 1, 4);
+	}
+	int GetHandTendency()
+	{
+		return TerjeMathHelper.ClampInt(GetIntValue(this.m_TerjeMed_HandTendency), -3, 3);
+	}
+	float GetHandValue()
+	{
+		return Math.Clamp(GetFloatValue(this.m_TerjeMed_HandValue), 0, TerjeMedicineConstants.HAND_MAX_VALUE);
+	}
+	void SetHandValue(float value)
+	{
+		if (!GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_ENABLE_DETAILED_SANITARY_DISPLAY))
+		{
+			return;
+		}
+		
+		SetFloatValue(this.m_TerjeMed_HandValue, Math.Clamp(value, 0, TerjeMedicineConstants.HAND_MAX_VALUE));
 	}
 	
 	// Mind

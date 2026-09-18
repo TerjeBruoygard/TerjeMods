@@ -2,6 +2,7 @@ modded class IngameHud
 {
 	int TERJE_NOTIFIER_SLEEPING = -1;
 	int TERJE_NOTIFIER_MIND = -1;
+	int TERJE_NOTIFIER_HAND = -1;
 	
 	int TERJE_BADGE_BULLETWOUND = -1;
 	int TERJE_BADGE_VISCERA = -1;
@@ -81,6 +82,16 @@ modded class IngameHud
 		{
 			TERJE_NOTIFIER_MIND = -1;
 		}
+		
+		bool isHandEnabled = false;
+		if (GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_ENABLE_DETAILED_SANITARY_DISPLAY, isHandEnabled) && isHandEnabled)
+		{
+			TERJE_NOTIFIER_HAND = RegisterTerjeNotifierWidget("set:TerjeMedicine_icon image:tm_hand_{ID}", "TerjeHand");
+		}
+		else
+		{
+			TERJE_NOTIFIER_HAND = -1;
+		}
 	}
 	
 	override void InitBadgesAndNotifiers()
@@ -114,7 +125,10 @@ modded class IngameHud
 		TERJE_BADGE_PAINKILLER = RegisterTerjeBadgetWidget("set:TerjeMedicine_icon image:tm_painkiller", "TerjePainkiller", TerjeBadgeType.LEVELED);
 		TERJE_BADGE_HEMOSTATIC = RegisterTerjeBadgetWidget("set:TerjeMedicine_icon image:tm_hemostatic", "TerjeHemostatic", TerjeBadgeType.DEFAULT);
 		TERJE_BADGE_BLOODREGEN = RegisterTerjeBadgetWidget("set:TerjeMedicine_icon image:tm_bloodregen", "TerjeBloodRegen", TerjeBadgeType.DEFAULT);
-		TERJE_BADGE_DISINFECTED = RegisterTerjeBadgetWidget("set:TerjeMedicine_icon image:tm_disinfected_2", "TerjeDisinfected", TerjeBadgeType.DEFAULT);
+		if (!GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_ENABLE_DETAILED_SANITARY_DISPLAY))
+		{
+			TERJE_BADGE_DISINFECTED = RegisterTerjeBadgetWidget("set:TerjeMedicine_icon image:tm_disinfected_2", "TerjeDisinfected", TerjeBadgeType.DEFAULT);
+		}
 		TERJE_BADGE_BANDAGED_CLEAN = RegisterTerjeBadgetWidget("set:TerjeMedicine_icon image:tm_bandagedclean_2", "TerjeBandagedClean", TerjeBadgeType.COUNTER);
 		TERJE_BADGE_BANDAGED_DIRTY = RegisterTerjeBadgetWidget("set:TerjeMedicine_icon image:tm_bandageddirty_2", "TerjeBandagedDirty", TerjeBadgeType.COUNTER);
 		TERJE_BADGE_SUTURES_CLEAN = RegisterTerjeBadgetWidget("set:TerjeMedicine_icon image:tm_protectingwound", "TerjeSuturesClean", TerjeBadgeType.COUNTER);
@@ -181,6 +195,31 @@ modded class IngameHud
 		return false;
 	}
 	
+	void TerjeDisplayTendencyHand( int key, int tendency, int status )
+	{
+		Print("Terje IngameHud TerjeDisplayTendencyHand");
+		ImageWidget w;
+		Class.CastTo(w, m_Notifiers.FindAnyWidget( String( "Icon" + m_StatesWidgetNames.Get( key ) ) ) );
+		
+		if( w )
+		{
+			w.SetImage( Math.Clamp( status - 1, 0, 4 ) );
+			float alpha = w.GetAlpha();
+			
+			switch( status )
+			{
+				case 4:
+					w.SetColor( ARGB( alpha * 255, 220, 220, 0 ) );		//yellow
+					m_TendencyStatusCritical.Remove( w );				//remove from blinking group
+					break;
+				default:
+					w.SetColor( ARGB( alpha * 255, 220, 220, 220 ) );	//white
+					m_TendencyStatusCritical.Remove( w );				//remove from blinking group
+					break;
+			}
+		}	
+	}
+	
 	override void OnUnconsciousStart()
 	{
 		super.OnUnconsciousStart();
@@ -191,6 +230,16 @@ modded class IngameHud
 	{
 		super.OnUnconsciousStop();
 		m_terjeUnconState = false;
+	}
+	
+	override void DisplayNotifier( int key, int tendency, int status )
+	{
+		super.DisplayNotifier(key, tendency, status);
+		
+		if (key == TERJE_NOTIFIER_HAND)
+		{
+			TerjeDisplayTendencyHand(key, tendency, status);
+		}
 	}
 	
 	override void Update(float timeslice)

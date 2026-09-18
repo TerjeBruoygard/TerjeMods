@@ -52,6 +52,11 @@ modded class MissionGameplay
 			m_Hud.DisplayNotifier(m_Hud.TERJE_NOTIFIER_MIND, player.GetTerjeStats().GetMindTendency(), player.GetTerjeStats().GetMindLevel());
 		}
 		
+		if (m_Hud.TERJE_NOTIFIER_HAND != -1)
+		{
+			m_Hud.DisplayNotifier(m_Hud.TERJE_NOTIFIER_HAND, 0, player.GetTerjeStats().GetHandLevel());
+		}
+		
 		// Badges (Deseases)
 		m_Hud.DisplayBadge(m_Hud.TERJE_BADGE_HEMATOMA, player.GetTerjeStats().GetHematomasCount());
 		m_Hud.DisplayBadge(m_Hud.TERJE_BADGE_BULLETWOUND, player.GetTerjeStats().GetBulletWounds());
@@ -72,7 +77,10 @@ modded class MissionGameplay
 		}
 		
 		// Badges (Medicine)
-		m_Hud.DisplayBadge(m_Hud.TERJE_BADGE_DISINFECTED, (int)player.GetTerjeStats().GetDisinfected());
+		if (!GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_ENABLE_DETAILED_SANITARY_DISPLAY))
+		{
+			m_Hud.DisplayBadge(m_Hud.TERJE_BADGE_DISINFECTED, (int)player.GetTerjeStats().GetDisinfected());
+		}
 		m_Hud.DisplayBadge(m_Hud.TERJE_BADGE_BANDAGED_CLEAN, player.GetTerjeStats().GetBandagesClean() + player.GetTerjeStats().GetSuturesBandagedClean());
 		m_Hud.DisplayBadge(m_Hud.TERJE_BADGE_BANDAGED_DIRTY, player.GetTerjeStats().GetBandagesDirty() + player.GetTerjeStats().GetSuturesBandagedDirty());
 		m_Hud.DisplayBadge(m_Hud.TERJE_BADGE_SUTURES_CLEAN, player.GetTerjeStats().GetSuturesClean());

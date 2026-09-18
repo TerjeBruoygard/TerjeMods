@@ -296,6 +296,7 @@ modded class TerjeSettingsCollection
 	static int MEDICINE_KNOCKOUT_REVIVE_BY_DEF;
 	static int MEDICINE_KNOCKOUT_SHOW_INFO;
 	static int MEDICINE_ENABLE_BODY_DRAG_ACTION;
+	static int MEDICINE_ENABLE_DETAILED_SANITARY_DISPLAY;
 
 	override void OnInit()
 	{
@@ -466,6 +467,7 @@ modded class TerjeSettingsCollection
 		MEDICINE_SEPSIS_CRITICAL_SYMPTOM_CHANCE = RegisterSettingFloat("Medicine.SepsisCriticalSymptomChance", "Medicine", "Chance to make critical (level 3) sepsis symptoh. Value from 0 to 1.", 0.02, true);
 		MEDICINE_SEPSIS_CRITICAL_DMG_MULTIPLIER = RegisterSettingFloat("Medicine.SepsisCriticalDmgMultiplier", "Medicine", "Damage modifier received by a player during terminal stage of sepsis.", 1.0, true);
 		MEDICINE_SEPSIS_DEC_PER_SEC = RegisterSettingFloat("Medicine.SepsisDecPerSec", "Medicine", "The number of sepsis agents the player loses when has effect from antibiotics.", 0.01, true);
+		MEDICINE_ENABLE_DETAILED_SANITARY_DISPLAY = RegisterSettingBool("Medicine.DetailedSanitaryDisplay", "Medicine", "The parameter determines whether the sanitary of hands is displayed detailed or if a symbol is only displayed when the hands are sterile", true, true);
 		
 		RegisterRegion("Medicine", "Zombie virus settings");
 		MEDICINE_Z_VIRUS_ENABLED = RegisterSettingBool("Medicine.ZVirusEnabled", "Medicine", "The parameter determines whether zombie virus is enabled on the server or not.", true, true);

@@ -1,10 +1,12 @@
 MetaFileClass {
  Name "{B08AF48F14248E9B}TerjeMedicine/Textures/icon_medicine.edds"
- Author "terje"
- ChangeDate -241880283
+ Author "desktop-5v1ml8a"
+ ChangeDate 299644210
  Configurations {
   TGAResourceClass PC {
-   SourceFile "../../References/TerjeMedicine/Textures/icon_medicine.tga"
+   SourceFile "Medical_Icons.png"
+   FormatCompress Copy
+   TiledTexture 0
   }
   TGAResourceClass XBOX_ONE : PC {
   }
