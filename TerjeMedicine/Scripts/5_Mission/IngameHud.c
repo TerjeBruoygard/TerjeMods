@@ -197,13 +197,12 @@ modded class IngameHud
 	
 	void TerjeDisplayTendencyHand( int key, int tendency, int status )
 	{
-		Print("Terje IngameHud TerjeDisplayTendencyHand");
 		ImageWidget w;
 		Class.CastTo(w, m_Notifiers.FindAnyWidget( String( "Icon" + m_StatesWidgetNames.Get( key ) ) ) );
 		
 		if( w )
 		{
-			w.SetImage( Math.Clamp( status - 1, 0, 4 ) );
+			w.SetImage( Math.Clamp( status - 1, 0, 3 ) );
 			float alpha = w.GetAlpha();
 			
 			switch( status )

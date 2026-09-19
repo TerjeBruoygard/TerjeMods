@@ -1,7 +1,5 @@
 class TerjePlayerModifierHand : TerjePlayerModifierBase
 {
-	private float m_handLastValue = -1;
-	
 	override void OnServerFixedTick(PlayerBase player, float deltaTime)
 	{
 		super.OnServerFixedTick(player, deltaTime);
@@ -11,44 +9,35 @@ class TerjePlayerModifierHand : TerjePlayerModifierBase
 			return;
 		}
 		
-		// Hand visual states
-		float handCurrentValue = player.GetTerjeStats().GetHandValue(); 
-		if (m_handLastValue < 0)
+		int handLevel;
+		if (player.HasBloodyHands())
 		{
-			m_handLastValue = handCurrentValue;
+			handLevel = 4;
 		}
-		
-		int handTendency = 0;
-		int handLevel = 0;
-
-		if      (handCurrentValue < TerjeMedicineConstants.HAND_LEVEL4) handLevel = 4;
-		else if (handCurrentValue < TerjeMedicineConstants.HAND_LEVEL3) handLevel = 3;
-		else if (handCurrentValue < TerjeMedicineConstants.HAND_LEVEL2) handLevel = 2;
-		else                                                            handLevel = 1;
-		
-		player.GetTerjeStats().SetHandLevelAndTendency(handLevel, handTendency);
-		m_handLastValue = handCurrentValue;
-		
-		// Hand action states
-		ItemBase gloves;
-		if (ItemBase.CastTo(gloves, player.GetItemOnSlot("Gloves")))
+		else
 		{
-			if (gloves.IsDisinfected())
+			ItemBase gloves;
+			if (ItemBase.CastTo(gloves, player.GetItemOnSlot("Gloves")))
 			{
-				handCurrentValue = 3;
+				if (gloves.IsDisinfected())
+				{
+					handLevel = 1;
+				}
+				else
+				{
+					handLevel = 3;
+				}
 			}
-			else handCurrentValue = 1;
+			else if (player.GetTerjeStats().GetDisinfected())
+			{
+				handLevel = 1;
+			}
+			else
+			{
+				handLevel = 2;
+			}
 		}
-		else if (player.GetTerjeStats().GetDisinfected() >= 1)
-		{
-			handCurrentValue = 3;
-		}
-		else if (player.HasBloodyHands())
-		{
-			handCurrentValue = 0;
-		}
-		else handCurrentValue = 2;
 		
-		player.GetTerjeStats().SetHandValue(handCurrentValue);
+		player.GetTerjeStats().SetHandLevel(handLevel);
 	}
 }

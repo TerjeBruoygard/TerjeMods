@@ -1,10 +1,5 @@
 class TerjeMedicineConstants
 {
-	const int HAND_MAX_VALUE = 4;
-	const int HAND_LEVEL4 = 1;
-	const int HAND_LEVEL3 = 2;
-	const int HAND_LEVEL2 = 3;
-	
 	const int MIND_MAX_VALUE = 100;
 	const int MIND_CRITICAL = 5;
 	const int MIND_LEVEL5 = 10;
