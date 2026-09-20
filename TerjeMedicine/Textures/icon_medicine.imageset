@@ -376,7 +376,7 @@ ImageSetClass {
   }
   ImageSetDefClass tm_hand_0 {
    Name "tm_hand_0"
-   Pos 76 521
+   Pos 77 521
    Size 70 70
    Flags 0
   }

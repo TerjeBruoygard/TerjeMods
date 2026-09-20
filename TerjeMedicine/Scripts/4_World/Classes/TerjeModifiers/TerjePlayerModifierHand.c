@@ -10,33 +10,24 @@ class TerjePlayerModifierHand : TerjePlayerModifierBase
 		}
 		
 		int handLevel;
-		if (player.HasBloodyHands())
+		ItemBase gloves;
+		if (ItemBase.CastTo(gloves, player.GetItemOnSlot("Gloves")))
 		{
-			handLevel = 4;
-		}
-		else
-		{
-			ItemBase gloves;
-			if (ItemBase.CastTo(gloves, player.GetItemOnSlot("Gloves")))
-			{
-				if (gloves.IsDisinfected())
-				{
-					handLevel = 1;
-				}
-				else
-				{
-					handLevel = 3;
-				}
-			}
-			else if (player.GetTerjeStats().GetDisinfected())
+			if (gloves.IsDisinfected())
 			{
 				handLevel = 1;
 			}
-			else
-			{
-				handLevel = 2;
-			}
+			else handLevel = 3;
 		}
+		else if (player.GetTerjeStats().GetDisinfected())
+		{
+			handLevel = 1;
+		}
+		else if (player.HasBloodyHands())
+		{
+			handLevel = 4;
+		}
+		else handLevel = 2;
 		
 		player.GetTerjeStats().SetHandLevel(handLevel);
 	}
