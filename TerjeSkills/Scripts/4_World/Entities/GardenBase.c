@@ -56,7 +56,6 @@ modded class Slot
 
 modded class GardenBase
 {
-	static const int TERJE_SLOT_PERK_SAVE_VERSION = 1;
 	protected PlayerBase m_TerjeLastPlantingPlayer;
 	
 	void TerjeSetLastPlantingPlayer(PlayerBase player)
@@ -111,66 +110,53 @@ modded class GardenBase
 		plant.TerjeBakeFarmingPerks(growthBonus, slot.m_TerjeWitherResistBonus, slot.m_TerjeWeatherproofChance);
 	}
 	
-	override void OnStoreSave(ParamsWriteContext ctx)
+	override void OnTerjeStoreSave(TerjeStorageWritingContext ctx)
 	{
-		super.OnStoreSave(ctx);
+		super.OnTerjeStoreSave(ctx);
 		
-		ctx.Write(TERJE_SLOT_PERK_SAVE_VERSION);
+		if (!m_Slots)
+		{
+			return;
+		}
 		
 		int slotsCount = GetGardenSlotsCount();
 		for (int i = 0; i < slotsCount; i++)
 		{
 			Slot slot = m_Slots.Get(i);
-			ctx.Write(slot.m_TerjeGrowthTimeBonus);
-			ctx.Write(slot.m_TerjeWitherResistBonus);
-			ctx.Write(slot.m_TerjeWeatherproofChance);
-			ctx.Write(slot.m_TerjeHothouseBonus);
+			if (!slot)
+			{
+				continue;
+			}
+			
+			ctx.WriteFloat("farmGrowth_" + i, slot.m_TerjeGrowthTimeBonus);
+			ctx.WriteFloat("farmWither_" + i, slot.m_TerjeWitherResistBonus);
+			ctx.WriteFloat("farmWeather_" + i, slot.m_TerjeWeatherproofChance);
+			ctx.WriteFloat("farmHothouse_" + i, slot.m_TerjeHothouseBonus);
 		}
 	}
 	
-	override bool OnStoreLoad(ParamsReadContext ctx, int version)
+	override void OnTerjeStoreLoad(TerjeStorageReadingContext ctx)
 	{
-		if (!super.OnStoreLoad(ctx, version))
-		{
-			return false;
-		}
+		super.OnTerjeStoreLoad(ctx);
 		
-		int terjeVersion;
-		if (!ctx.Read(terjeVersion))
+		if (!m_Slots)
 		{
-			return true;
-		}
-		
-		if (terjeVersion < TERJE_SLOT_PERK_SAVE_VERSION)
-		{
-			return true;
+			return;
 		}
 		
 		int slotsCount = GetGardenSlotsCount();
 		for (int i = 0; i < slotsCount; i++)
 		{
 			Slot slot = m_Slots.Get(i);
-			if (!ctx.Read(slot.m_TerjeGrowthTimeBonus))
+			if (!slot)
 			{
-				return true;
+				continue;
 			}
 			
-			if (!ctx.Read(slot.m_TerjeWitherResistBonus))
-			{
-				return true;
-			}
-			
-			if (!ctx.Read(slot.m_TerjeWeatherproofChance))
-			{
-				return true;
-			}
-			
-			if (!ctx.Read(slot.m_TerjeHothouseBonus))
-			{
-				return true;
-			}
+			ctx.ReadFloat("farmGrowth_" + i, slot.m_TerjeGrowthTimeBonus);
+			ctx.ReadFloat("farmWither_" + i, slot.m_TerjeWitherResistBonus);
+			ctx.ReadFloat("farmWeather_" + i, slot.m_TerjeWeatherproofChance);
+			ctx.ReadFloat("farmHothouse_" + i, slot.m_TerjeHothouseBonus);
 		}
-		
-		return true;
 	}
 }

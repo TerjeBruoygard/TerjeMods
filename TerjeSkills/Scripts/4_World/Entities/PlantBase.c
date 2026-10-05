@@ -46,26 +46,16 @@ modded class PlantBase
 		super.Tick();
 	}
 	
-	override bool OnStoreLoadCustom(ParamsReadContext ctx, int version)
+	override void OnTerjeStoreSave(TerjeStorageWritingContext ctx)
 	{
-		if (!super.OnStoreLoadCustom(ctx, version))
-		{
-			return false;
-		}
-		
-		float loadedWeatherproofChance = 0.0;
-		if (ctx.Read(loadedWeatherproofChance))
-		{
-			m_TerjeWeatherproofChance = loadedWeatherproofChance;
-		}
-		
-		return true;
+		super.OnTerjeStoreSave(ctx);
+		ctx.WriteFloat("farmWeather", m_TerjeWeatherproofChance);
 	}
 	
-	override void OnStoreSaveCustom(ParamsWriteContext ctx)
+	override void OnTerjeStoreLoad(TerjeStorageReadingContext ctx)
 	{
-		super.OnStoreSaveCustom(ctx);
-		ctx.Write(m_TerjeWeatherproofChance);
+		super.OnTerjeStoreLoad(ctx);
+		ctx.ReadFloat("farmWeather", m_TerjeWeatherproofChance);
 	}
 	
 	override void Harvest(PlayerBase player)
