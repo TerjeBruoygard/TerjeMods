@@ -3,6 +3,8 @@ modded class TerjePlayerProfile
 	private int m_FirstName;
 	private int m_LastName;
 	private int m_CharacterClassname;
+	private int m_PersistentBeardLevelSelected;
+	private int m_PersistentBeardLevelDeath;
 	private int m_SoulsCount;
 	private int m_LastLoadoutId;
 	private int m_LastLoadoutSelections;
@@ -24,6 +26,8 @@ modded class TerjePlayerProfile
 		m_FirstName = RegisterRecordString("tp.fname", "", true);
 		m_LastName = RegisterRecordString("tp.lname", "", true);
 		m_CharacterClassname = RegisterRecordString("tp.cname", "", true);
+		m_PersistentBeardLevelSelected = RegisterRecordInt("tp.pbls", 0, true);
+		m_PersistentBeardLevelDeath = RegisterRecordInt("tp.pbld", -1, true);
 		m_SoulsCount = RegisterRecordInt("tp.slc", -1, false);
 		m_LastLoadoutId = RegisterRecordString("tp.llid", "", true);
 		m_LastLoadoutSelections = RegisterRecordString("tp.llsel", "", true);
@@ -101,7 +105,27 @@ modded class TerjePlayerProfile
 	{
 		return GetStringValue(m_CharacterClassname);
 	}
-	
+
+	void SetPersistentBeardLevelSelected(int value)
+	{
+		SetIntValue(m_PersistentBeardLevelSelected, TerjeMathHelper.ClampInt(value, 0, 3));
+	}
+
+	int GetPersistentBeardLevelSelected()
+	{
+		return TerjeMathHelper.ClampInt(GetIntValue(m_PersistentBeardLevelSelected), 0, 3);
+	}
+
+	void SetPersistentBeardLevelDeath(int value)
+	{
+		SetIntValue(m_PersistentBeardLevelDeath, TerjeMathHelper.ClampInt(value, -1, 3));
+	}
+
+	int GetPersistentBeardLevelDeath()
+	{
+		return TerjeMathHelper.ClampInt(GetIntValue(m_PersistentBeardLevelDeath), -1, 3);
+	}
+
 	void SetSoulsCount(int value)
 	{
 		int max = GetTerjeSettingInt(TerjeSettingsCollection.STARTSCREEN_SOULS_MAXCOUNT);

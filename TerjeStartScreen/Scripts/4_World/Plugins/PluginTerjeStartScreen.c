@@ -135,6 +135,9 @@ class PluginTerjeStartScreen : PluginBase
 	
 	void BuildFacesForPlayer(PlayerBase player, out TerjeXmlObject result)
 	{
+		bool beardEnabled = GetTerjeSettingBool(TerjeSettingsCollection.STARTSCREEN_PBEARD_ENABLED);
+		bool beardSelectable = GetTerjeSettingBool(TerjeSettingsCollection.STARTSCREEN_PBEARD_FACESELECT);
+
 		result = new TerjeXmlObject;
 		result.SetName("Faces");
 		for (int i = 0; i < m_facesXml.GetChildrenCount(); i++)
@@ -149,6 +152,26 @@ class PluginTerjeStartScreen : PluginBase
 				TerjeXmlObject conditions = faceCopy.GetChildByNodeName("Conditions");
 				if (ProcessConditions(player, conditions, isValid))
 				{
+					string beardAttrValue = string.Empty;
+					int faceMask = BuildFaceBeardMask(faceCopy);
+					int faceMax = FindLastAllowedBeardLevel(faceMask);
+					if (faceMax < 0) faceMax = 0;
+
+					int faceDefault = FindFirstAllowedBeardLevel(faceMask, 3);
+					if (faceCopy.FindAttribute("beardDefault", beardAttrValue)) faceDefault = TerjeMathHelper.ClampInt(beardAttrValue.ToInt(), 0, 3);
+					if ((faceMask & (1 << faceDefault)) == 0) faceDefault = FindFirstAllowedBeardLevel(faceMask, 3);
+
+					bool faceBeardEnabled = beardEnabled && (faceMask != 0);
+					bool faceBeardSelectable = beardSelectable && (faceMask != 0);
+					if (faceBeardEnabled) faceCopy.SetAttribute("$beardEnabled", "1");
+					else faceCopy.SetAttribute("$beardEnabled", "0");
+
+					if (faceBeardSelectable) faceCopy.SetAttribute("$beardSelectable", "1");
+					else faceCopy.SetAttribute("$beardSelectable", "0");
+					faceCopy.SetAttribute("$beardMax", faceMax.ToString());
+					faceCopy.SetAttribute("$beardMask", faceMask.ToString());
+					faceCopy.SetAttribute("$beardDefault", faceDefault.ToString());
+
 					if (isValid)
 					{
 						faceCopy.SetAttribute("$valid", "1");
@@ -164,6 +187,46 @@ class PluginTerjeStartScreen : PluginBase
 				}
 			}
 		}
+	}
+
+	private int FindFirstAllowedBeardLevel(int mask, int maxLevel)
+	{
+		for (int i = 0; i <= maxLevel; i++)
+		{
+			if ((mask & (1 << i)) != 0) return i;
+		}
+
+		return 0;
+	}
+
+	private int FindLastAllowedBeardLevel(int mask)
+	{
+		for (int i = 3; i >= 0; i--)
+		{
+			if ((mask & (1 << i)) != 0) return i;
+		}
+
+		return -1;
+	}
+
+	private int BuildFaceBeardMask(TerjeXmlObject faceXml)
+	{
+		int resultMask = 0;
+		string beardLevelsRaw = string.Empty;
+		if (faceXml == null) return resultMask;
+
+		if (faceXml.FindAttribute("beardLevels", beardLevelsRaw))
+		{
+			array<string> rawLevels = new array<string>;
+			beardLevelsRaw.Split(",", rawLevels);
+			for (int ii = 0; ii < rawLevels.Count(); ii++)
+			{
+				int level = TerjeMathHelper.ClampInt(rawLevels.Get(ii).ToInt(), 0, 3);
+				resultMask = resultMask | (1 << level);
+			}
+		}
+
+		return resultMask;
 	}
 	
 	void BuildLoadoutsForPlayer(PlayerBase player, out TerjeXmlObject result)

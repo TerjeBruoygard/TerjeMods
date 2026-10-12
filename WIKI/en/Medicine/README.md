@@ -329,7 +329,8 @@ Parameters for [creating your own items](../Modding/README.md#1-based-on-item):
 | Novacaine        | TerjeAmpouleNovacaine     | Treatment |   2   | Ampoule           |     1200     |   0.4    |
 | Morphinocin         | TerjeAmpouleMorphine      | Treatment |   3   | Ampoule           |      850     |   0.52   |
 | Hexobarbital     | TerjeAmpouleGexobarbital  | Treatment |   3   | Ampoule           |      900     |   0.65   |
-| Reanimatal       | TerjeInjectorReanimatal   | Treatment |   1   | Injector          |      240     |   1.85   |
+| Reanimatal       | TerjeInjectorReanimatal   | Treatment |   3   | Injector          |      240     |   1.85   |
+| Propital       | TerjeInjectorPropital   | Treatment |   2   | Injector          |      180     |   0.75   |
 | Morphine         | Morphine                  | Treatment |   3   | Injector          |      300     |   0.75   |
 | Promidol         | TerjeInjectorPromidol     | Treatment |   3   | Injector          |      600     |   0.45   |
 

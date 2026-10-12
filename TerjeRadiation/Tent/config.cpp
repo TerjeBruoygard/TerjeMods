@@ -506,7 +506,7 @@ class CfgVehicles
 	class HouseNoDestruct;
 	class TerjeRadTentStatic: HouseNoDestruct
 	{
-		scope=2;
+		scope=1;
 		model="TerjeRadiation\Tent\RadTentStatic.p3d";
 		displayName="#STR_TERJERAD_RADTENT";
 		descriptionShort="#STR_TERJERAD_RADTENT_DESC";

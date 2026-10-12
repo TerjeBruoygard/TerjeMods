@@ -151,6 +151,15 @@ class CfgVehicles
 			firearm=0.35;
 		};
 	};
+
+	class T56TankerHelmet_ColorBase: Clothing
+	{
+		class Protection
+		{
+			melee=0.7;
+			firearm=0.35;
+		};
+	};
 	
 	class Chestplate: Clothing
 	{

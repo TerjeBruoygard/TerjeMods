@@ -8,13 +8,15 @@
 			classname: (required) Player classname from config.cpp
 			icon: (required) Path to the transparent face image. You can use path to your custom *.paa image or imageset from your own pbo's.
 			background (optional): Path to the background image. You can use path to your custom *.paa image or imageset from your own pbo's.
+			beardDefault (optional): default beard level for this face (0..3)
+			beardLevels (optional): comma separated list of allowed beard levels for this face (example: "0,2,3")
 			
 			
 			Conditions: (optional) - list of conditions under which the respawn will be available to the player
 				ALL SUPPORTED CONDITIONS YOU CAN FOUND HERE: https://github.com/TerjeBruoygard/TerjeMods/tree/master/Wiki/en/Conditions/README.md
 -->
 <Faces>
-	<Face classname="SurvivorM_Mirek" icon="TerjeStartScreen/Faces/SurvivorM_Mirek.paa" />
+	<Face classname="SurvivorM_Mirek" icon="TerjeStartScreen/Faces/SurvivorM_Mirek.paa" beardDefault="1" beardLevels="0,1,2,3" />
 	<Face classname="SurvivorF_Eva" icon="TerjeStartScreen/Faces/SurvivorF_Eva.paa" />
 	<Face classname="SurvivorM_Boris" icon="TerjeStartScreen/Faces/SurvivorM_Boris.paa" />
 	<Face classname="SurvivorF_Frida" icon="TerjeStartScreen/Faces/SurvivorF_Frida.paa" />

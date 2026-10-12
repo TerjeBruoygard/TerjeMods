@@ -32,7 +32,7 @@ Name  | Item | Stage | Level | Form and Packaging | Duration (s) | Overdose |
 |   Mexamine ([*TerjeMedicine](#these-medicines-are-only-available-when-using-the-terjemedicine-mod))  | TerjePillsMexamine | Treatment | 2   |   Tablets  |      25      |        0.75        |
 |  Pentacin ([*TerjeMedicine](#these-medicines-are-only-available-when-using-the-terjemedicine-mod))  | TerjeAmpoulePentacin | Treatment | 2   |   Ampoule  |      400      |         0.5        |
 |  Carboxyme ([*TerjeMedicine](#these-medicines-are-only-available-when-using-the-terjemedicine-mod)) | TerjeAmpouleCarboxyme | Treatment | 2   |   Ampoule  |      600     |         0.6        |
-|   Radioprotector   | TerjeInjectorRadioprotector | Treatment | 3   |   Injector |      600     |         0.75       |
+|   Radioprotector   | TerjeAntiradInjector | Treatment | 3   |   Injector |      600     |         0.75       |
 
 Parameters for [creating your own items](../Modding/README.md#1-based-on-an-item)
 ```cs

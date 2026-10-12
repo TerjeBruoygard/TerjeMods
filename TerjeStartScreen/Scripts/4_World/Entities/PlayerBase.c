@@ -18,6 +18,7 @@ modded class PlayerBase
 	override void OnTerjePlayerRespawned()
 	{
 		super.OnTerjePlayerRespawned();
+		ApplyTerjePersistentBeardOnSpawn(true);
 		
 		if (GetIdentity() != null && GetTerjeProfile() != null)
 		{
@@ -50,6 +51,7 @@ modded class PlayerBase
 	override void OnTerjePlayerLoaded()
 	{
 		super.OnTerjePlayerLoaded();
+		ApplyTerjePersistentBeardOnSpawn(true);
 		
 		if (GetIdentity() != null)
 		{
@@ -132,6 +134,7 @@ modded class PlayerBase
 			if (GetTerjeProfile() != null)
 			{
 				GetTerjeProfile().SetRespawnLastDeathPoint(GetWorldPosition());
+				GetTerjeProfile().SetPersistentBeardLevelDeath(GetLifeSpanState());
 			}
 			
 			if ((GetTerjeProfile() != null) && (GetTerjeSouls() != null) && (GetTerjeSouls().IsEnabled()))
@@ -178,6 +181,14 @@ modded class PlayerBase
 					return;
 				
 				m_terjeStartScreenCharNameValue = payload.param1;
+			}
+			else if (id == "startscreen.pbeard.sync")
+			{
+				Param2<int, int> payload2;
+				if (!ctx.Read(payload2))
+					return;
+
+				ApplyTerjePersistentBeardVisualDeferred(payload2.param1, payload2.param2);
 			}
 		}
 	}
@@ -282,5 +293,80 @@ modded class PlayerBase
 	void CreateTerjePassportInInventory()
 	{
 		CreateInInventory("TerjePassport");
+	}
+
+	void SyncTerjePersistentBeardVisual()
+	{
+		if (!g_Game || !g_Game.IsDedicatedServer()) return;
+		if (!GetTerjeSettingBool(TerjeSettingsCollection.STARTSCREEN_PBEARD_ENABLED)) return;
+
+		Param2<int, int> beardPayload = new Param2<int, int>(GetLifeSpanState(), GetLastShavedSeconds());
+		TerjeSendToAll("startscreen.pbeard.sync", beardPayload);
+	}
+
+	protected bool CanApplyTerjePersistentBeardVisualNow()
+	{
+		if (!GetGame()) return false;
+		if (!GetInventory()) return false;
+		if (m_CharactersHead == null) return false;
+
+		int headSlotId = InventorySlots.GetSlotIdFromString("Head");
+		EntityAI playerHead = GetInventory().FindPlaceholderForSlot(headSlotId);
+		if (playerHead == null) return false;
+
+		return true;
+	}
+
+	protected void ApplyTerjePersistentBeardVisualDeferred(int level, int lastShavedSeconds, int retryCount = 0)
+	{
+		PluginLifespan lifespan = PluginLifespan.Cast(GetPlugin(PluginLifespan));
+		if (lifespan == null) return;
+
+		if (!CanApplyTerjePersistentBeardVisualNow())
+		{
+			if (g_Game && (retryCount < 10)) g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ApplyTerjePersistentBeardVisualDeferred, 250, false, level, lastShavedSeconds, retryCount + 1);
+			return;
+		}
+
+		SetLastShavedSeconds(lastShavedSeconds);
+		lifespan.ApplyTerjePersistentBeardVisual(this, level);
+	}
+
+	protected void ApplyTerjePersistentBeardOnSpawn(bool retryIfHeadMissing = false, int retryCount = 0)
+	{
+		if (!GetGame() || !GetGame().IsDedicatedServer()) return;
+		if (!GetTerjeSettingBool(TerjeSettingsCollection.STARTSCREEN_PBEARD_ENABLED)) return;
+		if (retryIfHeadMissing)
+		{
+			int headSlotId = InventorySlots.GetSlotIdFromString("Head");
+			EntityAI playerHead = GetInventory().FindPlaceholderForSlot(headSlotId);
+			if ((playerHead == null) && (retryCount < 10))
+			{
+				g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(ApplyTerjePersistentBeardOnSpawn, 250, false, true, retryCount + 1);
+				return;
+			}
+		}
+
+		TerjePlayerProfile profile = GetTerjeProfile();
+		if (profile == null) return;
+
+		PluginLifespan lifespan = PluginLifespan.Cast(GetPlugin(PluginLifespan));
+		if (lifespan == null) return;
+
+		int selectedLevel = TerjeMathHelper.ClampInt(profile.GetPersistentBeardLevelSelected(), 0, 3);
+		int beardLevel = selectedLevel;
+		bool allowShave = GetTerjeSettingBool(TerjeSettingsCollection.STARTSCREEN_PBEARD_ALLOWSHAVE);
+		if (allowShave)
+		{
+			int deathLevel = profile.GetPersistentBeardLevelDeath();
+			if (deathLevel >= 0)
+			{
+				beardLevel = TerjeMathHelper.ClampInt(deathLevel, 0, selectedLevel);
+			}
+		}
+
+		lifespan.SetPersistentBeardState(this, beardLevel, allowShave);
+		SyncTerjePersistentBeardVisual();
+		profile.SetPersistentBeardLevelDeath(-1);
 	}
 }

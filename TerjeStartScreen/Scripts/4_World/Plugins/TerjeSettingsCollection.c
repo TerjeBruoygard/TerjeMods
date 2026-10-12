@@ -17,6 +17,9 @@ modded class TerjeSettingsCollection
 	static int STARTSCREEN_RULES_TIMEOUT;
 	static int STARTSCREEN_NAME_PAGE_ENABLED;
 	static int STARTSCREEN_FACE_PAGE_ENABLED;
+	static int STARTSCREEN_PBEARD_ENABLED;
+	static int STARTSCREEN_PBEARD_ALLOWSHAVE;
+	static int STARTSCREEN_PBEARD_FACESELECT;
 	static int STARTSCREEN_SKILLS_PAGE_ENABLED;
 	static int STARTSCREEN_LOADOUT_PAGE_ENABLED;
 	static int STARTSCREEN_MAP_PAGE_ENABLED;
@@ -87,6 +90,9 @@ modded class TerjeSettingsCollection
 		
 		RegisterRegion("StartScreen", "Face selection page");
 		STARTSCREEN_FACE_PAGE_ENABLED = RegisterSettingBool("StartScreen.FacePageEnabled", "StartScreen", "Use face selection page when creating a new character.", true, true);
+		STARTSCREEN_PBEARD_ENABLED = RegisterSettingBool("StartScreen.PersistentBeardEnabled", "StartScreen", "Enable persistent beard system for selected character face.", false, true);
+		STARTSCREEN_PBEARD_ALLOWSHAVE = RegisterSettingBool("StartScreen.PersistentBeardAllowShave", "StartScreen", "Allow shaving when persistent beard is enabled. Beard regrows up to max level.", true, true);
+		STARTSCREEN_PBEARD_FACESELECT = RegisterSettingBool("StartScreen.PersistentBeardFaceSelect", "StartScreen", "Allow selecting beard level on face selection page.", true, true);
 		
 		RegisterRegion("StartScreen", "Skills selection page");
 		STARTSCREEN_SKILLS_PAGE_ENABLED = RegisterSettingBool("StartScreen.SkillsPageEnabled", "StartScreen", "Use start skills selection page when creating a new character (only for TerjeSkills mod).", true, true);

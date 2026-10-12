@@ -76,10 +76,51 @@ FrameWidgetClass terjePageRootName {
      priority 10
      style rover_sim_colorable
     }
+      PanelWidgetClass PanelBeardLevel {
+     ignorepointer 0
+     position 0 70
+       size 620 30
+     halign center_ref
+     hexactpos 1
+     vexactpos 1
+     hexactsize 1
+     vexactsize 1
+     style blank
+     {
+      TextWidgetClass TerjeBeardLevelTitle {
+       disabled 0
+       ignorepointer 1
+       position 0 0
+          size 620 30
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       text "Beard level"
+       font "gui/fonts/sdf_MetronBook72"
+          "text halign" center
+       "text valign" center
+      }
+     }
+    }
+      WrapSpacerWidgetClass PanelBeardButtons {
+       visible 1
+       ignorepointer 0
+       position 0 102
+       size 620 32
+       halign center_ref
+       hexactpos 1
+       vexactpos 1
+       hexactsize 1
+       vexactsize 1
+       style blank
+       Padding 6
+       Margin 0
+      }
     ScrollWidgetClass FacesScroll {
      ignorepointer 0
-     position 0 75
-     size 620 450
+       position 0 142
+       size 620 383
      halign center_ref
      hexactpos 1
      vexactpos 1
