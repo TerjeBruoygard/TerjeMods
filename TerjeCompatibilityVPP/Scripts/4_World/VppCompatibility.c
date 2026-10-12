@@ -7,58 +7,15 @@ modded class PermissionManager
 	}
 }
 
-modded class PlayerManager
+modded class PlayerBase
 {
-	override void HealPlayers(CallType type, ParamsReadContext ctx, PlayerIdentity sender, Object target)
+	override void VPPHealPlayer(bool set_max = true, bool repair_items = true)
 	{
-		if (type == CallType.Server)
-		{
-			Param1<ref array<string>> data;
-			if (!ctx.Read(data)) 
-			{
-				return;
-			}
-			
-			string adminID  = sender.GetPlainId();
-			if (GetPermissionManager().VerifyPermission(adminID, "PlayerManager:HealPlayers"))
-			{
-				foreach (string id : data.param1)
-				{
-					PlayerBase targetPlayer = GetPermissionManager().GetPlayerBaseByID(id);
-					if (targetPlayer != null)
-					{
-						GetTerjeAdmintoolSupport().OnHeal(targetPlayer);
-					}
-				}
-			}
-			
-			ScriptReadWriteContext copyctx = new ScriptReadWriteContext;
-			copyctx.GetWriteContext().Write(data);
-			super.HealPlayers(type, copyctx.GetReadContext(), sender, target);
-		}
-	}
-}
-
-modded class HealPlayerChatModule
-{
-	override void ExecuteCommand(PlayerBase caller, array<Man> targets, array<string> args)
-	{
-		super.ExecuteCommand(caller, targets, args);
+		super.VPPHealPlayer(set_max, repair_items);
 		
-		if (caller && caller.GetIdentity())
+		if (GetGame().IsServer() || !GetGame().IsMultiplayer())
 		{
-			string adminID = caller.GetIdentity().GetPlainId();
-			if (GetPermissionManager().VerifyPermission(adminID, "PlayerManager:HealPlayers"))
-			{
-				foreach (Man target : targets)
-				{
-					PlayerBase playerTarget = PlayerBase.Cast(target);
-					if (playerTarget != null)
-					{
-						GetTerjeAdmintoolSupport().OnHeal(playerTarget);
-					}
-				}
-			}
+			GetTerjeAdmintoolSupport().OnHeal(this);
 		}
 	}
 }

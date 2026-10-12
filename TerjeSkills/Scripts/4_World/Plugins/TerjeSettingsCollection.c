@@ -71,6 +71,20 @@ modded class TerjeSettingsCollection
 	static int SKILLS_FISHING_OVERRIDE_SKINNING_TIME;
 	static int SKILLS_FISHING_OVERRIDE_BASE_CATCH_CHANCE;
 	
+	static int SKILLS_FARMING_GARDEN_PLOT_EXP_GAIN;
+	static int SKILLS_FARMING_SEED_PLANTED_EXP_GAIN;
+	static int SKILLS_FARMING_WATER_EXP_GAIN;
+	static int SKILLS_FARMING_FERTILIZE_EXP_GAIN;
+	static int SKILLS_FARMING_HARVEST_EXP_GAIN;
+	static int SKILLS_FARMING_OVERRIDE_TILL_DAMAGE;
+	static int SKILLS_FARMING_OVERRIDE_CROP_DECAY_TIME;
+	static int SKILLS_FARMING_OVERRIDE_DIG_TIME_MULT;
+	static int SKILLS_FARMING_OVERRIDE_WATER_USAGE_MULT;
+	static int SKILLS_FARMING_OVERRIDE_FERTILIZE_USAGE_MULT;
+	static int SKILLS_FARMING_OVERRIDE_BASE_YIELD_MULT;
+	static int SKILLS_FARMING_OVERRIDE_CROP_BASE_QUANTITY;
+	static int SKILLS_FARMING_OVERRIDE_SEED_CUT_MULT;
+	
 	static ref map<string, int> SKILLS_INITIAL_EXP = new map<string, int>;
 	static ref map<string, int> SKILLS_ACTIVE_SKILLS = new map<string, int>;
 	// Add hidden abbility to hide skills/perks from UI
@@ -159,6 +173,21 @@ modded class TerjeSettingsCollection
 		SKILLS_FISHING_BUTCH_EXP_GAIN_MODIFIER = RegisterSettingFloat("Skills.FishingButchExpGainModifier", "Skills", "Sets the value of the experience modifier that the player will get after butchering (cleaning) an fish. This modifier is multiplied by the parameter terjeOnButchHuntingExp from the fishs config.", 1.0, true);
 		SKILLS_FISHING_OVERRIDE_SKINNING_TIME = RegisterSettingFloat("Skills.FishingOverrideSkinningTime", "Skills", "Sets the time in secconds for skinning fish for use with the perk. If the value is -1, the default value will be used instead.", 30.0, false);
 		SKILLS_FISHING_OVERRIDE_BASE_CATCH_CHANCE = RegisterSettingFloat("Skills.FishingOverrideBaseCatchChance", "Skills", "Sets the base chance of catching fish before skill modifiers are applied.", 0.25, true);
+		
+		RegisterRegion("Skills", "Farming");
+		SKILLS_FARMING_GARDEN_PLOT_EXP_GAIN = RegisterSettingInt("Skills.FarmingGardenPlotExpGain", "Skills", "Sets the value of experience points that the player will gain for digging a garden plot or tilling a greenhouse/polytunnel plot. This parameter is also affected by ExperienceGainModifier.", 25, true);
+		SKILLS_FARMING_SEED_PLANTED_EXP_GAIN = RegisterSettingInt("Skills.FarmingSeedPlantedExpGain", "Skills", "Sets the value of experience points that the player will gain for planting a seed. This parameter is also affected by ExperienceGainModifier.", 10, true);
+		SKILLS_FARMING_WATER_EXP_GAIN = RegisterSettingInt("Skills.FarmingWaterExpGain", "Skills", "Sets the value of experience points that the player will gain for watering a garden slot or a growing plant. This parameter is also affected by ExperienceGainModifier.", 10, true);
+		SKILLS_FARMING_FERTILIZE_EXP_GAIN = RegisterSettingInt("Skills.FarmingFertilizeExpGain", "Skills", "Sets the value of experience points that the player will gain for fertilizing a garden slot. This parameter is also affected by ExperienceGainModifier.", 10, true);
+		SKILLS_FARMING_HARVEST_EXP_GAIN = RegisterSettingInt("Skills.FarmingHarvestExpGain", "Skills", "Sets the value of experience points that the player will gain for harvesting a mature plant. This parameter is also affected by ExperienceGainModifier.", 60, true);
+		SKILLS_FARMING_OVERRIDE_TILL_DAMAGE = RegisterSettingFloat("Skills.FarmingOverrideTillDamage", "Skills", "Sets the absolute damage value dealt to a digging tool when a garden plot is made. Affected by the QuickDigger perk.", 80.0, true);
+		SKILLS_FARMING_OVERRIDE_CROP_DECAY_TIME = RegisterSettingFloat("Skills.FarmingOverrideCropDecayTime", "Skills", "Sets the base decay timer (in seconds) applied to crops picked up from a harvest. Affected by the FreshHarvest perk.", 18000, true);
+		SKILLS_FARMING_OVERRIDE_DIG_TIME_MULT = RegisterSettingFloat("Skills.FarmingOverrideDigTimeMult", "Skills", "Sets the base time multiplier for digging or tilling a garden plot. Values above 1.0 make digging slower. The QuickDigger perk reduces this further.", 2.5, false);
+		SKILLS_FARMING_OVERRIDE_WATER_USAGE_MULT = RegisterSettingFloat("Skills.FarmingOverrideWaterUsageMult", "Skills", "Sets a multiplier on base water consumption for garden slots. Values above 1.0 increase water needs. The WaterBalance perk reduces this further.", 2.0, false);
+		SKILLS_FARMING_OVERRIDE_FERTILIZE_USAGE_MULT = RegisterSettingFloat("Skills.FarmingOverrideFertilizeUsageMult", "Skills", "Sets a multiplier on fertility applied per fertilizer tick. Values below 1.0 reduce fertility gained per tick, requiring more fertilizer overall. The RichSoil perk increases efficiency.", 0.3, true);
+		SKILLS_FARMING_OVERRIDE_BASE_YIELD_MULT = RegisterSettingFloat("Skills.FarmingOverrideBaseYieldMult", "Skills", "Sets the base harvesting efficiency before skill modifiers. Values below 1.0 reduce the number of crops spawned. The HarvestYield skill modifier is added on top of this.", 0.5, true);
+		SKILLS_FARMING_OVERRIDE_CROP_BASE_QUANTITY = RegisterSettingFloat("Skills.FarmingOverrideCropBaseQuantity", "Skills", "Sets the base quantity multiplier of each harvested crop without the RichHarvest perk. Value range from 0 (0%) to 1 (100%). The RichHarvest perk is added on top of this value.", 0.5, true);
+		SKILLS_FARMING_OVERRIDE_SEED_CUT_MULT = RegisterSettingFloat("Skills.FarmingOverrideSeedCutMult", "Skills", "Sets the base seed quantity multiplier after cutting seeds from a fruit or vegetable. The SeedGain perk is added on top of this value and can push the result above vanilla.", 0.3, true);
 		
 		RegisterRegion("Skills", "Initial experience");
 		array<ref TerjeSkillCfg> registeredSkills();

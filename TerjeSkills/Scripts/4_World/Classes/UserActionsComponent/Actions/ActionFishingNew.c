@@ -2,34 +2,44 @@ modded class ActionFishingNew
 {
 	override protected EntityAI TrySpawnCatch(FishingActionData action_data)
 	{
+		float catchChance = 1;
 		if (action_data.m_Player && action_data.m_Player.GetTerjeSkills())
 		{
 			float modifierValue;
-			float catchChance = Math.Clamp(GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_FISHING_OVERRIDE_BASE_CATCH_CHANCE), 0, 1);
+			catchChance = Math.Clamp(GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_FISHING_OVERRIDE_BASE_CATCH_CHANCE), 0, 1);
 			if (action_data.m_Player.GetTerjeSkills().GetSkillModifierValue("fish", "catchmod", modifierValue))
 			{
 				modifierValue = Math.Clamp(modifierValue, 0, 1);
 				catchChance += (1.0 - catchChance) * modifierValue;
 			}
-			
-			if (catchChance < Math.RandomFloat01())
-			{
-				return null;
-			}
 		}
 		
 		EntityAI result = super.TrySpawnCatch(action_data);
-		if (action_data.m_Player && TerjeProcessingSpawnCatch(action_data.m_Player, result))
+		
+		if (catchChance < Math.RandomFloat01())
 		{
-			super.TrySpawnCatch(action_data);
+			if (result) result.Delete(); // cleanup
+			return null;
 		}
 		
+		if (action_data.m_Player && result)
+		{
+			if (TerjeProcessingSpawnCatch(action_data, result))
+			{
+				vector pos = action_data.m_Player.GetPosition();
+				EntityAI extra = EntityAI.Cast(g_Game.CreateObjectEx(result.GetType(), pos, ECE_PLACE_ON_SURFACE));
+			}
+		}
 		return result;
 	}
 	
-	bool TerjeProcessingSpawnCatch(PlayerBase player, EntityAI fishItem)
+	bool TerjeProcessingSpawnCatch(FishingActionData action_data, EntityAI fishItem)
 	{
 		bool spawnExtraFish = false;
+		PlayerBase player = PlayerBase.Cast(action_data.m_Player);
+		ItemBase fishingRod = ItemBase.Cast(action_data.m_MainItem);
+		ItemBase resultItem = ItemBase.Cast(fishItem);
+		
 		if (g_Game.IsDedicatedServer())
 		{
 			int expGainValue;
@@ -37,7 +47,6 @@ modded class ActionFishingNew
 			{
 				expGainValue = GetTerjeSettingInt(TerjeSettingsCollection.SKILLS_FISHING_SUCCESS_CATCH_EXP_GAIN);
 				
-				ItemBase resultItem = ItemBase.Cast(fishItem);
 				if (resultItem && resultItem.IsTerjeWholeFish())
 				{
 					float perkValue;
@@ -58,7 +67,6 @@ modded class ActionFishingNew
 			
 			if (player && player.GetTerjeSkills())
 			{
-				ItemBase fishingRod = player.GetItemInHands();
 				if (fishingRod && GetTerjeGameConfig().ConfigIsExisting("CfgVehicles " + fishingRod.GetType() + " terjeFishingExpModifier"))
 				{
 					expGainValue = (int)(expGainValue * GetTerjeGameConfig().ConfigGetFloat("CfgVehicles " + fishingRod.GetType() + " terjeFishingExpModifier"));

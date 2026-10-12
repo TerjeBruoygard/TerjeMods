@@ -13,6 +13,12 @@ modded class TerjeConsumableEffects
 		int MaxTimeSec;
 		float ActiveTimeSec;
 		
+		medValue = GetTerjeGameConfig().ConfigGetFloat( classname + " overdosedIncrement" );
+		if (medValue < 0)
+		{
+			player.GetTerjeStats().SetOverdoseValue( Math.Clamp(player.GetTerjeStats().GetOverdoseValue() + (medValue * amount), 0, player.GetTerjeStats().GetOverdoseValue()));
+		}
+		
 		medLevel = GetTerjeGameConfig().ConfigGetInt( classname + " medPainkillerLevel" );
 		if (medLevel > 0)
 		{

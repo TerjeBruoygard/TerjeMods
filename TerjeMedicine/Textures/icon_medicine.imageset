@@ -4,7 +4,7 @@ ImageSetClass {
  Textures {
   ImageSetTextureClass {
    mpix 1
-   path "{B08AF48F14248E9B}TerjeMedicine/Textures/icon_medicine.edds"
+   path "{DA8466865AACFF61}TerjeMedicine/Textures/icon_medicine.edds"
   }
  }
  Images {
@@ -371,6 +371,30 @@ ImageSetClass {
   ImageSetDefClass tm_healthgain {
    Name "tm_healthgain"
    Pos 935 0
+   Size 70 70
+   Flags 0
+  }
+  ImageSetDefClass tm_hand_0 {
+   Name "tm_hand_0"
+   Pos 77 521
+   Size 70 70
+   Flags 0
+  }
+  ImageSetDefClass tm_hand_1 {
+   Name "tm_hand_1"
+   Pos 151 521
+   Size 70 70
+   Flags 0
+  }
+  ImageSetDefClass tm_hand_2 {
+   Name "tm_hand_2"
+   Pos 225 521
+   Size 70 70
+   Flags 0
+  }
+  ImageSetDefClass tm_hand_3 {
+   Name "tm_hand_3"
+   Pos 225 521
    Size 70 70
    Flags 0
   }

@@ -61,41 +61,46 @@ modded class AnimalBase
 		
 		if (g_Game.IsDedicatedServer())
 		{
-			m_terjeRadiationUpdate += dt;
-			if (m_terjeRadiationUpdate > 30)
-			{
-				PluginTerjeScriptableAreas plugin = GetTerjeScriptableAreas();
-				if (plugin)
-				{
-					float currentRadiation = GetTerjeRadiation();
-					float radioactiveGlobalModifier = GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_AREAS_POWER_MOD);
-					float rAmount = plugin.CalculateTerjeEffectValue(this, "rad") * radioactiveGlobalModifier;
-					rAmount -= GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ITEM_LOSE_PER_SEC);
-					
-					if (rAmount > 0)
-					{
-						float maxAccumulatedRadLimit = rAmount * GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ZONE_POWER_TO_RAD_LIMIT);
-						if (currentRadiation < maxAccumulatedRadLimit)
-						{
-							AddTerjeRadiation(Math.Clamp(rAmount * m_terjeRadiationUpdate, 0, maxAccumulatedRadLimit - currentRadiation));
-						}
-					}
-					else
-					{
-						AddTerjeRadiation(rAmount * m_terjeRadiationUpdate);
-					}
-				}
-				
-				m_terjeRadiationUpdate = 0;
-			}
-			
-			if (m_terjeRadiationServer > TerjeRadiationConstants.RADIATION_ANIMALS_DAMAGE_THRESHOLD && GetTerjeSettingBool(TerjeSettingsCollection.RADIATION_DAMAGE_ANIMALS))
-			{
-				DecreaseHealth("", "", TerjeRadiationConstants.RADIATION_ANIMALS_DAMAGE_PER_SEC * dt);
-			}
+			TerjeRadiationUpdate(dt);
 		}
 	}
-	
+
+	void TerjeRadiationUpdate(float dt)
+	{
+		m_terjeRadiationUpdate += dt;
+		if (m_terjeRadiationUpdate > 30)
+		{
+			PluginTerjeScriptableAreas plugin = GetTerjeScriptableAreas();
+			if (plugin)
+			{
+				float currentRadiation = GetTerjeRadiation();
+				float radioactiveGlobalModifier = GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_AREAS_POWER_MOD);
+				float rAmount = plugin.CalculateTerjeEffectValue(this, "rad") * radioactiveGlobalModifier;
+				rAmount -= GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ITEM_LOSE_PER_SEC);
+				
+				if (rAmount > 0)
+				{
+					float maxAccumulatedRadLimit = rAmount * GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ZONE_POWER_TO_RAD_LIMIT);
+					if (currentRadiation < maxAccumulatedRadLimit)
+					{
+						AddTerjeRadiation(Math.Clamp(rAmount * m_terjeRadiationUpdate, 0, maxAccumulatedRadLimit - currentRadiation));
+					}
+				}
+				else
+				{
+					AddTerjeRadiation(rAmount * m_terjeRadiationUpdate);
+				}
+			}
+			
+			m_terjeRadiationUpdate = 0;
+		}
+		
+		if (m_terjeRadiationServer > TerjeRadiationConstants.RADIATION_ANIMALS_DAMAGE_THRESHOLD && GetTerjeSettingBool(TerjeSettingsCollection.RADIATION_DAMAGE_ANIMALS))
+		{
+			DecreaseHealth("", "", TerjeRadiationConstants.RADIATION_ANIMALS_DAMAGE_PER_SEC * dt);
+		}
+	}
+
 	override void OnTerjeStoreSave(TerjeStorageWritingContext ctx)
 	{
 		super.OnTerjeStoreSave(ctx);

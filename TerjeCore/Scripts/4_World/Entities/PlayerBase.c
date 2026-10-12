@@ -798,8 +798,9 @@ modded class PlayerBase
 		
 		if (m_terjePlayerStatesMaskClient != m_terjePlayerStatesMask)
 		{
+			int oldMask = m_terjePlayerStatesMaskClient;
 			m_terjePlayerStatesMaskClient = m_terjePlayerStatesMask;
-			OnTerjePlayerStateChanged();
+			if (HasTerjeInvisibilityBitsChanged(oldMask, m_terjePlayerStatesMaskClient)) OnTerjePlayerStateChanged();
 		}
 	}
 	
@@ -812,7 +813,7 @@ modded class PlayerBase
 			if (bitmask != m_terjePlayerStatesMask)
 			{
 				m_terjePlayerStatesMask = bitmask;
-				OnTerjePlayerStateChanged();
+				if (IsTerjeInvisibilityStateBit(id)) OnTerjePlayerStateChanged();
 				SetSynchDirty();
 			}
 		}
@@ -820,6 +821,25 @@ modded class PlayerBase
 		{
 			TerjeLog_Error("PlayerBase::SetTerjePlayerStateBit function call on client is not allowed.");
 		}
+	}
+	
+	protected bool IsTerjeInvisibilityStateBit(TerjePlayerStatesMask id)
+	{
+		if (id == TerjePlayerStatesMask.TERJE_INVISIBLE_LOCAL) return true;
+		if (id == TerjePlayerStatesMask.TERJE_INVISIBLE_REMOTE) return true;
+		return false;
+	}
+
+	protected bool HasTerjeInvisibilityBitsChanged(int oldMask, int newMask)
+	{
+		bool oldLocal = TerjeBitmaskHelper.GetBit(oldMask, TerjePlayerStatesMask.TERJE_INVISIBLE_LOCAL);
+		bool oldRemote = TerjeBitmaskHelper.GetBit(oldMask, TerjePlayerStatesMask.TERJE_INVISIBLE_REMOTE);
+		bool newLocal = TerjeBitmaskHelper.GetBit(newMask, TerjePlayerStatesMask.TERJE_INVISIBLE_LOCAL);
+		bool newRemote = TerjeBitmaskHelper.GetBit(newMask, TerjePlayerStatesMask.TERJE_INVISIBLE_REMOTE);
+
+		if (oldLocal != newLocal) return true;
+		if (oldRemote != newRemote) return true;
+		return false;
 	}
 	
 	protected bool GetTerjePlayerStateBit(TerjePlayerStatesMask id)

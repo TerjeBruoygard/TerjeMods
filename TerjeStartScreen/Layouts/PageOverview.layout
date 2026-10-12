@@ -75,6 +75,7 @@ FrameWidgetClass terjePageRootName {
       }
       TextWidgetClass CharName {
        visible 1
+       clipchildren 0
        ignorepointer 1
        position 0 80
        size 1 24

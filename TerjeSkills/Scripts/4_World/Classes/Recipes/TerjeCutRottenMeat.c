@@ -59,6 +59,11 @@ class TerjeCutRottenMeat extends RecipeBase
 				skillName = "fish";
 				perkName = "remrotf";
 			}
+			else if (edible.IsFruit() || edible.IsMushroom())
+			{
+				skillName = "farm";
+				perkName = "remrotv";
+			}
 			
 			if (skillName != "" && perkName != "")
 			{

@@ -61,41 +61,45 @@ modded class ZombieBase
 		
 		if (g_Game.IsDedicatedServer())
 		{
-			m_terjeRadiationUpdate += pDt;
-			if (m_terjeRadiationUpdate > 30)
-			{
-				PluginTerjeScriptableAreas plugin = GetTerjeScriptableAreas();
-				if (plugin)
-				{
-					float currentRadiation = GetTerjeRadiation();
-					float radioactiveGlobalModifier = GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_AREAS_POWER_MOD);
-					float rAmount = plugin.CalculateTerjeEffectValue(this, "rad") * radioactiveGlobalModifier;
-					rAmount -= GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ITEM_LOSE_PER_SEC);
-					
-					if (rAmount > 0)
-					{
-						float maxAccumulatedRadLimit = rAmount * GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ZONE_POWER_TO_RAD_LIMIT);
-						if (currentRadiation < maxAccumulatedRadLimit)
-						{
-							AddTerjeRadiation(Math.Clamp(rAmount * m_terjeRadiationUpdate, 0, maxAccumulatedRadLimit - currentRadiation));
-						}
-					}
-					else
-					{
-						AddTerjeRadiation(rAmount * m_terjeRadiationUpdate);
-					}
-				}
-				
-				m_terjeRadiationUpdate = 0;
-			}
-			
-			if (m_terjeRadiationServer > TerjeRadiationConstants.RADIATION_ZOMBIE_DAMAGE_THRESHOLD && GetTerjeSettingBool(TerjeSettingsCollection.RADIATION_DAMAGE_ZOMBIES))
-			{
-				DecreaseHealth("", "", TerjeRadiationConstants.RADIATION_ZOMBIE_DAMAGE_PER_SEC * pDt);
-			}
+			TerjeRadiationUpdate(pDt);
 		}
 	}
 	
+	void TerjeRadiationUpdate(float pDt)
+	{
+		m_terjeRadiationUpdate += pDt;
+		if (m_terjeRadiationUpdate > 30)
+		{
+			PluginTerjeScriptableAreas plugin = GetTerjeScriptableAreas();
+			if (plugin)
+			{
+				float currentRadiation = GetTerjeRadiation();
+				float radioactiveGlobalModifier = GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_AREAS_POWER_MOD);
+				float rAmount = plugin.CalculateTerjeEffectValue(this, "rad") * radioactiveGlobalModifier;
+				rAmount -= GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ITEM_LOSE_PER_SEC);
+				
+				if (rAmount > 0)
+				{
+					float maxAccumulatedRadLimit = rAmount * GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_ZONE_POWER_TO_RAD_LIMIT);
+					if (currentRadiation < maxAccumulatedRadLimit)
+					{
+						AddTerjeRadiation(Math.Clamp(rAmount * m_terjeRadiationUpdate, 0, maxAccumulatedRadLimit - currentRadiation));
+					}
+				}
+				else
+				{
+					AddTerjeRadiation(rAmount * m_terjeRadiationUpdate);
+				}
+			}
+			
+			m_terjeRadiationUpdate = 0;
+		}
+		
+		if (m_terjeRadiationServer > TerjeRadiationConstants.RADIATION_ZOMBIE_DAMAGE_THRESHOLD && GetTerjeSettingBool(TerjeSettingsCollection.RADIATION_DAMAGE_ZOMBIES))
+		{
+			DecreaseHealth("", "", TerjeRadiationConstants.RADIATION_ZOMBIE_DAMAGE_PER_SEC * pDt);
+		}
+	}
 	override void OnTerjeStoreSave(TerjeStorageWritingContext ctx)
 	{
 		super.OnTerjeStoreSave(ctx);

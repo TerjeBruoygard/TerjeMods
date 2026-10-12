@@ -4,7 +4,7 @@ class Fishing: SkillsBase
 	enabled=1;
 	displayName="#STR_TERJESKILL_FISHING_NAME";
 	description="#STR_TERJESKILL_FISHING_DESC";
-	icon="set:TerjeSkills_icon image:ts_fushing";
+	icon="set:TerjeSkills_icon image:ts_fishing";
 	class Modifiers
 	{
 		class CatchFishModifier

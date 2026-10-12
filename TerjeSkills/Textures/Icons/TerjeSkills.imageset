@@ -56,9 +56,15 @@ ImageSetClass {
    Size 128 128
    Flags 0
   }
-  ImageSetDefClass ts_fushing {
-   Name "ts_fushing"
+  ImageSetDefClass ts_fishing {
+   Name "ts_fishing"
    Pos 326 11
+   Size 128 128
+   Flags 0
+  }
+  ImageSetDefClass ts_farming {
+   Name "ts_farming"
+   Pos 502 471
    Size 128 128
    Flags 0
   }
