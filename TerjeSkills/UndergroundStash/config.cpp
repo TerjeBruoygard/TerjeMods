@@ -19,7 +19,7 @@ class CfgVehicles
 	class UndergroundStash: Inventory_Base
 	{
 		scope = 2;
-		model = "\TerjeSkills\UndergroundStash\underground_stash.p3d";
+		model = "\TerjeSkills\UndergroundStash\terje_stash.p3d";
 		hiddenSelections[] = {"zbytek"};
 		simpleHiddenSelections[] = {"zbytek"};
 		hiddenSelectionsTextures[] = {"dz\gear\cultivation\data\soil_cultivated_co.paa"};
@@ -27,7 +27,7 @@ class CfgVehicles
 	};
 	class UndergroundStashSnow: UndergroundStash
 	{
-		model = "\TerjeSkills\UndergroundStash\underground_stash.p3d";
+		model = "\TerjeSkills\UndergroundStash\terje_stash.p3d";
 		hiddenSelections[] = {"zbytek"};
 		simpleHiddenSelections[] = {"zbytek"};
 		hiddenSelectionsTextures[] = {"dz\gear\camping\data\underground_stash_snow_ca.paa"};
