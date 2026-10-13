@@ -7,7 +7,7 @@ class CfgPatches
 		requiredVersion=0.1;
 		requiredAddons[]=
 		{
-			"TerjeMedicine",
+			"TerjeSkills",
 			"DZ_Gear_Camping"
 		};
 	};
