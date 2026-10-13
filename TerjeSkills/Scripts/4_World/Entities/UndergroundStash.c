@@ -8,6 +8,12 @@ modded class UndergroundStash
 		RegisterNetSyncVariableBool("m_terjeStashInvisible");
 	}
 	
+	override void EEInit()
+	{
+		super.EEInit();
+		TerjeApplyStashVisibility();
+	}
+	
 	override void OnTerjeStoreSave(TerjeStorageWritingContext ctx)
 	{
 		super.OnTerjeStoreSave(ctx);
@@ -23,13 +29,14 @@ modded class UndergroundStash
 	override void AfterStoreLoad()
 	{	
 		super.AfterStoreLoad();
+		TerjeApplyStashVisibility();
 		SetSynchDirty();
 	}
 	
 	override void OnVariablesSynchronized()
 	{
 		super.OnVariablesSynchronized();
-		SetInvisible(m_terjeStashInvisible);
+		TerjeApplyStashVisibility();
 	}
 	
 	void SetTerjeStashInvisible(bool state)
@@ -37,8 +44,15 @@ modded class UndergroundStash
 		if (g_Game.IsDedicatedServer())
 		{
 			m_terjeStashInvisible = state;
+			TerjeApplyStashVisibility();
 			SetSynchDirty();
 		}
+	}
+	
+	protected void TerjeApplyStashVisibility()
+	{
+		SetInvisible(false);
+		SetSimpleHiddenSelectionState(0, !m_terjeStashInvisible);
 	}
 	
 	bool GetTerjeStashInvisible()
