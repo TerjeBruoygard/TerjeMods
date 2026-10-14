@@ -71,16 +71,22 @@ modded class JMPlayerForm
 		m_TerjePerkWidgets = new map<string, Widget>;
 		array<ref TerjeSkillCfg> skills = new array<ref TerjeSkillCfg>;
 		GetTerjeSkillsRegistry().GetSkills(skills);
-		int perkRows = skills.Count();
-		if (perkRows < 1) perkRows = 1;
 		const int MAX_PERKS_PER_ROW = 11;
 		const string TERJE_GRID_LAYOUT = "TerjeCompatibilityCOT/GUI/Layouts/GridSpacer11.layout";
 
-		m_TerjePerksPanel = UIActionManager.CreateGridSpacer( result, perkRows, 1 );
+		m_TerjePerksPanel = g_Game.GetWorkspace().CreateWidgets("TerjeCompatibilityCOT/GUI/Layouts/SkillsList.layout", result);
 
 		foreach (ref TerjeSkillCfg skillCfg : skills)
 		{
-			Widget skillBlock = UIActionManager.CreateGridSpacer( m_TerjePerksPanel, 4, 1 );
+			if (!m_TerjePerksPanel)
+			{
+				break;
+			}
+			Widget skillBlock = g_Game.GetWorkspace().CreateWidgets("TerjeCompatibilityCOT/GUI/Layouts/SkillBlock.layout", m_TerjePerksPanel);
+			if (!skillBlock)
+			{
+				continue;
+			}
 			UIActionManager.CreateText( skillBlock, skillCfg.GetDisplayName(), "" );
 			array<ref TerjePerkCfg> perks = new array<ref TerjePerkCfg>;
 			skillCfg.GetPerks(perks);
@@ -96,7 +102,11 @@ modded class JMPlayerForm
 			{
 				int chunkSize = perkCount - offset;
 				if (chunkSize > MAX_PERKS_PER_ROW) chunkSize = MAX_PERKS_PER_ROW;
-				GridSpacerWidget perkRow = GridSpacerWidget.Cast(g_Game.GetWorkspace().CreateWidgets(TERJE_GRID_LAYOUT,skillBlock));
+				GridSpacerWidget perkRow = GridSpacerWidget.Cast(g_Game.GetWorkspace().CreateWidgets(TERJE_GRID_LAYOUT, skillBlock));
+				if (!perkRow)
+				{
+					break;
+				}
 				for (int j = offset; j < offset + chunkSize; j++)
 				{
 					ref TerjePerkCfg perkCfgMain = visiblePerks.Get(j);
@@ -119,7 +129,10 @@ modded class JMPlayerForm
 		}
 
 		UpdateTerjePerkWidgets();
-		m_TerjePerksPanel.Show(false);
+		if (m_TerjePerksPanel)
+		{
+			m_TerjePerksPanel.Show(false);
+		}
 #endif
 		return result;
 	}

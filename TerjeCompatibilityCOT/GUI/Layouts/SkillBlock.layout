@@ -1,0 +1,9 @@
+WrapSpacerWidgetClass TerjeSkillBlock {
+ position 0 0
+ size 1 0
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 1
+ "Size To Content V" 1
+}
