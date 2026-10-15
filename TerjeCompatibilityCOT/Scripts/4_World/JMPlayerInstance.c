@@ -72,9 +72,10 @@ modded class JMPlayerInstance
 		}
 	}
 
-	override void OnRecieve( ParamsReadContext ctx )
+	override bool OnReceive( ParamsReadContext ctx )
 	{
-		super.OnRecieve(ctx);
+		if (!super.OnReceive(ctx))
+			return false;
 		
 		int count;
 		ctx.Read( count );
@@ -105,6 +106,8 @@ modded class JMPlayerInstance
 			else canBeUpgraded = false;
 			m_TerjePerkStatus.Insert(perkId, new TerjePerkSync(perkLevel, perkActiveLevel, canBeUpgraded));
 		}
+		
+		return true;
 	}
 	
 	float GetTerjeStat(string id)

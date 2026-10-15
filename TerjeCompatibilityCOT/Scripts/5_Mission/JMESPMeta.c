@@ -1,47 +1,17 @@
-modded class JMESPMeta
+modded class JMESPActionMenu
 {
-	UIActionEditableText m_terjeRadiation;
-	
-	override void CreateActions( Widget parent )
+	override void BuildMain()
 	{
-		super.CreateActions(parent);
+		super.BuildMain();
 		
-		m_terjeRadiation = UIActionManager.CreateEditableText( parent, "Radiation:" );
-		m_terjeRadiation.SetOnlyNumbers( true );
-		m_terjeRadiation.Disable();
-	}
-	
-	override void Update()
-	{
-		super.Update();
+		if (!m_Meta || !m_Meta.target)
+			return;
 		
-		if ( m_terjeRadiation && !m_terjeRadiation.IsFocused() && !m_terjeRadiation.IsEdited() )
-		{
-			float radValue = 0;
-			EntityAI targetEntity = EntityAI.Cast(target);
-			if (targetEntity)
-			{
-				radValue = GetTerjeScriptableAreas().GetTerjeRadiationFromEntity(targetEntity);
-			}
-			
-			m_terjeRadiation.SetText( FloatToString( radValue ) );
-		}
-	}
-	
-	override void UpdateActions()
-	{
-		super.UpdateActions();
+		EntityAI targetEntity = EntityAI.Cast(m_Meta.target);
+		if (!targetEntity || !GetTerjeScriptableAreas())
+			return;
 		
-		if ( m_terjeRadiation && !m_terjeRadiation.IsFocused() && !m_terjeRadiation.IsEdited() )
-		{
-			float radValue = 0;
-			EntityAI targetEntity = EntityAI.Cast(target);
-			if (targetEntity)
-			{
-				radValue = GetTerjeScriptableAreas().GetTerjeRadiationFromEntity(targetEntity);
-			}
-			
-			m_terjeRadiation.SetText( FloatToString( radValue ) );
-		}
+		float radValue = GetTerjeScriptableAreas().GetTerjeRadiationFromEntity(targetEntity);
+		Add("terje_rad", "Radiation: " + radValue.ToString(), "");
 	}
 }

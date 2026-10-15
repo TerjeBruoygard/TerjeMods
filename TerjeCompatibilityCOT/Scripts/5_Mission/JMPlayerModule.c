@@ -1,6 +1,6 @@
 modded class JMPlayerModule
 {
-	private override void Exec_Heal( array< string > guids, PlayerIdentity ident, JMPlayerInstance instance = NULL  )
+	protected override void Exec_Heal( array< string > guids, PlayerIdentity ident, JMPlayerInstance instance = NULL  )
 	{
 		array< JMPlayerInstance > players = GetPermissionsManager().GetPlayers( guids );
 		for ( int i = 0; i < players.Count(); i++ )

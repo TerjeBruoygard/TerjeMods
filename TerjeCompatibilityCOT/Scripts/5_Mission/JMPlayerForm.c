@@ -27,7 +27,7 @@ modded class JMPlayerForm
 		}
 	}
 	
-	override private Widget InitActionWidgetsStats( Widget actionsParent )
+	protected override Widget InitActionWidgetsStats( Widget actionsParent )
 	{
 		Widget result = super.InitActionWidgetsStats(actionsParent);
 

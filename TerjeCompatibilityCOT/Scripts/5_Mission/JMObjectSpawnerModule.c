@@ -1,6 +1,6 @@
 modded class JMObjectSpawnerModule
 {
-	override private void SetupEntity( EntityAI entity, float quantity, float health, float temp, int itemState, PlayerBase player, COT_ObjectSetupMode mode = COT_ObjectSetupMode.NONE )
+	protected override void SetupEntity( EntityAI entity, float quantity, float health, float temp, int itemState, PlayerBase player, COT_ObjectSetupMode mode = COT_ObjectSetupMode.NONE )
 	{
 		ItemBase item;
 		if ( itemState < 0 && Class.CastTo( item, entity ) && item.IsLiquidContainer() )
