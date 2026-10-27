@@ -29,7 +29,7 @@ modded class AITargetCallbacksPlayer
 				AnimalBase animal = AnimalBase.Cast(pApplicant);
 				if (animal)
 				{
-					if (animal.IsInherited(Animal_CanisLupus))
+					if (animal.IsInherited(Animal_CanisLupus) || animal.IsInherited(Animal_CanisFamiliaris_Dobermann_ColorBase) || animal.IsInherited(Animal_CanisFamiliaris_GermanShepherd_ColorBase))
 					{
 						if (GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STEALTH_WOLVES_VISIBLE_MODIFIER, settingValue))
 						{
