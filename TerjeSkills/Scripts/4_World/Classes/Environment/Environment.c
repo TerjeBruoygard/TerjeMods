@@ -26,6 +26,17 @@ modded class Environment
 				}
 				result = relativeTemp + GameConstants.ENVIRO_PLAYER_COMFORT_TEMP;
 			}
+			
+			float perkHeatresValue;
+			if (m_Player.GetTerjeSkills().GetPerkValue("surv", "heatres", perkHeatresValue))
+			{
+				relativeTemp = result - GameConstants.ENVIRO_PLAYER_COMFORT_TEMP;	
+				if (relativeTemp > 0)
+				{
+					relativeTemp *= Math.Clamp(1.0 - perkHeatresValue, 0, 1);
+				}
+				result = relativeTemp + GameConstants.ENVIRO_PLAYER_COMFORT_TEMP;
+			}
 		}
 		
 		return result;

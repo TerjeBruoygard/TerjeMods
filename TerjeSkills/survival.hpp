@@ -57,6 +57,19 @@ class Survival: SkillsBase
 			requiredPerkPoints[]={1,1,1,1,1,2};
 			values[]={0.05,0.1,0.2,0.3,0.4,0.5};
 		};
+		class HeatResistance
+		{
+			id="heatres";
+			enabled=1;
+			displayName="#STR_TERJESKILL_SURV_HEATRESISTANCE";
+			description="#STR_TERJESKILL_SURV_HEATRESISTANCE_DES";
+			stagesCount=6;
+			disabledIcon="set:TerjePerkBlack_icon image:tp_heatresist";
+			enabledIcon="set:TerjePerk_icon image:tp_heatresist";
+			requiredSkillLevels[]={1,5,10,15,20,25};
+			requiredPerkPoints[]={1,1,1,1,1,2};
+			values[]={0.05,0.1,0.2,0.3,0.4,0.5};
+		};
 		class RoughFeet
 		{
 			id="rghfeet";
