@@ -1,14 +1,14 @@
 modded class Slot
 {
-	private PlayerBase m_Player;
-	
-	void SetPlayer(PlayerBase player)
+	override void SetSeed(ItemBase seed)
 	{
-		m_Player = player;
+		super.SetSeed(seed);
+		
+		g_Game.GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(Terje_LockSeed, 10, false, seed);
 	}
 	
-	PlayerBase GetPlayer()
+	void Terje_LockSeed(ItemBase seed)
 	{
-		return m_Player;
+		seed.LockToParent();
 	}
 }
