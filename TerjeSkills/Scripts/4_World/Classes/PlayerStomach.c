@@ -59,20 +59,25 @@ modded class PlayerStomach
 			
 			if (m_Player && m_Player.GetTerjeSkills())
 			{
-				if (profile.GetEnergy() > 0)
+				if (profile.GetEnergy() > 0 || profile.GetWaterContent() > 0)
 				{
-					float incaloriePerkValue;
+					float incaloriePerkValue = 0;
 					if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incalorie", incaloriePerkValue))
 					{
-						amount *= 1.0 + incaloriePerkValue;
+						if (profile.GetEnergy() > profile.GetWaterContent())
+							amount *= 1.0 + incaloriePerkValue;
 					}
-				}
-				if (profile.GetWaterContent() > 0)
-				{
-					float incrhydrPerkValue;
+					
+					float incrhydrPerkValue = 0;
 					if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incrhydr", incrhydrPerkValue))
 					{
-						amount *= 1.0 + incrhydrPerkValue;
+						if (profile.GetEnergy() < profile.GetWaterContent())
+							amount *= 1.0 + incrhydrPerkValue;
+					}
+						
+					if (profile.GetEnergy() == profile.GetWaterContent())
+					{
+						amount *= 1.0 + (incrhydrPerkValue + incaloriePerkValue) / 2;
 					}
 				}
 				
