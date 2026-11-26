@@ -10,7 +10,7 @@ modded class ActionGiveBloodSelf
 		PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
 		if (operator && operator.GetTerjeSkills() && blood_obtained > 0)
 		{
-			float skillIncrement = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_GIVE_BLOOD_EXP_GAIN);
+			int skillIncrement = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_GIVE_BLOOD_EXP_GAIN);
 			if (skillIncrement > 0)
 			{
 				float XP_obtained = skillIncrement * blood_obtained / action_data_b.m_MainItem.GetQuantityMax();
