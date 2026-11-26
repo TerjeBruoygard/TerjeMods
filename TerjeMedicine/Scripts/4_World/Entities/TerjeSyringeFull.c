@@ -84,7 +84,7 @@ class TerjeSyringeFull extends Inventory_Base
 			GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_DIRTY_SYRINGE_SEPSIS_CHANCE, dirtySyringeSepsisChance);	
 			if (!IsDisinfected() && (Math.RandomFloat01() < (dirtySyringeSepsisChance * operatorPerkSterilityMod * perkSepsisresMod)))
 			{
-				player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.1);
+				if (player.GetTerjeStats()) player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.1);
 			}
 			
 			TerjeConsumableEffects medEffects = new TerjeConsumableEffects();
