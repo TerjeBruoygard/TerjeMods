@@ -269,6 +269,8 @@ modded class PlayerBase
 	
 	override void OnTerjeCharacterLifetimeUpdated(int secondsSinceRespawn)
 	{
+		super.OnTerjeCharacterLifetimeUpdated(secondsSinceRespawn);
+		
 		if (GetTerjeSkills() != null)
 		{
 			int offsetValue;

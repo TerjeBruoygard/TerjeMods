@@ -73,6 +73,8 @@ modded class PlayerBase
 	
 	override void OnTerjeCharacterLifetimeUpdated(int secondsSinceRespawn)
 	{
+		super.OnTerjeCharacterLifetimeUpdated(secondsSinceRespawn);
+		
 		if (g_Game && g_Game.IsDedicatedServer() && GetTerjeSettingBool(TerjeSettingsCollection.STARTSCREEN_SOULS_ENABLED))
 		{
 			float survTimePow = GetTerjeSettingFloat(TerjeSettingsCollection.STARTSCREEN_SOULS_SURVT_POW);
