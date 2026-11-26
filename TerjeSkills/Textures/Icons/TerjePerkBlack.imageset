@@ -8,847 +8,851 @@ ImageSetClass {
   }
  }
  Images {
-  ImageSetDefClass tp_quickfeet {
+  ImageSetDefClass {
    Name "tp_quickfeet"
    Pos 201 286
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_marathoner {
+  ImageSetDefClass {
    Name "tp_marathoner"
    Pos 201 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_properbreathing {
+  ImageSetDefClass {
    Name "tp_properbreathing"
    Pos 17 286
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_swimmer {
+  ImageSetDefClass {
    Name "tp_swimmer"
    Pos 201 17
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_stairmaster {
+  ImageSetDefClass {
    Name "tp_stairmaster"
    Pos 385 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_nopanting {
+  ImageSetDefClass {
    Name "tp_nopanting"
    Pos 293 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_hydrationctr {
+  ImageSetDefClass {
    Name "tp_hydrationctr"
    Pos 17 106
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_energyctr {
+  ImageSetDefClass {
    Name "tp_energyctr"
    Pos 1121 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_enduring {
+  ImageSetDefClass {
    Name "tp_enduring"
    Pos 753 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_stuntman {
+  ImageSetDefClass {
    Name "tp_stuntman"
    Pos 385 286
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_strongbones {
+  ImageSetDefClass {
    Name "tp_strongbones"
    Pos 477 286
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_climber {
+  ImageSetDefClass {
    Name "tp_climber"
    Pos 109 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_heavyweight {
+  ImageSetDefClass {
    Name "tp_heavyweight"
    Pos 936 106
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_strongman {
+  ImageSetDefClass {
    Name "tp_strongman"
    Pos 385 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_jumper {
+  ImageSetDefClass {
    Name "tp_jumper"
    Pos 937 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_masterdefense {
+  ImageSetDefClass {
    Name "tp_masterdefense"
    Pos 661 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_masterevasion {
+  ImageSetDefClass {
    Name "tp_masterevasion"
    Pos 937 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_gustysquall {
+  ImageSetDefClass {
    Name "tp_gustysquall"
    Pos 477 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_crushingsquall {
+  ImageSetDefClass {
    Name "tp_crushingsquall"
    Pos 109 286
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_heavyonslaught {
+  ImageSetDefClass {
    Name "tp_heavyonslaught"
    Pos 477 15
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_destronslaught {
+  ImageSetDefClass {
    Name "tp_destronslaught"
    Pos 293 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_stronghands {
+  ImageSetDefClass {
    Name "tp_stronghands"
    Pos 569 197
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_masterstroke {
+  ImageSetDefClass {
    Name "tp_masterstroke"
    Pos 661 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_lightarmor {
+  ImageSetDefClass {
    Name "tp_lightarmor"
    Pos 845 15
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_armordissector {
+  ImageSetDefClass {
    Name "tp_armordissector"
    Pos 661 286
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_bonecrusher {
+  ImageSetDefClass {
    Name "tp_bonecrusher"
    Pos 569 286
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_mastersword {
+  ImageSetDefClass {
    Name "tp_mastersword"
    Pos 845 106
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_ownershiptools {
+  ImageSetDefClass {
    Name "tp_ownershiptools"
    Pos 109 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_pilrecognition {
+  ImageSetDefClass {
    Name "tp_pilrecognition"
    Pos 845 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_cleanliness {
+  ImageSetDefClass {
    Name "tp_cleanliness"
    Pos 384 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_surgerystab {
+  ImageSetDefClass {
    Name "tp_surgerystab"
    Pos 1122 106
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_surgerybullet {
+  ImageSetDefClass {
    Name "tp_surgerybullet"
    Pos 1028 555
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_bringinglife {
+  ImageSetDefClass {
    Name "tp_bringinglife"
    Pos 569 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_ampoulerecognition {
+  ImageSetDefClass {
    Name "tp_ampoulerecognition"
    Pos 476 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_injectorrecognition {
+  ImageSetDefClass {
    Name "tp_injectorrecognition"
    Pos 753 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_pharmacologist {
+  ImageSetDefClass {
    Name "tp_pharmacologist"
    Pos 661 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_expertantibiotics {
+  ImageSetDefClass {
    Name "tp_expertantibiotics"
    Pos 17 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_masterdressing {
+  ImageSetDefClass {
    Name "tp_masterdressing"
    Pos 1767 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_surgeon {
+  ImageSetDefClass {
    Name "tp_surgeon"
    Pos 18 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_immunomodulator {
+  ImageSetDefClass {
    Name "tp_immunomodulator"
    Pos 293 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_anesthesiolog {
+  ImageSetDefClass {
    Name "tp_anesthesiolog"
    Pos 937 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_surgeryinternal {
+  ImageSetDefClass {
    Name "tp_surgeryinternal"
    Pos 201 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_coldresist {
+  ImageSetDefClass {
    Name "tp_coldresist"
    Pos 936 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_poisonresist {
+  ImageSetDefClass {
    Name "tp_poisonresist"
    Pos 845 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_hematomarecovery {
+  ImageSetDefClass {
    Name "tp_hematomarecovery"
    Pos 1864 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_woundhealing {
+  ImageSetDefClass {
    Name "tp_woundhealing"
    Pos 109 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_intoxicresist {
+  ImageSetDefClass {
    Name "tp_intoxicresist"
    Pos 293 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_fastsleep {
+  ImageSetDefClass {
    Name "tp_fastsleep"
    Pos 201 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_ironmind {
+  ImageSetDefClass {
    Name "tp_ironmind"
    Pos 385 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_recoveryshock {
+  ImageSetDefClass {
    Name "tp_recoveryshock"
    Pos 661 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_impactresist {
+  ImageSetDefClass {
    Name "tp_impactresist"
    Pos 753 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_durableleather {
+  ImageSetDefClass {
    Name "tp_durableleather"
    Pos 1772 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_reszmbvirus {
+  ImageSetDefClass {
    Name "tp_reszmbvirus"
    Pos 1587 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_resistsepsis {
+  ImageSetDefClass {
    Name "tp_resistsepsis"
    Pos 1860 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_feetwarm {
+  ImageSetDefClass {
    Name "tp_feetwarm"
    Pos 569 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_lowpaintr {
+  ImageSetDefClass {
    Name "tp_lowpaintr"
    Pos 109 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_thermoregulation {
+  ImageSetDefClass {
    Name "tp_thermoregulation"
    Pos 1211 375
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_safelaunch {
+  ImageSetDefClass {
    Name "tp_safelaunch"
    Pos 845 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_radiationresist {
+  ImageSetDefClass {
    Name "tp_radiationresist"
    Pos 661 106
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_radiationregen {
+  ImageSetDefClass {
    Name "tp_radiationregen"
    Pos 1306 107
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_quickhealing {
+  ImageSetDefClass {
    Name "tp_quickhealing"
    Pos 568 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_bloodregen {
+  ImageSetDefClass {
    Name "tp_bloodregen"
    Pos 1303 376
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_incrcalorie {
+  ImageSetDefClass {
    Name "tp_incrcalorie"
    Pos 1674 646
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_incrhydration {
+  ImageSetDefClass {
    Name "tp_incrhydration"
    Pos 1211 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_energysaving {
+  ImageSetDefClass {
    Name "tp_energysaving"
    Pos 203 827
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_watersaving {
+  ImageSetDefClass {
    Name "tp_watersaving"
    Pos 573 827
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_energycontrol {
+  ImageSetDefClass {
    Name "tp_energycontrol"
    Pos 1215 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_hydrationcontrol {
+  ImageSetDefClass {
    Name "tp_hydrationcontrol"
    Pos 1029 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_enregycontain {
+  ImageSetDefClass {
    Name "tp_enregycontain"
    Pos 18 827
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_watercontain {
+  ImageSetDefClass {
    Name "tp_watercontain"
    Pos 480 827
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_energycold {
+  ImageSetDefClass {
    Name "tp_energycold"
    Pos 1673 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_hydrationcold {
+  ImageSetDefClass {
    Name "tp_hydrationcold"
    Pos 1581 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_resistwater {
+  ImageSetDefClass {
    Name "tp_resistwater"
    Pos 1029 467
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_resisthunger {
+  ImageSetDefClass {
    Name "tp_resisthunger"
    Pos 1220 827
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_quiestep {
+  ImageSetDefClass {
    Name "tp_quiestep"
    Pos 1124 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_coldblooded {
+  ImageSetDefClass {
    Name "tp_coldblooded"
    Pos 479 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_quietshooter {
+  ImageSetDefClass {
    Name "tp_quietshooter"
    Pos 1769 286
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_fittingequipment {
+  ImageSetDefClass {
    Name "tp_fittingequipment"
    Pos 1036 828
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_invisibleman {
+  ImageSetDefClass {
    Name "tp_invisibleman"
    Pos 387 737
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_catvision {
+  ImageSetDefClass {
    Name "tp_catvision"
    Pos 569 16
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_silentexecut {
+  ImageSetDefClass {
    Name "tp_silentexecut"
    Pos 1950 646
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_silentkiller {
+  ImageSetDefClass {
    Name "tp_silentkiller"
    Pos 477 106
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_invisiblestep {
+  ImageSetDefClass {
    Name "tp_invisiblestep"
    Pos 1217 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_shadowtrack {
+  ImageSetDefClass {
    Name "tp_shadowtrack"
    Pos 1490 466
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_ninja {
+  ImageSetDefClass {
    Name "tp_ninja"
    Pos 1032 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_wolfinstinct {
+  ImageSetDefClass {
    Name "tp_wolfinstinct"
    Pos 1684 827
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_friendbear {
+  ImageSetDefClass {
    Name "tp_friendbear"
    Pos 662 646
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_startingfire {
+  ImageSetDefClass {
    Name "tp_startingfire"
    Pos 201 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_freezeresist {
+  ImageSetDefClass {
    Name "tp_freezeresist"
-   Pos 1679 736
+   Pos 1126 1011
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_roughfeet {
+  ImageSetDefClass {
    Name "tp_roughfeet"
    Pos 939 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_roughhands {
+  ImageSetDefClass {
    Name "tp_roughhands"
    Pos 662 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_ancestechno {
+  ImageSetDefClass {
    Name "tp_ancestechno"
    Pos 293 646
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_maintainingfire {
+  ImageSetDefClass {
    Name "tp_maintainingfire"
    Pos 17 646
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_ownershiptools {
+  ImageSetDefClass {
    Name "tp_ownershiptools"
    Pos 937 287
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_caches {
+  ImageSetDefClass {
    Name "tp_caches"
    Pos 1581 646
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_durablematerial {
+  ImageSetDefClass {
    Name "tp_durablematerial"
    Pos 201 646
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_expert {
+  ImageSetDefClass {
    Name "tp_expert"
    Pos 1858 647
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_durableequip {
+  ImageSetDefClass {
    Name "tp_durableequip"
    Pos 1402 736
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_wmlover {
+  ImageSetDefClass {
    Name "tp_wmlover"
    Pos 753 106
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_survinstinct {
+  ImageSetDefClass {
    Name "tp_survinstinct"
    Pos 1767 18
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_thickblood {
+  ImageSetDefClass {
    Name "tp_thickblood"
    Pos 1398 107
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_mushpremonition {
+  ImageSetDefClass {
    Name "tp_mushpremonition"
    Pos 1127 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_rabiesres {
+  ImageSetDefClass {
    Name "tp_rabiesres"
    Pos 1675 17
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_meathunt {
+  ImageSetDefClass {
    Name "tp_meathunt"
    Pos 202 919
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_quickcutm {
+  ImageSetDefClass {
    Name "tp_quickcutm"
    Pos 293 737
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_masterknife {
+  ImageSetDefClass {
    Name "tp_masterknife"
    Pos 1956 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_trapexpert {
+  ImageSetDefClass {
    Name "tp_trapexpert"
    Pos 753 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_prhides {
+  ImageSetDefClass {
    Name "tp_prhides"
    Pos 109 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_exphunter {
+  ImageSetDefClass {
    Name "tp_exphunter"
    Pos 758 827
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_removrot {
+  ImageSetDefClass {
    Name "tp_removrot"
    Pos 1490 107
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_knwanatomy {
+  ImageSetDefClass {
    Name "tp_knwanatomy"
    Pos 1861 18
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_pathfindr {
+  ImageSetDefClass {
    Name "tp_pathfindr"
    Pos 1956 919
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_mastfile {
+  ImageSetDefClass {
    Name "tp_mastfile"
    Pos 1588 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_quickclean {
+  ImageSetDefClass {
    Name "tp_quickclean"
    Pos 294 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_straightarms {
+  ImageSetDefClass {
    Name "tp_straightarms"
    Pos 664 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_mastrtrap {
+  ImageSetDefClass {
    Name "tp_mastrtrap"
    Pos 845 196
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_skillfishman {
+  ImageSetDefClass {
    Name "tp_skillfishman"
    Pos 1028 106
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_fishmanluck {
+  ImageSetDefClass {
    Name "tp_fishmanluck"
    Pos 386 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_tensioncontr {
+  ImageSetDefClass {
    Name "tp_tensioncontr"
    Pos 850 919
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_tacklerepaip {
+  ImageSetDefClass {
    Name "tp_tacklerepaip"
    Pos 1858 107
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_reliablegear {
+  ImageSetDefClass {
    Name "tp_reliablegear"
    Pos 942 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_luckmagnet {
+  ImageSetDefClass {
    Name "tp_luckmagnet"
    Pos 1219 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_cleanwizard {
+  ImageSetDefClass {
    Name "tp_cleanwizard"
    Pos 1766 107
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_wormhunter {
+  ImageSetDefClass {
    Name "tp_wormhunter"
    Pos 1404 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_craftsman {
+  ImageSetDefClass {
    Name "tp_craftsman"
    Pos 571 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_stethoscope {
+  ImageSetDefClass {
    Name "tp_stethoscope"
    Pos 1119 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_biohazard {
+  ImageSetDefClass {
    Name "tp_biohazard"
    Pos 753 556
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_survcrafts {
+  ImageSetDefClass {
    Name "tp_survcrafts"
    Pos 1496 918
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_remrotv {
+  ImageSetDefClass {
    Name "tp_remrotv"
    Pos 942 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_richsoil {
+  ImageSetDefClass {
    Name "tp_richsoil"
    Pos 850 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_quickdig {
+  ImageSetDefClass {
    Name "tp_quickdig"
    Pos 296 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_fastgrow {
+  ImageSetDefClass {
    Name "tp_fastgrow"
    Pos 201 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_richhrv {
+  ImageSetDefClass {
    Name "tp_richhrv"
    Pos 18 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_freshhrv {
+  ImageSetDefClass {
    Name "tp_freshhrv"
    Pos 109 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_toughcrp {
+  ImageSetDefClass {
    Name "tp_toughcrp"
    Pos 386 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_wtrbal {
+  ImageSetDefClass {
    Name "tp_wtrbal"
    Pos 479 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_weathprf {
+  ImageSetDefClass {
    Name "tp_weathprf"
    Pos 571 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_hothouse {
+  ImageSetDefClass {
    Name "tp_hothouse"
    Pos 664 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_seedgain {
+  ImageSetDefClass {
    Name "tp_seedgain"
    Pos 757 1008
    Size 80 80
    Flags 0
   }
-  ImageSetDefClass tp_coldgrnd {
+  ImageSetDefClass {
    Name "tp_coldgrnd"
    Pos 1035 1010
    Size 80 80
    Flags 0
   }
- }
- Groups {
+  ImageSetDefClass {
+   Name "tp_heatresist"
+   Pos 1219 1011
+   Size 80 80
+   Flags 0
+  }
  }
 }
