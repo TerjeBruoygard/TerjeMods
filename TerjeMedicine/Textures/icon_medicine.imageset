@@ -8,397 +8,413 @@ ImageSetClass {
   }
  }
  Images {
-  ImageSetDefClass tm_antibiotic {
+  ImageSetDefClass {
    Name "tm_antibiotic"
    Pos 3 3
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_painkiller {
+  ImageSetDefClass {
    Name "tm_painkiller"
    Pos 74 3
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_antipoison {
+  ImageSetDefClass {
    Name "tm_antipoison"
    Pos 148 3
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_salve {
+  ImageSetDefClass {
    Name "tm_salve"
    Pos 223 3
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_antidotz {
+  ImageSetDefClass {
    Name "tm_antidotz"
    Pos 376 3
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_antisepsis {
+  ImageSetDefClass {
    Name "tm_antisepsis"
    Pos 449 3
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_influenza {
+  ImageSetDefClass {
    Name "tm_influenza"
    Pos 0 74
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_adrenalin {
+  ImageSetDefClass {
    Name "tm_adrenalin"
    Pos 4 147
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_hematoma {
+  ImageSetDefClass {
    Name "tm_hematoma"
    Pos 224 75
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_virusz {
+  ImageSetDefClass {
    Name "tm_virusz"
    Pos 373 72
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_tablets {
+  ImageSetDefClass {
    Name "tm_tablets"
    Pos 455 73
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_concussionheal {
+  ImageSetDefClass {
    Name "tm_concussionheal"
    Pos 454 151
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_noblood {
+  ImageSetDefClass {
    Name "tm_noblood"
    Pos 373 146
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_concussion {
+  ImageSetDefClass {
    Name "tm_concussion"
    Pos 297 223
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bullethit {
+  ImageSetDefClass {
    Name "tm_bullethit"
    Pos 1 222
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_scratch {
+  ImageSetDefClass {
    Name "tm_scratch"
    Pos 222 223
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_viscera {
+  ImageSetDefClass {
    Name "tm_viscera"
    Pos 148 221
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_wound {
+  ImageSetDefClass {
    Name "tm_wound"
    Pos 75 219
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_mind_0 {
+  ImageSetDefClass {
    Name "tm_mind_0"
    Pos 3 298
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_mind_1 {
+  ImageSetDefClass {
    Name "tm_mind_1"
    Pos 77 298
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_mind_2 {
+  ImageSetDefClass {
    Name "tm_mind_2"
    Pos 150 298
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_mind_3 {
+  ImageSetDefClass {
    Name "tm_mind_3"
    Pos 224 298
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_mind_4 {
+  ImageSetDefClass {
    Name "tm_mind_4"
    Pos 298 298
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bigwound {
+  ImageSetDefClass {
    Name "tm_bigwound"
    Pos 369 297
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_sleeping_0 {
+  ImageSetDefClass {
    Name "tm_sleeping_0"
    Pos 1 372
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_sleeping_1 {
+  ImageSetDefClass {
    Name "tm_sleeping_1"
    Pos 75 372
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_sleeping_2 {
+  ImageSetDefClass {
    Name "tm_sleeping_2"
    Pos 149 372
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_sleeping_3 {
+  ImageSetDefClass {
    Name "tm_sleeping_3"
    Pos 222 372
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_sleeping_4 {
+  ImageSetDefClass {
    Name "tm_sleeping_4"
    Pos 297 372
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_biohazard {
+  ImageSetDefClass {
    Name "tm_biohazard"
    Pos 373 372
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_sepsis {
+  ImageSetDefClass {
    Name "tm_sepsis"
    Pos 2 445
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bloodregen {
+  ImageSetDefClass {
    Name "tm_bloodregen"
    Pos 75 445
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_hemostatic {
+  ImageSetDefClass {
    Name "tm_hemostatic"
    Pos 150 445
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_disinfected_1 {
+  ImageSetDefClass {
    Name "tm_disinfected_1"
    Pos 223 445
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_dirtyhand {
+  ImageSetDefClass {
    Name "tm_dirtyhand"
    Pos 299 445
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_disinfected_2 {
+  ImageSetDefClass {
    Name "tm_disinfected_2"
    Pos 374 445
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_pain {
+  ImageSetDefClass {
    Name "tm_pain"
    Pos 74 73
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_poison {
+  ImageSetDefClass {
    Name "tm_poison"
    Pos 148 75
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_antidepresant {
+  ImageSetDefClass {
    Name "tm_antidepresant"
    Pos 78 148
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bandagedDirtyOld {
+  ImageSetDefClass {
    Name "tm_bandagedDirtyOld"
    Pos 297 148
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bandagedCleanOld {
+  ImageSetDefClass {
    Name "tm_bandagedCleanOld"
    Pos 223 146
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_overdosed {
+  ImageSetDefClass {
    Name "tm_overdosed"
    Pos 153 148
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bandageddirty_2 {
+  ImageSetDefClass {
    Name "tm_bandageddirty_2"
    Pos 457 449
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bandagedclean_2 {
+  ImageSetDefClass {
    Name "tm_bandagedclean_2"
    Pos 456 372
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bandageddirty_1 {
+  ImageSetDefClass {
    Name "tm_bandageddirty_1"
    Pos 457 302
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_bandagedclean_1 {
+  ImageSetDefClass {
    Name "tm_bandagedclean_1"
    Pos 457 222
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_protectingwound {
+  ImageSetDefClass {
    Name "tm_protectingwound"
    Pos 369 214
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_protectingwoundseps {
+  ImageSetDefClass {
    Name "tm_protectingwoundseps"
    Pos 546 228
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_biohazardheal {
+  ImageSetDefClass {
    Name "tm_biohazardheal"
    Pos 524 3
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_vacina_a {
+  ImageSetDefClass {
    Name "tm_vacina_a"
    Pos 689 2
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_vacina_b {
+  ImageSetDefClass {
    Name "tm_vacina_b"
    Pos 610 2
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_rabies {
+  ImageSetDefClass {
    Name "tm_rabies"
    Pos 532 73
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_rabies_cure {
+  ImageSetDefClass {
    Name "tm_rabies_cure"
    Pos 535 146
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_vacina_c {
+  ImageSetDefClass {
    Name "tm_vacina_c"
    Pos 768 0
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_burn {
+  ImageSetDefClass {
    Name "tm_burn"
    Pos 541 300
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_burn_cure {
+  ImageSetDefClass {
    Name "tm_burn_cure"
    Pos 540 371
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_frostbite {
+  ImageSetDefClass {
    Name "tm_frostbite"
    Pos 542 449
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_frostbite_cure {
+  ImageSetDefClass {
    Name "tm_frostbite_cure"
    Pos 544 526
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_expresstest {
+  ImageSetDefClass {
    Name "tm_expresstest"
    Pos 3 518
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_immunity {
+  ImageSetDefClass {
    Name "tm_immunity"
    Pos 851 0
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_healthgain {
+  ImageSetDefClass {
    Name "tm_healthgain"
    Pos 935 0
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_hand_0 {
+  ImageSetDefClass {
    Name "tm_hand_0"
    Pos 77 521
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_hand_1 {
+  ImageSetDefClass {
    Name "tm_hand_1"
    Pos 151 521
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_hand_2 {
+  ImageSetDefClass {
    Name "tm_hand_2"
    Pos 225 521
    Size 70 70
    Flags 0
   }
-  ImageSetDefClass tm_hand_3 {
+  ImageSetDefClass {
    Name "tm_hand_3"
    Pos 225 521
    Size 70 70
    Flags 0
   }
- }
- Groups {
+  ImageSetDefClass {
+   Name "tm_heatstroke"
+   Pos 614 75
+   Size 70 70
+   Flags 0
+  }
+  ImageSetDefClass {
+   Name "tm_iritatedeye"
+   Pos 692 79
+   Size 70 70
+   Flags 0
+  }
+  ImageSetDefClass {
+   Name "tm_silicosis"
+   Pos 614 153
+   Size 70 70
+   Flags 0
+  }
  }
 }
