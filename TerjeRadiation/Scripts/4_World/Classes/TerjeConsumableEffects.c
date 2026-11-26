@@ -4,19 +4,22 @@ modded class TerjeConsumableEffects
 	{
 		super.TerjeApplyPositiveEffects(classname, player, amount, perkPharmacMod);
 		
-		int medLevel = GetTerjeGameConfig().ConfigGetInt( classname + " medAntiradLevel" );
-		if (medLevel > 0)
+		if (player.GetTerjeStats())
 		{
-			int medActiveLevel = 0;
-			float medActiveTimeSec = 0;
-			player.GetTerjeStats().GetAntirad(medActiveLevel, medActiveTimeSec);
-			
-			float medTimeSec = GetTerjeGameConfig().ConfigGetFloat( classname + " medAntiradTimeSec" );
-			if (medLevel >= medActiveLevel && medTimeSec > 0)
+			int medLevel = GetTerjeGameConfig().ConfigGetInt( classname + " medAntiradLevel" );
+			if (medLevel > 0)
 			{
-				int MaxTimeSec = TerjeGetMaxTimeSec(classname, "Antirad");
-				float ActiveTimeSec = TerjeGetActiveTimeSec(medActiveTimeSec, medTimeSec, amount, perkPharmacMod);
-				player.GetTerjeStats().SetAntirad(medLevel, Math.Min(MaxTimeSec, ActiveTimeSec));
+				int medActiveLevel = 0;
+				float medActiveTimeSec = 0;
+				player.GetTerjeStats().GetAntirad(medActiveLevel, medActiveTimeSec);
+				
+				float medTimeSec = GetTerjeGameConfig().ConfigGetFloat( classname + " medAntiradTimeSec" );
+				if (medLevel >= medActiveLevel && medTimeSec > 0)
+				{
+					int MaxTimeSec = TerjeGetMaxTimeSec(classname, "Antirad");
+					float ActiveTimeSec = TerjeGetActiveTimeSec(medActiveTimeSec, medTimeSec, amount, perkPharmacMod);
+					player.GetTerjeStats().SetAntirad(medLevel, Math.Min(MaxTimeSec, ActiveTimeSec));
+				}
 			}
 		}
 	}
@@ -25,10 +28,13 @@ modded class TerjeConsumableEffects
 	{
 		super.TerjeApplyNegativeEffects(classname, player, amount);
 		
-		float medDmgValue = GetTerjeGameConfig().ConfigGetFloat( classname + " medRadiationIncrement" );
-		if (medDmgValue != 0)
+		if (player.GetTerjeStats())
 		{
-			player.GetTerjeStats().SetRadiationValue(player.GetTerjeStats().GetRadiationValue() + (medDmgValue * amount));
+			float medDmgValue = GetTerjeGameConfig().ConfigGetFloat( classname + " medRadiationIncrement" );
+			if (medDmgValue != 0)
+			{
+				player.GetTerjeStats().SetRadiationValue(player.GetTerjeStats().GetRadiationValue() + (medDmgValue * amount));
+			}
 		}
 	}
 	
