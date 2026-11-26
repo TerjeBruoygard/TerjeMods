@@ -373,7 +373,7 @@ modded class PlayerBase
 	
 	private void TerjeSurvDmgModEEHitByHandler(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
 	{
-		if (g_Game.IsDedicatedServer() && GetAllowDamage() && damageResult != null && source != null && source.IsZombie())
+		if (g_Game.IsDedicatedServer() && GetAllowDamage() && damageResult != null && source != null && source.IsZombie() && GetHealth("", "Health") > 0)
 		{
 			float survSkillMod;
 			if (g_Game.IsDedicatedServer() && GetTerjeSkills() != null && GetTerjeSkills().GetSkillModifierValue("surv", "survzmbmod", survSkillMod))
@@ -381,7 +381,7 @@ modded class PlayerBase
 				float actualDmg = damageResult.GetDamage(dmgZone, "Health") * Math.Clamp(Math.AbsFloat(survSkillMod), 0, 1);
 				if (actualDmg > 0)
 				{
-					AddHealth(dmgZone, "Health", actualDmg);
+					AddHealth("", "Health", actualDmg);
 				}
 			}
 		}
