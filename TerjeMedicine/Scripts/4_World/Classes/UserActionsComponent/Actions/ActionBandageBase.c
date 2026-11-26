@@ -70,7 +70,7 @@ modded class ActionBandageBase
 {
 	override void ApplyBandage(ItemBase item, PlayerBase player)
 	{
-		if (item && player.GetTerjeStats())
+		if (item && !player.TerjeIsNPC())
 		{
 			item.ApplyTerjeConsumableEffects(player, 1);
 			CheckInfectionBandaging(item, player);

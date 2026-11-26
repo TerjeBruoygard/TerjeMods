@@ -32,7 +32,7 @@ modded class ActionCollectBloodTarget
 	{
 		PlayerBase player_target = PlayerBase.Cast(action_data.m_Target.GetObject());
 		
-		if (player_target && player_target.GetTerjeStats())
+		if (player_target && !player_target.TerjeIsNPC())
 		{
 			PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
 			if (operator && operator.GetTerjeSkills())

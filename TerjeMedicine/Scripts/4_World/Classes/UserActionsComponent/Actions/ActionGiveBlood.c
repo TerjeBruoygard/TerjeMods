@@ -37,7 +37,7 @@ modded class ActionGiveBloodTarget
 		ActionGiveBloodData action_data_b = ActionGiveBloodData.Cast( action_data );
 		PlayerBase player_target = PlayerBase.Cast(action_data_b.m_Target.GetObject());
 		
-		if (player_target && player_target.GetTerjeStats())
+		if (player_target && !player_target.TerjeIsNPC())
 		{
 			float blood_obtained = action_data_b.m_BloodAmount - action_data_b.m_MainItem.GetQuantity();
 			

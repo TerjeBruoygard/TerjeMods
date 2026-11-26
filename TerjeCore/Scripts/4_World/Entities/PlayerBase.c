@@ -78,10 +78,17 @@ modded class PlayerBase
 			}
 		}
 	}
-
+	
+	bool TerjeIsNPC()
+	{
+		if (IsAlive() && GetIdentity())
+			return false;
+		return true;
+	}
+	
 	ref TerjePlayerProfile CreateTerjeProfile()
 	{
-		if (g_Game && IsAlive() && GetIdentity() && (g_Game.IsDedicatedServer() || IsTerjeLocalControlledPlayer()))
+		if (g_Game && !TerjeIsNPC() && (g_Game.IsDedicatedServer() || IsTerjeLocalControlledPlayer()))
 		{
 			m_terjeProfile = new TerjePlayerProfile;
 			m_terjeProfile.OnInit();
@@ -97,7 +104,7 @@ modded class PlayerBase
 	
 	TerjePlayerStats GetTerjeStats()
 	{
-		if (m_terjeStats == null && IsAlive() && GetIdentity())
+		if (m_terjeStats == null && !TerjeIsNPC())
 		{
 			if (g_Game.IsDedicatedServer() || IsTerjeLocalControlledPlayer())
 			{
@@ -111,7 +118,7 @@ modded class PlayerBase
 	
 	TerjePlayerSkillsAccessor GetTerjeSkills()
 	{
-		if (m_terjePlayerSkillsAccessor == null && IsAlive() && GetIdentity())
+		if (m_terjePlayerSkillsAccessor == null && !TerjeIsNPC())
 		{
 			if (g_Game.IsDedicatedServer() || IsTerjeLocalControlledPlayer())
 			{
@@ -124,7 +131,7 @@ modded class PlayerBase
 	
 	TerjePlayerSoulsAccessor GetTerjeSouls()
 	{
-		if (m_terjePlayerSoulsAccessor == null && IsAlive() && GetIdentity())
+		if (m_terjePlayerSoulsAccessor == null && !TerjeIsNPC())
 		{
 			if (g_Game.IsDedicatedServer() || IsTerjeLocalControlledPlayer())
 			{
