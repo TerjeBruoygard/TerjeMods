@@ -74,7 +74,7 @@ modded class PlayerStomach
 						if (profile.GetEnergy() < profile.GetWaterContent())
 							amount *= 1.0 + incrhydrPerkValue;
 					}
-						
+					
 					if (profile.GetEnergy() == profile.GetWaterContent())
 					{
 						amount *= 1.0 + (incrhydrPerkValue + incaloriePerkValue) / 2;
