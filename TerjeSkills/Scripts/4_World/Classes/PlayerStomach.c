@@ -12,23 +12,26 @@ modded class StomachItem
 	
 	void TerjeProcessDigestion(float waterIn, float energyIn, out float waterOut, out float energyOut)
 	{
+		energyOut = energyIn;
+		waterOut = waterIn;
+		
 		if (m_Player && m_Player.GetTerjeSkills())
 		{
-			if (energyIn > 0)
+			if (energyOut > 0)
 			{
 				float incaloriePerkValue;
 				if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incalorie", incaloriePerkValue))
 				{
-					energyOut = energyIn * (1.0 + incaloriePerkValue);
+					energyOut *= 1.0 + incaloriePerkValue;
 				}
 			}
 			
-			if (waterIn > 0)
+			if (waterOut > 0)
 			{
 				float incrhydrPerkValue;
 				if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incrhydr", incrhydrPerkValue))
 				{
-					waterOut = waterIn * (1.0 + incrhydrPerkValue);
+					waterOut *= 1.0 + incrhydrPerkValue;
 				}
 			}
 		}
