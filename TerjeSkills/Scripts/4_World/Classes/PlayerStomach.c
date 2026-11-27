@@ -5,28 +5,33 @@ modded class StomachItem
 		bool emptyStomach = super.ProcessDigestion(digestion_points, water, energy, toxicity, volume, agents, consumed_amount);
 		if (!emptyStomach)
 		{
-			if (m_Player && m_Player.GetTerjeSkills())
+			TerjeProcessDigestion(water, energy, water, energy);
+		}
+		return emptyStomach;
+	}
+	
+	void TerjeProcessDigestion(float waterIn, float energyIn, out float waterOut, out float energyOut)
+	{
+		if (m_Player && m_Player.GetTerjeSkills())
+		{
+			if (energyIn > 0)
 			{
-				if (energy > 0)
+				float incaloriePerkValue;
+				if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incalorie", incaloriePerkValue))
 				{
-					float incaloriePerkValue;
-					if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incalorie", incaloriePerkValue))
-					{
-						energy *= 1.0 + incaloriePerkValue;
-					}
+					energyOut = energyIn * (1.0 + incaloriePerkValue);
 				}
-				
-				if (water > 0)
+			}
+			
+			if (waterIn > 0)
+			{
+				float incrhydrPerkValue;
+				if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incrhydr", incrhydrPerkValue))
 				{
-					float incrhydrPerkValue;
-					if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incrhydr", incrhydrPerkValue))
-					{
-						water *= 1.0 + incrhydrPerkValue;
-					}
+					waterOut = waterIn * (1.0 + incrhydrPerkValue);
 				}
 			}
 		}
-		return emptyStomach;
 	}
 }
 
@@ -66,30 +71,26 @@ modded class PlayerStomach
 		
 		if (profile)
 		{
-			float energy = profile.GetEnergy();
-			float water = profile.GetWaterContent();
-			
 			if (g_Game.IsDedicatedServer())
 			{
-				if (energy > 0 || water > 0)
+				float energy = profile.GetEnergy() * amount;
+				if (energy > 0)
 				{
-					float XPgainFood = 0;
 					float metabolismConsumeFoodExpMod;
 					if (GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_METABOLISM_CONSUME_FOOD_EXP_MOD, metabolismConsumeFoodExpMod))
 					{
-						if (energy >= water) XPgainFood = energy * amount * metabolismConsumeFoodExpMod * 0.001;
-						if (energy == water) XPgainFood /= 2;
+						m_terjeMetabolismSkillExpBuffer += energy * metabolismConsumeFoodExpMod * 0.001;
 					}
-					
-					float XPgainWater = 0;
+				}
+				
+				float water = profile.GetWaterContent() * amount;
+				if (water > 0)
+				{
 					float metabolismConsumeWaterExpMod;
 					if (GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_METABOLISM_CONSUME_WATER_EXP_MOD, metabolismConsumeWaterExpMod))
 					{
-						if (energy <= water) XPgainWater = water * amount * metabolismConsumeFoodExpMod * 0.002;
-						if (energy == water) XPgainWater /= 2;
+						m_terjeMetabolismSkillExpBuffer += water * metabolismConsumeFoodExpMod * 0.002;
 					}
-					
-					m_terjeMetabolismSkillExpBuffer += XPgainFood + XPgainWater;
 				}
 			}
 			
