@@ -104,7 +104,7 @@ modded class PlantBase
 		}
 		
 		quantityMult = Math.Clamp(quantityMult, 0, 1.0);
-		item.SetQuantity(item.GetQuantityMax() * quantityMult);
+		item.SetQuantity(Math.Round(item.GetQuantityMax() * quantityMult));
 	}
 	
 	protected void TerjeApplyFreshHarvestPerk(PlayerBase player, ItemBase item)
