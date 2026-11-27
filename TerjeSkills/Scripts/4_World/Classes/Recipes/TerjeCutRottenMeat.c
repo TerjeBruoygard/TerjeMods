@@ -102,7 +102,7 @@ class TerjeCutRottenMeat extends RecipeBase
 			edible.ChangeFoodStage(lastState);
 			edible.SetTerjeDecayTimer(3600);
 			edible.RemoveAgent(eAgents.FOOD_POISON);
-			edible.SetQuantity(quantity_new);
+			edible.SetQuantity(Math.Round(quantity_new));
 		}
 	}
 }

@@ -190,7 +190,7 @@ modded class PrepareAnimal
 						float newQuantityInit = item2.GetQuantityMax() * Math.RandomFloat01() * meathunterInitSetting;
 						float newQuantityAdd = (item2.GetQuantityMax() - newQuantityMin) * meathuntSkill;
 						float newQuantityTotal = Math.Max(newQuantityMin, newQuantityInit + newQuantityAdd);
-						item2.SetQuantity(newQuantityTotal);
+						item2.SetQuantity(Math.Round(newQuantityTotal));
 					}
 					else if (item2.IsPeltBase())
 					{
