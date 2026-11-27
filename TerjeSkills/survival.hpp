@@ -35,8 +35,8 @@ class Survival: SkillsBase
 		{
 			id="startfire";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_STARTFIRE";
-			description="#STR_TERJESKILL_SURV_STARTFIRE_DES";
+			displayName="#STR_TERJEPERK_SURV_STARTFIRE";
+			description="#STR_TERJEPERK_SURV_STARTFIRE_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_startingfire";
 			enabledIcon="set:TerjePerk_icon image:tp_startingfire";
@@ -48,8 +48,8 @@ class Survival: SkillsBase
 		{
 			id="coldres";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_COLDRESISTANCE";
-			description="#STR_TERJESKILL_SURV_COLDRESISTANCE_DES";
+			displayName="#STR_TERJEPERK_SURV_COLDRESISTANCE";
+			description="#STR_TERJEPERK_SURV_COLDRESISTANCE_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_freezeresist";
 			enabledIcon="set:TerjePerk_icon image:tp_freezeresist";
@@ -61,8 +61,8 @@ class Survival: SkillsBase
 		{
 			id="heatres";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_HEATRESISTANCE";
-			description="#STR_TERJESKILL_SURV_HEATRESISTANCE_DES";
+			displayName="#STR_TERJEPERK_SURV_HEATRESISTANCE";
+			description="#STR_TERJEPERK_SURV_HEATRESISTANCE_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_heatresist";
 			enabledIcon="set:TerjePerk_icon image:tp_heatresist";
@@ -74,8 +74,8 @@ class Survival: SkillsBase
 		{
 			id="rghfeet";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_ROUGHFEET";
-			description="#STR_TERJESKILL_SURV_ROUGHFEET_DES";
+			displayName="#STR_TERJEPERK_SURV_ROUGHFEET";
+			description="#STR_TERJEPERK_SURV_ROUGHFEET_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_roughfeet";
 			enabledIcon="set:TerjePerk_icon image:tp_roughfeet";
@@ -87,8 +87,8 @@ class Survival: SkillsBase
 		{
 			id="rghhands";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_ROUGHHANDS";
-			description="#STR_TERJESKILL_SURV_ROUGHHANDS_DES";
+			displayName="#STR_TERJEPERK_SURV_ROUGHHANDS";
+			description="#STR_TERJEPERK_SURV_ROUGHHANDS_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_roughhands";
 			enabledIcon="set:TerjePerk_icon image:tp_roughhands";
@@ -100,8 +100,8 @@ class Survival: SkillsBase
 		{
 			id="anctech";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_ANCESTRALTECHNOLOGIE";
-			description="#STR_TERJESKILL_SURV_ANCESTRALTECHNOLOGIE_DES";
+			displayName="#STR_TERJEPERK_SURV_ANCESTRALTECHNOLOGIE";
+			description="#STR_TERJEPERK_SURV_ANCESTRALTECHNOLOGIE_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_ancestechno";
 			enabledIcon="set:TerjePerk_icon image:tp_ancestechno";
@@ -113,8 +113,8 @@ class Survival: SkillsBase
 		{
 			id="maintngfire";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_MAINTAININGFIRE";
-			description="#STR_TERJESKILL_SURV_MAINTAININGFIRE_DES";
+			displayName="#STR_TERJEPERK_SURV_MAINTAININGFIRE";
+			description="#STR_TERJEPERK_SURV_MAINTAININGFIRE_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_maintainingfire";
 			enabledIcon="set:TerjePerk_icon image:tp_maintainingfire";
@@ -126,8 +126,8 @@ class Survival: SkillsBase
 		{
 			id="durequip";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_DURABLEEQUIPMENT";
-			description="#STR_TERJESKILL_SURV_DURABLEEQUIPMENT_DES";
+			displayName="#STR_TERJEPERK_SURV_DURABLEEQUIPMENT";
+			description="#STR_TERJEPERK_SURV_DURABLEEQUIPMENT_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_durableequip";
 			enabledIcon="set:TerjePerk_icon image:tp_durableequip";
@@ -139,8 +139,8 @@ class Survival: SkillsBase
 		{
 			id="bushcraft";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_CRAFTS";
-			description="#STR_TERJESKILL_SURV_CRAFTS_DES";
+			displayName="#STR_TERJEPERK_SURV_CRAFTS";
+			description="#STR_TERJEPERK_SURV_CRAFTS_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_survcrafts";
 			enabledIcon="set:TerjePerk_icon image:tp_survcrafts";
@@ -152,8 +152,8 @@ class Survival: SkillsBase
 		{
 			id="expert";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_EXPERT";
-			description="#STR_TERJESKILL_SURV_EXPERT_DES";
+			displayName="#STR_TERJEPERK_SURV_EXPERT";
+			description="#STR_TERJEPERK_SURV_EXPERT_DES";
 			stagesCount=1;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_expert";
 			enabledIcon="set:TerjePerk_icon image:tp_expert";
@@ -165,8 +165,8 @@ class Survival: SkillsBase
 		{
 			id="stashes";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_STASHES";
-			description="#STR_TERJESKILL_SURV_STASHES_DES";
+			displayName="#STR_TERJEPERK_SURV_STASHES";
+			description="#STR_TERJEPERK_SURV_STASHES_DES";
 			stagesCount=1;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_caches";
 			enabledIcon="set:TerjePerk_icon image:tp_caches";
@@ -178,8 +178,8 @@ class Survival: SkillsBase
 		{
 			id="survinst";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_SURVIVALINSTINCT";
-			description="#STR_TERJESKILL_SURV_SURVIVALINSTINCT_DES";
+			displayName="#STR_TERJEPERK_SURV_SURVIVALINSTINCT";
+			description="#STR_TERJEPERK_SURV_SURVIVALINSTINCT_DES";
 			stagesCount=1;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_survinstinct";
 			enabledIcon="set:TerjePerk_icon image:tp_survinstinct";
@@ -191,8 +191,8 @@ class Survival: SkillsBase
 		{
 			id="mushprem";
 			enabled=1;
-			displayName="#STR_TERJESKILL_SURV_MUSHROOMPREMONITION";
-			description="#STR_TERJESKILL_SURV_MUSHROOMPREMONITION_DES";
+			displayName="#STR_TERJEPERK_SURV_MUSHROOMPREMONITION";
+			description="#STR_TERJEPERK_SURV_MUSHROOMPREMONITION_DES";
 			stagesCount=1;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_mushpremonition";
 			enabledIcon="set:TerjePerk_icon image:tp_mushpremonition";

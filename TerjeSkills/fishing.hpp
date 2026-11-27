@@ -21,8 +21,8 @@ class Fishing: SkillsBase
 		{
 			id="masterf";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_MASTERFILLET";
-			description="#STR_TERJESKILL_FISH_MASTERFILLET_DES";
+			displayName="#STR_TERJEPERK_FISH_MASTERFILLET";
+			description="#STR_TERJEPERK_FISH_MASTERFILLET_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_mastfile";
 			enabledIcon="set:TerjePerk_icon image:tp_mastfile";
@@ -34,8 +34,8 @@ class Fishing: SkillsBase
 		{
 			id="quickclean";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_QUICKCLEANING";
-			description="#STR_TERJESKILL_FISH_QUICKCLEANING_DES";
+			displayName="#STR_TERJEPERK_FISH_QUICKCLEANING";
+			description="#STR_TERJEPERK_FISH_QUICKCLEANING_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_quickclean";
 			enabledIcon="set:TerjePerk_icon image:tp_quickclean";
@@ -47,8 +47,8 @@ class Fishing: SkillsBase
 		{
 			id="strgarms";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_STRAIGHTARMS";
-			description="#STR_TERJESKILL_FISH_STRAIGHTARMS_DES";
+			displayName="#STR_TERJEPERK_FISH_STRAIGHTARMS";
+			description="#STR_TERJEPERK_FISH_STRAIGHTARMS_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_straightarms";
 			enabledIcon="set:TerjePerk_icon image:tp_straightarms";
@@ -60,8 +60,8 @@ class Fishing: SkillsBase
 		{
 			id="mastrap";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_MASTERTRAPS";
-			description="#STR_TERJESKILL_FISH_MASTERTRAPS_DES";
+			displayName="#STR_TERJEPERK_FISH_MASTERTRAPS";
+			description="#STR_TERJEPERK_FISH_MASTERTRAPS_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_mastrtrap";
 			enabledIcon="set:TerjePerk_icon image:tp_mastrtrap";
@@ -73,8 +73,8 @@ class Fishing: SkillsBase
 		{
 			id="skfishman";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_SKILLEDFISHERMAN";
-			description="#STR_TERJESKILL_FISH_SKILLEDFISHERMAN_DES";
+			displayName="#STR_TERJEPERK_FISH_SKILLEDFISHERMAN";
+			description="#STR_TERJEPERK_FISH_SKILLEDFISHERMAN_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_skillfishman";
 			enabledIcon="set:TerjePerk_icon image:tp_skillfishman";
@@ -86,8 +86,8 @@ class Fishing: SkillsBase
 		{
 			id="fishmluck";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_FISHERMANLUCK";
-			description="#STR_TERJESKILL_FISH_FISHERMANLUCK_DES";
+			displayName="#STR_TERJEPERK_FISH_FISHERMANLUCK";
+			description="#STR_TERJEPERK_FISH_FISHERMANLUCK_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_fishmanluck";
 			enabledIcon="set:TerjePerk_icon image:tp_fishmanluck";
@@ -99,8 +99,8 @@ class Fishing: SkillsBase
 		{
 			id="reliabgear";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_RELIABLEGEAR";
-			description="#STR_TERJESKILL_FISH_RELIABLEGEAR_DES";
+			displayName="#STR_TERJEPERK_FISH_RELIABLEGEAR";
+			description="#STR_TERJEPERK_FISH_RELIABLEGEAR_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_reliablegear";
 			enabledIcon="set:TerjePerk_icon image:tp_reliablegear";
@@ -112,8 +112,8 @@ class Fishing: SkillsBase
 		{
 			id="wormhunt";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_WORMHUNTER";
-			description="#STR_TERJESKILL_FISH_WORMHUNTER_DES";
+			displayName="#STR_TERJEPERK_FISH_WORMHUNTER";
+			description="#STR_TERJEPERK_FISH_WORMHUNTER_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_wormhunter";
 			enabledIcon="set:TerjePerk_icon image:tp_wormhunter";
@@ -125,8 +125,8 @@ class Fishing: SkillsBase
 		{
 			id="craftsman";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_CRAFTSMAN";
-			description="#STR_TERJESKILL_FISH_CRAFTSMAN_DES";
+			displayName="#STR_TERJEPERK_FISH_CRAFTSMAN";
+			description="#STR_TERJEPERK_FISH_CRAFTSMAN_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_craftsman";
 			enabledIcon="set:TerjePerk_icon image:tp_craftsman";
@@ -138,8 +138,8 @@ class Fishing: SkillsBase
 		{
 			id="remrotf";
 			enabled=1;
-			displayName="#STR_TERJESKILL_FISH_REMROT";
-			description="#STR_TERJESKILL_FISH_REMROT_DES";
+			displayName="#STR_TERJEPERK_FISH_REMROT";
+			description="#STR_TERJEPERK_FISH_REMROT_DES";
 			stagesCount=1;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_cleanwizard";
 			enabledIcon="set:TerjePerk_icon image:tp_cleanwizard";
