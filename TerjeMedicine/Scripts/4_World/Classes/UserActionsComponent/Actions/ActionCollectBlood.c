@@ -3,10 +3,10 @@ modded class ActionCollectBloodSelf
 	override void OnFinishProgressServer( ActionData action_data )
 	{
 		super.OnFinishProgressServer(action_data);
-		TerjeApplyMedExperience(action_data);
+		OnTerjeFinishApplyMedExperience(action_data);
 	}
 	
-	void TerjeApplyMedExperience(ActionData action_data)
+	void OnTerjeFinishApplyMedExperience(ActionData action_data)
 	{
 		PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
 		if (operator && operator.GetTerjeSkills())
@@ -25,10 +25,10 @@ modded class ActionCollectBloodTarget
 	override void OnFinishProgressServer( ActionData action_data )
 	{
 		super.OnFinishProgressServer(action_data);
-		TerjeApplyMedExperience(action_data);
+		OnTerjeFinishApplyMedExperience(action_data);
 	}
 	
-	void TerjeApplyMedExperience(ActionData action_data)
+	void OnTerjeFinishApplyMedExperience(ActionData action_data)
 	{
 		PlayerBase player_target = PlayerBase.Cast(action_data.m_Target.GetObject());
 		
