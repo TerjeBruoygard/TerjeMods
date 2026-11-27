@@ -137,7 +137,7 @@ modded class PrepareAnimal
 						string itemType = item.GetType();
 						if (uniqItemsCache.Find(itemType) != -1)
 						{
-							if (Math.RandomFloat01() > skillModifier)
+							if (TerjeEventInverse(skillModifier))
 							{
 								item.Delete();
 							}

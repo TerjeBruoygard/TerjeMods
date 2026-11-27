@@ -148,7 +148,7 @@ modded class MissionGameplay
 				randomCheck = 0.25;
 			}
 			
-			if (Math.RandomFloat01() < deltaTime * randomCheck && GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_MIND_USE_RANDOM_GESTURES))
+			if (TerjeEvent(randomCheck * deltaTime) && GetTerjeSettingBool(TerjeSettingsCollection.MEDICINE_MIND_USE_RANDOM_GESTURES))
 			{
 				int action = Math.RandomInt(0, 8);
 				if (action == 0)

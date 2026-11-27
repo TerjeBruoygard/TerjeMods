@@ -395,7 +395,7 @@ modded class PlayerBase
 		{	
 			if (g_Game && g_Game.IsDedicatedServer() && HasBloodyHands() && !GetItemOnSlot("Gloves"))
 			{
-				if (Math.RandomFloat01() < GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_DIRTY_HANDS_CONSUME_CHANCE))
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_DIRTY_HANDS_CONSUME_CHANCE)))
 				{
 					InsertAgent(eAgents.FOOD_POISON, amount * GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_DIRTY_HANDS_CONSUME_AMOUNT));
 				}

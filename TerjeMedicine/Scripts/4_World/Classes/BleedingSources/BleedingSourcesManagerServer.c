@@ -1,5 +1,5 @@
 modded class BleedingSourcesManagerServer
-{	
+{
 	bool TerjeAttemptRemoveBleedingSource(int component)
 	{
 		int bit = GetBitFromSelectionID(component);
@@ -190,7 +190,7 @@ modded class BleedingSourcesManagerServer
 			float zombieDammagePlayerInBlock = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_ZOMBIE_DAMMAGE_PLAYER_IN_BLOCK);
 			if (m_Player.IsStayingInBlock())
 			{
-				if (Math.RandomFloat01() >= zombieDammagePlayerInBlock)
+				if (TerjeEventInverse(zombieDammagePlayerInBlock))
 				{
 					playerTakeDammage = true;
 				}
@@ -204,7 +204,7 @@ modded class BleedingSourcesManagerServer
 				playerTakeDammage = true;
 			}
 			
-			if (playerTakeDammage && Math.RandomFloat01() <= TerjeCalculateZoneProtection(zone, "melee"))
+			if (playerTakeDammage && TerjeEventInverse(TerjeCalculateZoneProtection(zone, "melee")))
 			{
 				playerTakeDammage = false;
 			}
@@ -229,7 +229,7 @@ modded class BleedingSourcesManagerServer
 					}
 				}
 				
-				if (Math.RandomFloat01() < zombieDammageHematomaChance * perkImpactresMod)
+				if (TerjeEvent(zombieDammageHematomaChance * perkImpactresMod))
 				{
 					m_Player.GetTerjeStats().SetHematomas(m_Player.GetTerjeStats().GetHematomas() + 1);
 					
@@ -238,32 +238,32 @@ modded class BleedingSourcesManagerServer
 						zombieDammageHematomaVirusChance = zombieDammageHematomaVirusChance * 0.25;
 					}
 					
-					if (Math.RandomFloat01() < zombieDammageHematomaVirusChance * perkZmbvirresMod)
+					if (TerjeEvent(zombieDammageHematomaVirusChance * perkZmbvirresMod))
 					{
 						m_Player.GetTerjeStats().SetZVirusValue(m_Player.GetTerjeStats().GetZVirusValue() + 0.1);
 					}
 				}
 				
-				if (zone == "Head" && Math.RandomFloat01() < zombieDammageContusionChance * perkImpactresMod)
+				if (zone == "Head" && TerjeEvent(zombieDammageContusionChance * perkImpactresMod))
 				{
 					m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
 				}
 				
-				if (Math.RandomFloat01() < zombieDammageBleedChance * perkDurleathMod)
+				if (TerjeEvent(zombieDammageBleedChance * perkDurleathMod))
 				{
 					AttemptAddBleedingSource(component);
 					
-					if (Math.RandomFloat01() < zombieDammageBleedVirusChance * perkZmbvirresMod)
+					if (TerjeEvent(zombieDammageBleedVirusChance * perkZmbvirresMod))
 					{
 						m_Player.GetTerjeStats().SetZVirusValue(m_Player.GetTerjeStats().GetZVirusValue() + 0.1);
 					}
 				}
 				
-				if (Math.RandomFloat01() < zombieDammageStubWoundChance * perkDurleathMod)
+				if (TerjeEvent(zombieDammageStubWoundChance * perkDurleathMod))
 				{
 					m_Player.GetTerjeStats().SetStubWounds(m_Player.GetTerjeStats().GetStubWounds() + 1);
 					
-					if (Math.RandomFloat01() < zombieDammageStubWoundVirusChance * perkZmbvirresMod)
+					if (TerjeEvent(zombieDammageStubWoundVirusChance * perkZmbvirresMod))
 					{
 						m_Player.GetTerjeStats().SetZVirusValue(m_Player.GetTerjeStats().GetZVirusValue() + 0.5);
 					}
@@ -286,7 +286,7 @@ modded class BleedingSourcesManagerServer
 		}
 		else if (ammo == "Bullet_Expansion_Taser" || (ammoTypename && ammoTypename.IsInherited(Nonlethal_Base)))
 		{
-			if (Math.RandomFloat01() > TerjeCalculateZoneProtection(zone, "melee"))
+			if (TerjeEventInverse(TerjeCalculateZoneProtection(zone, "melee")))
 			{
 				playerTakeDammage = true;
 			}
@@ -306,7 +306,7 @@ modded class BleedingSourcesManagerServer
 				m_Player.GetTerjeStats().SetStubWounds(m_Player.GetTerjeStats().GetStubWounds() + 1);
 				
 				float bearTrapSepsisChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BEAR_TRAP_SEPSIS_CHANCE);
-				if (Math.RandomFloat01() < bearTrapSepsisChance * perkSepsisresMod)
+				if (TerjeEvent(bearTrapSepsisChance * perkSepsisresMod))
 				{
 					m_Player.GetTerjeStats().SetSepsisValue(m_Player.GetTerjeStats().GetSepsisValue() + 0.1);
 				}
@@ -314,7 +314,7 @@ modded class BleedingSourcesManagerServer
 		}
 		else if (ammo == "BarbedWireHit")
 		{
-			if (Math.RandomFloat01() < 0.2)
+			if (TerjeEvent(0.2))
 			{
 				playerTakeDammage = true;
 			}
@@ -325,7 +325,7 @@ modded class BleedingSourcesManagerServer
 				m_Player.GetTerjeStats().SetPainValue(m_Player.GetTerjeStats().GetPainValue() + 0.05);
 				
 				float barbedWireSepsisChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BARBED_WIRE_SEPSIS_CHANCE);
-				if (Math.RandomFloat01() < barbedWireSepsisChance * perkSepsisresMod)
+				if (TerjeEvent(barbedWireSepsisChance * perkSepsisresMod))
 				{
 					m_Player.GetTerjeStats().SetSepsisValue(m_Player.GetTerjeStats().GetSepsisValue() + 0.1);
 				}
@@ -341,7 +341,7 @@ modded class BleedingSourcesManagerServer
 			
 			if (m_Player.IsStayingInBlock() && bleedThreshold < 1)
 			{
-				if (Math.RandomFloat01() >= meleeDammagePlayerInBlock)
+				if (TerjeEventInverse(meleeDammagePlayerInBlock))
 				{
 					playerTakeDammage = true;
 				}
@@ -355,7 +355,7 @@ modded class BleedingSourcesManagerServer
 				playerTakeDammage = true;
 			}
 			
-			if (playerTakeDammage && Math.RandomFloat01() <= TerjeCalculateZoneProtection(zone, "melee"))
+			if (playerTakeDammage && TerjeEventInverse(TerjeCalculateZoneProtection(zone, "melee")))
 			{
 				playerTakeDammage = false;
 			}
@@ -398,14 +398,14 @@ modded class BleedingSourcesManagerServer
 
 					if (bleedThreshold < 0.5)
 					{
-						if (meleeHeavyAttack || Math.RandomFloat01() < meleeDammageHematomaChance * perkImpactresMod)
+						if (meleeHeavyAttack || TerjeEvent(meleeDammageHematomaChance * perkImpactresMod))
 						{
 							m_Player.GetTerjeStats().SetHematomas(m_Player.GetTerjeStats().GetHematomas() + 1);
 						}
 						
 						if (meleeHeadshot)
 						{
-							if (source.IsMeleeWeapon() && source.IsTwoHandedBehaviour() && Math.RandomFloat01() < meleeDammageContusionChance * perkImpactresMod)
+							if (source.IsMeleeWeapon() && source.IsTwoHandedBehaviour() && TerjeEvent(meleeDammageContusionChance * perkImpactresMod))
 							{
 								if (meleeHeavyAttack)
 								{
@@ -421,12 +421,12 @@ modded class BleedingSourcesManagerServer
 					else
 					{
 						bool incrementMeleeSepsis = false;
-						if (source.IsAnimal() || meleeHeavyAttack || Math.RandomFloat01() < meleeDammageStubWoundChance * perkDurleathMod)
+						if (source.IsAnimal() || meleeHeavyAttack || TerjeEvent(meleeDammageStubWoundChance * perkDurleathMod))
 						{
 							m_Player.GetTerjeStats().SetStubWounds(m_Player.GetTerjeStats().GetStubWounds() + 1);
 							incrementMeleeSepsis = true;
 							
-							if (zone == "Torso" && Math.RandomFloat01() < meleeDammageVisceraChance * perkDurleathMod)
+							if (zone == "Torso" && TerjeEvent(meleeDammageVisceraChance * perkDurleathMod))
 							{
 								m_Player.GetTerjeStats().SetViscera(true);
 							}
@@ -447,7 +447,7 @@ modded class BleedingSourcesManagerServer
 							incrementMeleeSepsis = true;
 						}
 						
-						if (incrementMeleeSepsis && Math.RandomFloat01() < meleeDammageSepsisChance * perkSepsisresMod)
+						if (incrementMeleeSepsis && TerjeEvent(meleeDammageSepsisChance * perkSepsisresMod))
 						{
 							m_Player.GetTerjeStats().SetSepsisValue(m_Player.GetTerjeStats().GetSepsisValue() + 0.1);
 						}
@@ -472,20 +472,20 @@ modded class BleedingSourcesManagerServer
 				{
 					if (firearmHeadshot)
 					{
-						if (Math.RandomFloat01() < firearmDammageContusionChance)
+						if (TerjeEvent(firearmDammageContusionChance))
 						{
 							m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_HEAVY);
 						}
 					}
 					else if (zone == "Torso")
 					{
-						if (Math.RandomFloat01() < firearmDammageVisceraChance)
+						if (TerjeEvent(firearmDammageVisceraChance))
 						{
 							m_Player.GetTerjeStats().SetViscera(true);
 						}
 					}
 					
-					if (Math.RandomFloat01() < firearmDammageSepsisChance * perkSepsisresMod)
+					if (TerjeEvent(firearmDammageSepsisChance * perkSepsisresMod))
 					{
 						m_Player.GetTerjeStats().SetSepsisValue(m_Player.GetTerjeStats().GetSepsisValue() + 0.1);
 					}
@@ -496,7 +496,7 @@ modded class BleedingSourcesManagerServer
 						firearmBulletThroughChance = GetTerjeGameConfig().ConfigGetFloat("CfgAmmo " + ammo + " terjeBulletThroughChance");
 					}
 					
-					if (Math.RandomFloat01() < firearmBulletThroughChance)
+					if (TerjeEvent(firearmBulletThroughChance))
 					{
 						m_Player.GetTerjeStats().SetStubWounds(m_Player.GetTerjeStats().GetStubWounds() + 2);
 					}
@@ -512,7 +512,7 @@ modded class BleedingSourcesManagerServer
 					
 					if (firearmHeadshot)
 					{
-						if (Math.RandomFloat01() < firearmDammageContusionChance)
+						if (TerjeEvent(firearmDammageContusionChance))
 						{
 							m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
 						}
@@ -532,11 +532,11 @@ modded class BleedingSourcesManagerServer
 			{
 				if (!isInKnockout && TerjeOverrideProcessHit_FlashGrenade(damage, source, component, zone, ammo, modelPos, playerTakeDammage) && playerTakeDammage)
 				{
-					if (Math.RandomFloat01() < GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_FLASHBANG_HEAVY_CONTUSION_CHANCE))
+					if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_FLASHBANG_HEAVY_CONTUSION_CHANCE)))
 					{
 						m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_HEAVY);
 					}
-					else if (Math.RandomFloat01() < GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_FLASHBANG_LIGHT_CONTUSION_CHANCE))
+					else if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_FLASHBANG_LIGHT_CONTUSION_CHANCE)))
 					{
 						m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
 					}
@@ -546,25 +546,21 @@ modded class BleedingSourcesManagerServer
 			{
 				if (!isInKnockout && TerjeOverrideProcessHit_FragGrenade(damage, source, component, zone, ammo, modelPos, playerTakeDammage) && playerTakeDammage)
 				{
-					float explosionContusionChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_CONTUSION_CHANCE);
-					if (Math.RandomFloat01() < explosionContusionChance)
+					if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_CONTUSION_CHANCE)))
 					{
 						m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
 					}
 					
 					int explosionStubsMaxCount = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_STUB_MAX);
-					float explosionStubsChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_STUB_CHANCE);
 					for (int stubId = 0; stubId < explosionStubsMaxCount; stubId++)
 					{
-						if (Math.RandomFloat01() < explosionStubsChance)
+						if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_STUB_CHANCE)))
 						{
 							m_Player.GetTerjeStats().SetStubWounds(m_Player.GetTerjeStats().GetStubWounds() + 1);
 						}
 					}
 					
 					int explosionScratchMaxCount = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_SCRATCH_MAX);
-					float explosionScratchChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_SCRATCH_CHANCE);
-					
 					if (explosionScratchMaxCount > GetRegisteredSourcesCount())
 					{
 						explosionScratchMaxCount = GetRegisteredSourcesCount();
@@ -572,7 +568,7 @@ modded class BleedingSourcesManagerServer
 					
 					for (int scratchBit = 0; scratchBit < explosionScratchMaxCount; scratchBit++)
 					{
-						if (Math.RandomFloat01() < explosionScratchChance)
+						if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_EXPLOSION_DAMMAGE_SCRATCH_CHANCE)))
 						{
 							AttemptAddBleedingSourceDirectly(scratchBit);
 						}
@@ -746,20 +742,18 @@ modded class BleedingSourcesManagerServer
 							}
 						}
 						
-						if (Math.RandomFloat01() < value * perkDurleathMod)
+						if (TerjeEvent(value * perkDurleathMod))
 						{
 							AttemptAddBleedingSource(component);
 						}
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " heavyBleedingChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " heavyBleedingChance")))
 					{
 						m_Player.GetTerjeStats().SetStubWounds(m_Player.GetTerjeStats().GetStubWounds() + 1);
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " internalBleedingChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " internalBleedingChance")))
 					{
 						m_Player.GetTerjeStats().SetViscera(true);
 					}
@@ -777,38 +771,33 @@ modded class BleedingSourcesManagerServer
 							}
 						}
 						
-						if (Math.RandomFloat01() < value * perkImpactresMod)
+						if (TerjeEvent(value * perkImpactresMod))
 						{
 							m_Player.GetTerjeStats().SetHematomas(m_Player.GetTerjeStats().GetHematomas() + 1);
 						}
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " lightContussionChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " lightContussionChance")))
 					{
 						m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_LIGHT);
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " heavyContussionChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " heavyContussionChance")))
 					{
 						m_Player.GetTerjeStats().SetContusionValue(TerjeMedicineConstants.CONTUSION_HEAVY);
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " chemicalPoisonChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " chemicalPoisonChance")))
 					{
 						m_Player.GetTerjeStats().SetBiohazardValue(m_Player.GetTerjeStats().GetBiohazardValue() + GetTerjeGameConfig().ConfigGetFloat(configRoot + " chemicalPoisonValue"));
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " influenzaInfectionChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " influenzaInfectionChance")))
 					{
 						m_Player.GetTerjeStats().SetInfluenzaValue(m_Player.GetTerjeStats().GetInfluenzaValue() + GetTerjeGameConfig().ConfigGetFloat(configRoot + " influenzaInfectionValue"));
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " radiationChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " radiationChance")))
 					{
 						m_Player.AddTerjeRadiation(GetTerjeGameConfig().ConfigGetFloat(configRoot + " radiationValue"));
 					}
@@ -826,7 +815,7 @@ modded class BleedingSourcesManagerServer
 							}
 						}
 						
-						if (Math.RandomFloat01() < value * perkZmbvirresMod)
+						if (TerjeEvent(value * perkZmbvirresMod))
 						{
 							m_Player.GetTerjeStats().SetZVirusValue(m_Player.GetTerjeStats().GetZVirusValue() + GetTerjeGameConfig().ConfigGetFloat(configRoot + " zombieVirusValue"));
 						}
@@ -845,32 +834,28 @@ modded class BleedingSourcesManagerServer
 							}
 						}
 						
-						if (Math.RandomFloat01() < value * perkSepsisresMod)
+						if (TerjeEvent(value * perkSepsisresMod))
 						{
 							m_Player.GetTerjeStats().SetSepsisValue(m_Player.GetTerjeStats().GetSepsisValue() + GetTerjeGameConfig().ConfigGetFloat(configRoot + " sepsisInfectionValue"));
 						}
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " rabiesVirusChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " rabiesVirusChance")))
 					{
 						m_Player.GetTerjeStats().SetRabiesValue(m_Player.GetTerjeStats().GetRabiesValue() + GetTerjeGameConfig().ConfigGetFloat(configRoot + " rabiesVirusValue"));
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " psiDamageChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " psiDamageChance")))
 					{
 						m_Player.GetTerjeStats().AddMindDegradation(GetTerjeGameConfig().ConfigGetFloat(configRoot + " psiDamageValue"), GetTerjeGameConfig().ConfigGetFloat(configRoot + " psiDamageTime"));
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " sleepDamageChance");
-					if (value > 0 && Math.RandomFloat01() < value)
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " sleepDamageChance")))
 					{
 						m_Player.GetTerjeStats().AddSleepingDecrement(GetTerjeGameConfig().ConfigGetFloat(configRoot + " sleepDamageValue"), GetTerjeGameConfig().ConfigGetFloat(configRoot + " sleepDamageTime"));
 					}
 					
-					value = GetTerjeGameConfig().ConfigGetFloat(configRoot + " painChance");
-					if ((value > 0) && (Math.RandomFloat01() < value))
+					if (TerjeEvent(GetTerjeGameConfig().ConfigGetFloat(configRoot + " painChance")))
 					{
 						m_Player.GetTerjeStats().SetPainValue(GetTerjeGameConfig().ConfigGetFloat(configRoot + " painValue"));
 					}

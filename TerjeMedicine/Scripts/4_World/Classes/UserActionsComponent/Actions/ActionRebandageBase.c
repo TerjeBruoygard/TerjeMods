@@ -1,4 +1,4 @@
-class ActionRebandageSelf : ActionBandageBase
+class ActionRebandageSelf : ActionBandageSelf
 {	
 	void ActionRebandageSelf()
 	{
@@ -8,17 +8,6 @@ class ActionRebandageSelf : ActionBandageBase
 		m_StanceMask 		= DayZPlayerConstants.STANCEMASK_CROUCH;
 
 		m_Text = "#STR_TERJEMED_CHANGE_BANDAGE";
-	}
-
-	override void CreateConditionComponents()  
-	{		
-		m_ConditionItem 	= new CCINonRuined();
-		m_ConditionTarget 	= new CCTSelf();
-	}
-
-	override bool HasTarget()
-	{
-		return false;
 	}
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
@@ -36,7 +25,7 @@ class ActionRebandageSelf : ActionBandageBase
 	}
 }
 
-class ActionRebandageTarget : ActionBandageBase
+class ActionRebandageTarget : ActionBandageTarget
 {
 	void ActionRebandageTarget()
 	{
@@ -48,20 +37,6 @@ class ActionRebandageTarget : ActionBandageBase
 		m_Text = "#STR_TERJEMED_CHANGE_BANDAGE";
 	}
 	
-	override void CreateConditionComponents()  
-	{	
-		m_ConditionItem 	= new CCINonRuined();
-		m_ConditionTarget 	= new CCTMan(UAMaxDistances.DEFAULT);
-	}
-
-	override int GetStanceMask(PlayerBase player)
-	{
-		if (player.IsPlayerInStance(DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_PRONE))
-			return DayZPlayerConstants.STANCEMASK_CROUCH;
-		else
-			return DayZPlayerConstants.STANCEMASK_ERECT;
-	}
-
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		PlayerBase otherPlayer = PlayerBase.Cast(target.GetObject());

@@ -1,16 +1,24 @@
 modded class ActionGiveBloodSelf
 {
-	override void OnFinishProgressServer( ActionData action_data )
+	override void OnEndServer( ActionData action_data )
 	{
-		super.OnFinishProgressServer(action_data);
+		super.OnEndServer(action_data);
+		TerjeApplyMedExperience(action_data);
+	}
+	
+	void TerjeApplyMedExperience(ActionData action_data)
+	{
+		ActionGiveBloodData action_data_b = ActionGiveBloodData.Cast( action_data );
+		float blood_obtained = action_data_b.m_BloodAmount - action_data_b.m_MainItem.GetQuantity();
 		
 		PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
-		if (operator && operator.GetTerjeSkills())
+		if (operator && operator.GetTerjeSkills() && blood_obtained > 0)
 		{
 			int skillIncrement = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_GIVE_BLOOD_EXP_GAIN);
 			if (skillIncrement > 0)
 			{
-				operator.GetTerjeSkills().AddSkillExperience("med", (int)skillIncrement);
+				float XP_obtained = skillIncrement * blood_obtained / action_data_b.m_MainItem.GetQuantityMax();
+				operator.GetTerjeSkills().AddSkillExperience("med", (int)XP_obtained);
 			}
 		}
 	}
@@ -18,17 +26,30 @@ modded class ActionGiveBloodSelf
 
 modded class ActionGiveBloodTarget
 {
-	override void OnFinishProgressServer( ActionData action_data )
+	override void OnEndServer( ActionData action_data )
 	{
-		super.OnFinishProgressServer(action_data);
+		super.OnEndServer(action_data);
+		TerjeApplyMedExperience(action_data);
+	}
+	
+	void TerjeApplyMedExperience(ActionData action_data)
+	{
+		ActionGiveBloodData action_data_b = ActionGiveBloodData.Cast( action_data );
+		PlayerBase player_target = PlayerBase.Cast(action_data_b.m_Target.GetObject());
 		
-		PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
-		if (operator && operator.GetTerjeSkills())
+		if (player_target && !player_target.TerjeIsNPC())
 		{
-			int skillIncrement = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_GIVE_BLOOD_EXP_GAIN);
-			if (skillIncrement > 0)
+			float blood_obtained = action_data_b.m_BloodAmount - action_data_b.m_MainItem.GetQuantity();
+			
+			PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
+			if (operator && operator.GetTerjeSkills() && blood_obtained > 0)
 			{
-				operator.GetTerjeSkills().AddSkillExperience("med", (int)skillIncrement);
+				int skillIncrement = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_GIVE_BLOOD_EXP_GAIN);
+				if (skillIncrement > 0)
+				{
+					float XP_obtained = skillIncrement * blood_obtained / action_data_b.m_MainItem.GetQuantityMax();
+					operator.GetTerjeSkills().AddSkillExperience("med", (int)XP_obtained);
+				}
 			}
 		}
 	}

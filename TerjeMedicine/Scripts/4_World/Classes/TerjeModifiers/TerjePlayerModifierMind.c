@@ -141,7 +141,7 @@ class TerjePlayerModifierMind : TerjePlayerModifierBase
 		if (mindCurrentValue < TerjeMedicineConstants.MIND_LEVEL4)
 		{
 			float laughtChange = 1 - (mindCurrentValue / TerjeMedicineConstants.MIND_LEVEL4);
-			if ( Math.RandomFloat01() < laughtChange * deltaTime * 0.1 )
+			if (TerjeEvent(laughtChange * deltaTime * 0.1))
 			{
 				player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_LAUGHTER);
 			}

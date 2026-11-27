@@ -3,12 +3,10 @@ modded class ActionTestBloodSelf
 	override void OnFinishProgressServer( ActionData action_data )
 	{
 		super.OnFinishProgressServer(action_data);
-		
-		PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
-		OnTerjeFinishApplyMedExperience(action_data);
+		TerjeApplyMedExperience(action_data);
 	}
 	
-	void OnTerjeFinishApplyMedExperience(ActionData action_data)
+	void TerjeApplyMedExperience(ActionData action_data)
 	{
 		PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
 		if (operator && operator.GetTerjeSkills())
@@ -27,18 +25,23 @@ modded class ActionTestBloodTarget
 	override void OnFinishProgressServer( ActionData action_data )
 	{
 		super.OnFinishProgressServer(action_data);
-		OnTerjeFinishApplyMedExperience(action_data);
+		TerjeApplyMedExperience(action_data);
 	}
 	
-	void OnTerjeFinishApplyMedExperience(ActionData action_data)
+	void TerjeApplyMedExperience(ActionData action_data)
 	{
-		PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
-		if (operator && operator.GetTerjeSkills())
+		PlayerBase player_target = PlayerBase.Cast(action_data.m_Target.GetObject());
+		
+		if (player_target && !player_target.TerjeIsNPC())
 		{
-			int skillIncrement = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_TEST_BLOOD_EXP_GAIN);
-			if (skillIncrement > 0)
+			PlayerBase operator = PlayerBase.Cast(action_data.m_Player);
+			if (operator && operator.GetTerjeSkills())
 			{
-				operator.GetTerjeSkills().AddSkillExperience("med", (int)skillIncrement);
+				int skillIncrement = GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_TEST_BLOOD_EXP_GAIN);
+				if (skillIncrement > 0)
+				{
+					operator.GetTerjeSkills().AddSkillExperience("med", (int)skillIncrement);
+				}
 			}
 		}
 	}

@@ -13,11 +13,7 @@ modded class Animal_CanisLupus
 		
 		if (g_Game.IsDedicatedServer())
 		{
-			float rabiesChance;
-			if (GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_RABIES_WOLF_INFECTED_CHANCE, rabiesChance))
-			{
-				m_HasTerjeRabies = (Math.RandomFloat01() < rabiesChance);
-			}
+			m_HasTerjeRabies = TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_RABIES_WOLF_INFECTED_CHANCE));
 		}
 	}
 }

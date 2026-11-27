@@ -21,8 +21,8 @@ class Hunting: SkillsBase
 		{
 			id="meathunt";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_MEATHUNTER";
-			description="#STR_TERJESKILL_HUNT_MEATHUNTER_DES";
+			displayName="#STR_TERJEPERK_HUNT_MEATHUNTER";
+			description="#STR_TERJEPERK_HUNT_MEATHUNTER_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_meathunt";
 			enabledIcon="set:TerjePerk_icon image:tp_meathunt";
@@ -34,8 +34,8 @@ class Hunting: SkillsBase
 		{
 			id="quickcut";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_QUICKCUTTING";
-			description="#STR_TERJESKILL_HUNT_QUICKCUTTING_DES";
+			displayName="#STR_TERJEPERK_HUNT_QUICKCUTTING";
+			description="#STR_TERJEPERK_HUNT_QUICKCUTTING_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_quickcutm";
 			enabledIcon="set:TerjePerk_icon image:tp_quickcutm";
@@ -47,8 +47,8 @@ class Hunting: SkillsBase
 		{
 			id="mknife";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_MASTERKNIFE";
-			description="#STR_TERJESKILL_HUNT_MASTERKNIFE_DES";
+			displayName="#STR_TERJEPERK_HUNT_MASTERKNIFE";
+			description="#STR_TERJEPERK_HUNT_MASTERKNIFE_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_masterknife";
 			enabledIcon="set:TerjePerk_icon image:tp_masterknife";
@@ -60,8 +60,8 @@ class Hunting: SkillsBase
 		{
 			id="trapexp";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_TRAPEXPERT";
-			description="#STR_TERJESKILL_HUNT_TRAPEXPERT_DES";
+			displayName="#STR_TERJEPERK_HUNT_TRAPEXPERT";
+			description="#STR_TERJEPERK_HUNT_TRAPEXPERT_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_trapexpert";
 			enabledIcon="set:TerjePerk_icon image:tp_trapexpert";
@@ -73,8 +73,8 @@ class Hunting: SkillsBase
 		{
 			id="plmaster";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_SKINMASTER";
-			description="#STR_TERJESKILL_HUNT_SKINMASTER_DES";
+			displayName="#STR_TERJEPERK_HUNT_SKINMASTER";
+			description="#STR_TERJEPERK_HUNT_SKINMASTER_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_prhides";
 			enabledIcon="set:TerjePerk_icon image:tp_prhides";
@@ -86,8 +86,8 @@ class Hunting: SkillsBase
 		{
 			id="exphunter";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_EXPERIENCEDHUNTER";
-			description="#STR_TERJESKILL_HUNT_EXPERIENCEDHUNTER_DES";
+			displayName="#STR_TERJEPERK_HUNT_EXPERIENCEDHUNTER";
+			description="#STR_TERJEPERK_HUNT_EXPERIENCEDHUNTER_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_exphunter";
 			enabledIcon="set:TerjePerk_icon image:tp_exphunter";
@@ -99,8 +99,8 @@ class Hunting: SkillsBase
 		{
 			id="knwanatomy";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_KNOWLEDGEANATOMY";
-			description="#STR_TERJESKILL_HUNT_KNOWLEDGEANATOMY_DES";
+			displayName="#STR_TERJEPERK_HUNT_KNOWLEDGEANATOMY";
+			description="#STR_TERJEPERK_HUNT_KNOWLEDGEANATOMY_DES";
 			stagesCount=6;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_knwanatomy";
 			enabledIcon="set:TerjePerk_icon image:tp_knwanatomy";
@@ -112,8 +112,8 @@ class Hunting: SkillsBase
 		{
 			id="remvrot";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_REMOVINGROT";
-			description="#STR_TERJESKILL_HUNT_REMOVINGROT_DES";
+			displayName="#STR_TERJEPERK_HUNT_REMOVINGROT";
+			description="#STR_TERJEPERK_HUNT_REMOVINGROT_DES";
 			stagesCount=1;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_removrot";
 			enabledIcon="set:TerjePerk_icon image:tp_removrot";
@@ -125,8 +125,8 @@ class Hunting: SkillsBase
 		{
 			id="pathfindr";
 			enabled=1;
-			displayName="#STR_TERJESKILL_HUNT_PATHFINDER";
-			description="#STR_TERJESKILL_HUNT_PATHFINDER_DES";
+			displayName="#STR_TERJEPERK_HUNT_PATHFINDER";
+			description="#STR_TERJEPERK_HUNT_PATHFINDER_DES";
 			stagesCount=1;
 			disabledIcon="set:TerjePerkBlack_icon image:tp_pathfindr";
 			enabledIcon="set:TerjePerk_icon image:tp_pathfindr";

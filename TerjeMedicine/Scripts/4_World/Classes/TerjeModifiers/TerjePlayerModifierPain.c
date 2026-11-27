@@ -123,16 +123,14 @@ class TerjePlayerModifierPain : TerjePlayerModifierBase
 		
 		if (painLevel == 2)
 		{
-			GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_PAIN_LIGHT_SYMPTOM_CHANCE, painSymtomChance);	
-			if (Math.RandomFloat01() < painSymtomChance * deltaTime)
+			if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_PAIN_LIGHT_SYMPTOM_CHANCE) * deltaTime))
 			{
 				player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_PAIN_LIGHT);
 			}
 		}
 		else if (painLevel == 3)
 		{
-			GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_PAIN_HEAVY_SYMPTOM_CHANCE, painSymtomChance);	
-			if (Math.RandomFloat01() < painSymtomChance * deltaTime)
+			if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_PAIN_HEAVY_SYMPTOM_CHANCE) * deltaTime))
 			{
 				player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_PAIN_HEAVY);
 			}
@@ -143,8 +141,7 @@ class TerjePlayerModifierPain : TerjePlayerModifierBase
 			int currentShock = player.GetHealth("","Shock");
 			if (painLevel == 3 && currentShock > PlayerConstants.UNCONSCIOUS_THRESHOLD + GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_PAIN_LEVEL3_MAX_SHOCK))
 			{
-				float uncChance = GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_PAIN_LEVEL3_UNCOUNCION_CHANCE);	
-				if (Math.RandomFloat01() < uncChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_PAIN_LEVEL3_UNCOUNCION_CHANCE) * deltaTime))
 				{
 					SetPlayerShock(player, TerjeDamageSource.PAIN, 10);
 				}

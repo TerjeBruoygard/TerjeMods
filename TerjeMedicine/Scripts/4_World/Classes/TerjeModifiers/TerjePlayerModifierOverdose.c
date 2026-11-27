@@ -41,8 +41,7 @@ class TerjePlayerModifierOverdose : TerjePlayerModifierBase
 			{
 				if (GetPlayerShock(player) > 50)
 				{
-					float overdoseUnconsciousChance = 0;
-					if (GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_OVERDOSE_UNCONSCIOUS_CHANCE, overdoseUnconsciousChance) && Math.RandomFloat01() < overdoseUnconsciousChance * deltaTime)
+					if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_OVERDOSE_UNCONSCIOUS_CHANCE) * deltaTime))
 					{
 						SetPlayerShock(player, TerjeDamageSource.OVERDOSE, 0);
 					}

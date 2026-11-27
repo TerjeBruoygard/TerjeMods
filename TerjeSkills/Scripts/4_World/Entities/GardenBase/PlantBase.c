@@ -32,7 +32,7 @@ modded class PlantBase
 	
 	override void Tick()
 	{
-		if (m_PlantState == EPlantState.PAUSED && m_TerjeWeatherproofChance > 0 && Math.RandomFloat01() < m_TerjeWeatherproofChance)
+		if (m_PlantState == EPlantState.PAUSED && TerjeEvent(m_TerjeWeatherproofChance))
 		{
 			m_TimeTracker = m_TimeTracker + m_TimeTicker.GetDuration() * m_DebugTickSpeedMultiplier;
 			if (m_TimeTracker >= m_StateChangeTime)

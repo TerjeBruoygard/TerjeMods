@@ -70,7 +70,7 @@ modded class ActionBandageBase
 {
 	override void ApplyBandage(ItemBase item, PlayerBase player)
 	{
-		if (item)
+		if (item && !player.TerjeIsNPC())
 		{
 			item.ApplyTerjeConsumableEffects(player, 1);
 			CheckInfectionBandaging(item, player);
@@ -133,17 +133,23 @@ modded class ActionBandageBase
 				}
 			}
 			
-			if ((player.GetTerjeStats() != null) && (Math.RandomFloat01() < (bandagingSepsisChance * operatorPerkSterilityMod * perkSepsisresMod)))
+			if (player && player.GetTerjeStats())
 			{
-				player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.1);
+				if (TerjeEvent(bandagingSepsisChance * operatorPerkSterilityMod * perkSepsisresMod))
+				{
+					player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.1);
+				}
 			}
 		}
 		
 		float bandagingSepsisModifier = 1;
 		GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_BANDAGING_SEPSIS_MODIFIER, bandagingSepsisModifier);
-		if ((player.GetTerjeStats() != null) && (Math.RandomFloat01() < (item.GetInfectionChance() * operatorPerkSterilityMod * bandagingSepsisModifier * perkSepsisresMod)))
+		if (player && player.GetTerjeStats())
 		{
-			player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.1);
+			if (TerjeEvent(item.GetInfectionChance() * operatorPerkSterilityMod * bandagingSepsisModifier * perkSepsisresMod))
+			{
+				player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.1);
+			}
 		}
 	}
 	
@@ -195,7 +201,7 @@ modded class ActionBandageBase
 				}
 			}
 			
-			if (Math.RandomFloat01() < (bandagingSepsisChance * operatorPerkSterilityMod * perkSepsisresMod))
+			if (TerjeEvent(bandagingSepsisChance * operatorPerkSterilityMod * perkSepsisresMod))
 			{
 				player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.25);
 			}
@@ -203,9 +209,12 @@ modded class ActionBandageBase
 		
 		float bandagingSepsisModifier = 1;
 		GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_SURGERY_SEPSIS_MODIFIER, bandagingSepsisModifier);
-		if (player && player.GetTerjeStats() && (Math.RandomFloat01() < (item.GetInfectionChance() * bandagingSepsisModifier * operatorPerkSterilityMod * perkSepsisresMod)))
+		if (player && player.GetTerjeStats())
 		{
-			player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.25);
+			if (TerjeEvent(item.GetInfectionChance() * bandagingSepsisModifier * operatorPerkSterilityMod * perkSepsisresMod))
+			{
+				player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.25);
+			}
 		}
 	}
 	
@@ -225,19 +234,19 @@ modded class ActionBandageBase
 					player.GetTerjeStats().SetSuturesBandagedDirty(player.GetTerjeStats().GetSuturesBandagedDirty() - 1);
 					player.GetTerjeStats().SetSuturesBandagedClean(player.GetTerjeStats().GetSuturesBandagedClean() + 1);
 				}
+				
+				PlayerBase operator = PlayerBase.Cast( item.GetHierarchyRootPlayer() ); 
+				if (operator && operator.GetTerjeSkills())
+				{
+					int bandageExpGain = 0;
+					if (GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_BANDAGE_EXP_GAIN, bandageExpGain) && bandageExpGain > 0)
+					{
+						operator.GetTerjeSkills().AddSkillExperience("med", bandageExpGain);
+					}
+				}
 			}
 			
 			CheckInfectionBandaging(item, player);
-	
-			PlayerBase operator = PlayerBase.Cast( item.GetHierarchyRootPlayer() ); 
-			if (operator && operator.GetTerjeSkills())
-			{
-				int bandageExpGain = 0;
-				if (GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_BANDAGE_EXP_GAIN, bandageExpGain) && bandageExpGain > 0)
-				{
-					operator.GetTerjeSkills().AddSkillExperience("med", bandageExpGain);
-				}
-			}
 			
 			if (item.HasQuantity())
 			{
@@ -260,7 +269,7 @@ modded class ActionBandageBase
 	
 	void ApplySurgeryViscera(ItemBase item, PlayerBase target, PlayerBase operator)
 	{
-		if (Math.RandomFloat01() < item.GetTerjeSurgeryVisceraEffectivity(operator))
+		if (TerjeEvent(item.GetTerjeSurgeryVisceraEffectivity(operator)))
 		{
 			if (target.GetTerjeStats() != null)
 			{
@@ -279,20 +288,20 @@ modded class ActionBandageBase
 				{
 					target.GetTerjeStats().SetSuturesClean(target.GetTerjeStats().GetSuturesClean() + suturesMin);
 				}
+				
+				if (operator.GetTerjeSkills())
+				{
+					int bandageExpGain = 0;
+					if (GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_VISCERA_SURGERY_EXP_GAIN, bandageExpGain) && bandageExpGain > 0)
+					{
+						operator.GetTerjeSkills().AddSkillExperience("med", bandageExpGain);
+					}
+				}
 			}
 			
 			if (operator.GetIdentity())
 			{
 				NotificationSystem.SendNotificationToPlayerIdentityExtended(operator.GetIdentity(), 8, "#STR_TERJEMED_SURGERY_SUCCESS", "#STR_TERJEMED_SURGERY_VISCERA_SUCCESS", "set:TerjePerk_icon image:tp_surgeryinternal");
-			}
-			
-			if (operator.GetTerjeSkills())
-			{
-				int bandageExpGain = 0;
-				if (GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_VISCERA_SURGERY_EXP_GAIN, bandageExpGain) && bandageExpGain > 0)
-				{
-					operator.GetTerjeSkills().AddSkillExperience("med", bandageExpGain);
-				}
 			}
 		}
 		else
@@ -330,7 +339,7 @@ modded class ActionBandageBase
 	
 	void ApplySurgeryBullet(ItemBase item, PlayerBase target, PlayerBase operator)
 	{
-		if (Math.RandomFloat01() < item.GetTerjeSurgeryBulletEffectivity(operator))
+		if (TerjeEvent(item.GetTerjeSurgeryBulletEffectivity(operator)))
 		{
 			if (target.GetTerjeStats() != null)
 			{
@@ -353,6 +362,15 @@ modded class ActionBandageBase
 				}
 				
 				target.GetTerjeStats().SetBulletWounds(bulletWounds - 1);
+				
+				if (operator.GetTerjeSkills())
+				{
+					int bandageExpGain = 0;
+					if (GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_BULLET_SURGERY_EXP_GAIN, bandageExpGain) && bandageExpGain > 0)
+					{
+						operator.GetTerjeSkills().AddSkillExperience("med", bandageExpGain);
+					}
+				}
 			}
 			
 			if (operator.GetIdentity())
@@ -360,14 +378,6 @@ modded class ActionBandageBase
 				NotificationSystem.SendNotificationToPlayerIdentityExtended(operator.GetIdentity(), 8, "#STR_TERJEMED_SURGERY_SUCCESS", "#STR_TERJEMED_SURGERY_BULLET_SUCCESS", "set:TerjePerk_icon image:tp_surgerybullet");
 			}
 			
-			if (operator.GetTerjeSkills())
-			{
-				int bandageExpGain = 0;
-				if (GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_BULLET_SURGERY_EXP_GAIN, bandageExpGain) && bandageExpGain > 0)
-				{
-					operator.GetTerjeSkills().AddSkillExperience("med", bandageExpGain);
-				}
-			}
 		}
 		else
 		{
@@ -404,7 +414,7 @@ modded class ActionBandageBase
 	
 	void ApplySurgeryStub(ItemBase item, PlayerBase target, PlayerBase operator)
 	{
-		if (Math.RandomFloat01() < item.GetTerjeSurgeryStubEffectivity(operator))
+		if (TerjeEvent(item.GetTerjeSurgeryStubEffectivity(operator)))
 		{
 			if (target.GetTerjeStats() != null)
 			{
@@ -434,20 +444,20 @@ modded class ActionBandageBase
 				{
 					target.GetTerjeStats().SetSuturesClean(target.GetTerjeStats().GetSuturesClean() + suturesMin);
 				}
+			
+				if (operator.GetTerjeSkills())
+				{
+					int bandageExpGain = 0;
+					if (GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_STUB_SURGERY_EXP_GAIN, bandageExpGain) && bandageExpGain > 0)
+					{
+						operator.GetTerjeSkills().AddSkillExperience("med", bandageExpGain);
+					}
+				}
 			}
 			
 			if (operator.GetIdentity())
 			{
 				NotificationSystem.SendNotificationToPlayerIdentityExtended(operator.GetIdentity(), 8, "#STR_TERJEMED_SURGERY_SUCCESS", "#STR_TERJEMED_SURGERY_WOUND_SUCCESS", "set:TerjePerk_icon image:tp_surgerystab");
-			}
-			
-			if (operator.GetTerjeSkills())
-			{
-				int bandageExpGain = 0;
-				if (GetTerjeSettingInt(TerjeSettingsCollection.MEDICINE_MEDICINE_STUB_SURGERY_EXP_GAIN, bandageExpGain) && bandageExpGain > 0)
-				{
-					operator.GetTerjeSkills().AddSkillExperience("med", bandageExpGain);
-				}
 			}
 		}
 		else

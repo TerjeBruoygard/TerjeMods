@@ -1,3 +1,43 @@
+modded class StomachItem
+{
+	override bool ProcessDigestion(float digestion_points, out float water, out float energy, out float toxicity, out float volume, out int agents, out float consumed_amount)
+	{
+		bool emptyStomach = super.ProcessDigestion(digestion_points, water, energy, toxicity, volume, agents, consumed_amount);
+		if (!emptyStomach)
+		{
+			TerjeProcessDigestion(water, energy, water, energy);
+		}
+		return emptyStomach;
+	}
+	
+	void TerjeProcessDigestion(float waterIn, float energyIn, out float waterOut, out float energyOut)
+	{
+		energyOut = energyIn;
+		waterOut = waterIn;
+		
+		if (m_Player && m_Player.GetTerjeSkills())
+		{
+			if (energyOut > 0)
+			{
+				float incaloriePerkValue;
+				if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incalorie", incaloriePerkValue))
+				{
+					energyOut *= 1.0 + incaloriePerkValue;
+				}
+			}
+			
+			if (waterOut > 0)
+			{
+				float incrhydrPerkValue;
+				if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incrhydr", incrhydrPerkValue))
+				{
+					waterOut *= 1.0 + incrhydrPerkValue;
+				}
+			}
+		}
+	}
+}
+
 modded class PlayerStomach
 {
 	private float m_terjeMetabolismSkillExpBuffer = 0;
@@ -29,7 +69,7 @@ modded class PlayerStomach
 		NutritionalProfile profile = Liquid.GetNutritionalProfileByName(class_name);
 		if (!profile)
 		{
-			profile = Edible_Base.GetNutritionalProfile(null,class_name, food_stage);
+			profile = Edible_Base.GetNutritionalProfile(null, class_name, food_stage);
 		}
 		
 		if (profile)
@@ -52,37 +92,19 @@ modded class PlayerStomach
 					float metabolismConsumeWaterExpMod;
 					if (GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_METABOLISM_CONSUME_WATER_EXP_MOD, metabolismConsumeWaterExpMod))
 					{
-						m_terjeMetabolismSkillExpBuffer += water * metabolismConsumeWaterExpMod * 0.0002;
+						m_terjeMetabolismSkillExpBuffer += water * metabolismConsumeFoodExpMod * 0.002;
 					}
 				}
 			}
 			
 			if (m_Player && m_Player.GetTerjeSkills())
 			{
-				if (profile.GetEnergy() > 0)
-				{
-					float incaloriePerkValue;
-					if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incalorie", incaloriePerkValue))
-					{
-						amount *= 1.0 + incaloriePerkValue;
-					}
-				}
-				if (profile.GetWaterContent() > 0)
-				{
-					float incrhydrPerkValue;
-					if (m_Player.GetTerjeSkills().GetPerkValue("mtblsm", "incrhydr", incrhydrPerkValue))
-					{
-						amount *= 1.0 + incrhydrPerkValue;
-					}
-				}
-				
 				bool hasSalmonella = (agents & eAgents.SALMONELLA);
 				if (hasSalmonella && m_Player.GetTerjeSkills().GetPerkLevel("mtblsm", "wmlover") > 0)
 				{
 					agents = (agents & ~eAgents.SALMONELLA);
 				}
 			}
-			
 		}
 
 		super.AddToStomach(class_name, amount, food_stage, agents, temperature);

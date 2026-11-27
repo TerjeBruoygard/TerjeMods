@@ -4,8 +4,7 @@ modded class CAContinuousMineWood
 	{
 		if (g_Game.IsDedicatedServer() && action_data.m_Player && action_data.m_Player.GetTerjeSkills() && action_data.m_MainItem)
 		{
-			float gainChance;
-			if (GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STRENGTH_ITEMS_USE_GAIN_CHANCE, gainChance) && Math.RandomFloat01() < gainChance)
+			if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STRENGTH_ITEMS_USE_GAIN_CHANCE)))
 			{
 				int gainExp;
 				if (GetTerjeSettingInt(TerjeSettingsCollection.SKILLS_STRENGTH_ITEMS_USE_GAIN_EXP, gainExp))
@@ -27,8 +26,7 @@ modded class ActionSawPlanks
 		
 		if (g_Game.IsDedicatedServer() && action_data.m_Player && action_data.m_Player.GetTerjeSkills())
 		{
-			float gainChance;
-			if (GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STRENGTH_ITEMS_USE_GAIN_CHANCE, gainChance) && Math.RandomFloat01() < gainChance)
+			if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STRENGTH_ITEMS_USE_GAIN_CHANCE)))
 			{
 				int gainExp;
 				if (GetTerjeSettingInt(TerjeSettingsCollection.SKILLS_STRENGTH_ITEMS_USE_GAIN_EXP, gainExp))

@@ -239,6 +239,12 @@ modded class PlayerBase
 		float result = super.GetWeightSpecialized(forceRecalc);	
 		if (GetTerjeSkills() != null)
 		{
+			float ltarmorPerkValue = 0;
+			if (GetTerjeSkills().GetPerkValue("strng", "ltarmor", ltarmorPerkValue))
+			{
+				result += (TerjeCalculateVestAndHelmetWeight() * ltarmorPerkValue);
+			}
+			
 			float weightModifier = 1.0;
 			float strengthSkillModifier = 0;
 			if (GetTerjeSkills().GetSkillModifierValue("strng", "maxweightmod", strengthSkillModifier))
@@ -256,12 +262,6 @@ modded class PlayerBase
 			{
 				result /= weightModifier;
 			}
-			
-			float ltarmorPerkValue = 0;
-			if (GetTerjeSkills().GetPerkValue("strng", "ltarmor", ltarmorPerkValue))
-			{
-				result += (TerjeCalculateVestAndHelmetWeight() * ltarmorPerkValue);
-			}
 		}
 		
 		return Math.Max(0.0, result);
@@ -269,6 +269,8 @@ modded class PlayerBase
 	
 	override void OnTerjeCharacterLifetimeUpdated(int secondsSinceRespawn)
 	{
+		super.OnTerjeCharacterLifetimeUpdated(secondsSinceRespawn);
+		
 		if (GetTerjeSkills() != null)
 		{
 			int offsetValue;
@@ -344,7 +346,8 @@ modded class PlayerBase
 			if (GetHealth("RightLeg", "Health") <= 1 || GetHealth("LeftLeg", "Health") <= 1 || GetHealth("RightFoot", "Health") <= 1 || GetHealth("LeftFoot", "Health") <= 1)
 			{
 				float strbonesPerkModifier;
-				if (GetTerjeSkills().GetPerkValue("athlc", "strbones", strbonesPerkModifier) && Math.RandomFloat01() > Math.Clamp(1.0 + strbonesPerkModifier, 0.0, 1.0))
+				GetTerjeSkills().GetPerkValue("athlc", "strbones", strbonesPerkModifier);
+				if (TerjeEvent(Math.Clamp(1.0 + strbonesPerkModifier, 0.0, 1.0)))
 				{
 					// Prevent bones broke
 					if (GetHealth("RightLeg", "Health") <= 1)
@@ -373,7 +376,7 @@ modded class PlayerBase
 	
 	private void TerjeSurvDmgModEEHitByHandler(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
 	{
-		if (g_Game.IsDedicatedServer() && GetAllowDamage() && damageResult != null && source != null && source.IsZombie())
+		if (g_Game.IsDedicatedServer() && GetAllowDamage() && damageResult != null && source != null && source.IsZombie() && GetHealth("", "Health") > 0)
 		{
 			float survSkillMod;
 			if (g_Game.IsDedicatedServer() && GetTerjeSkills() != null && GetTerjeSkills().GetSkillModifierValue("surv", "survzmbmod", survSkillMod))
@@ -381,7 +384,7 @@ modded class PlayerBase
 				float actualDmg = damageResult.GetDamage(dmgZone, "Health") * Math.Clamp(Math.AbsFloat(survSkillMod), 0, 1);
 				if (actualDmg > 0)
 				{
-					AddHealth(dmgZone, "Health", actualDmg);
+					AddHealth("", "Health", actualDmg);
 				}
 			}
 		}

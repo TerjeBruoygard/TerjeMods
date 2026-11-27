@@ -55,7 +55,7 @@ modded class ActionLightItemOnFire
 				absoluteChance += (Math.Clamp(1.0 - absoluteChance, 0, 1) * Math.Clamp(perkValue, 0, 1));
 			}
 			
-			if (Math.RandomFloat01() < absoluteChance && Streatman_CanIgnite(item, target_item))
+			if (TerjeEvent(absoluteChance) && Streatman_CanIgnite(item, target_item))
 			{
 				ignitionResult = true;
 				GetTerjeSettingInt(TerjeSettingsCollection.SKILLS_SURV_MAKE_FIRE_SUCCESS_GAIN_EXP, expGain);

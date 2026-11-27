@@ -7,7 +7,7 @@ class ActionSurgeryVisceraBaseCB : ActionContinuousBaseCB
 	}
 }
 
-class ActionSurgeryVisceraSelf : ActionBandageBase
+class ActionSurgeryVisceraSelf : ActionBandageSelf
 {	
 	void ActionSurgeryVisceraSelf()
 	{
@@ -17,17 +17,6 @@ class ActionSurgeryVisceraSelf : ActionBandageBase
 		m_StanceMask 		= DayZPlayerConstants.STANCEMASK_CROUCH;
 
 		m_Text = "#STR_TERJEMED_SURGERY_SELF";
-	}
-
-	override void CreateConditionComponents()  
-	{		
-		m_ConditionItem 	= new CCINonRuined();
-		m_ConditionTarget 	= new CCTSelf();
-	}
-
-	override bool HasTarget()
-	{
-		return false;
 	}
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
@@ -60,7 +49,7 @@ class ActionSurgeryVisceraSelf : ActionBandageBase
 	}
 }
 
-class ActionSurgeryVisceraTarget : ActionBandageBase
+class ActionSurgeryVisceraTarget : ActionBandageTarget
 {
 	void ActionSurgeryVisceraTarget()
 	{
@@ -72,24 +61,6 @@ class ActionSurgeryVisceraTarget : ActionBandageBase
 		m_Text = "#STR_TERJEMED_SURGERY_TARGET";
 	}
 	
-	override void CreateConditionComponents()  
-	{	
-		m_ConditionItem 	= new CCINonRuined();
-		m_ConditionTarget 	= new CCTMan(UAMaxDistances.DEFAULT);
-	}
-
-	override int GetStanceMask(PlayerBase player)
-	{
-		if (player.IsPlayerInStance(DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_PRONE))
-		{
-			return DayZPlayerConstants.STANCEMASK_CROUCH;
-		}
-		else
-		{
-			return DayZPlayerConstants.STANCEMASK_ERECT;
-		}
-	}
-
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
 		PlayerBase otherPlayer = PlayerBase.Cast(target.GetObject());
