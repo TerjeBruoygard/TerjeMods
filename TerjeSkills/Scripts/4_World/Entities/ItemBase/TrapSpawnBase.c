@@ -23,7 +23,7 @@ modded class TrapSpawnBase
 				{
 					float perkValue;
 					player.GetTerjeSkills().GetPerkValue(terjeSkillName, terjePerkName, perkValue);
-					m_terjeSkillCanCatchIndicator = (Math.RandomFloat01() < perkValue);
+					m_terjeSkillCanCatchIndicator = TerjeEvent(perkValue);
 				}
 			}
 		}

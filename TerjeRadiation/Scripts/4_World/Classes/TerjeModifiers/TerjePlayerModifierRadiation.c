@@ -113,9 +113,7 @@ class TerjePlayerModifierRadiation : TerjePlayerModifierBase
 			
 			if (radiationValue > 1)
 			{
-				float radiationLightSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_LIGHT_SYMPTOM_CHANCE, radiationLightSymptomChance);
-				if (Math.RandomFloat01() < radiationLightSymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_LIGHT_SYMPTOM_CHANCE) * deltaTime))
 				{
 					float radiationVomitForceModifier = 1;
 					GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_VOMIT_FORCE_MODIFIER, radiationVomitForceModifier);					
@@ -125,9 +123,7 @@ class TerjePlayerModifierRadiation : TerjePlayerModifierBase
 			
 			if (radiationValue > 2)
 			{
-				float radiationHeavySymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_HEAVY_SYMPTOM_CHANCE, radiationHeavySymptomChance);
-				if (Math.RandomFloat01() < radiationHeavySymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.RADIATION_HEAVY_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_PAIN_LIGHT);
 					player.GetBleedingManagerServer().AttemptAddBleedingSource( Math.RandomIntInclusive(0, 5) );

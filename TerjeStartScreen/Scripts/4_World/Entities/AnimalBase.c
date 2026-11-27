@@ -25,7 +25,7 @@ modded class AnimalBase
 						soulsChance = GetTerjeSettingFloat(TerjeSettingsCollection.STARTSCREEN_SOULS_KILLANI_CHANCE);
 					}
 					
-					if ((soulsCount > 0) && (Math.RandomFloat01() < soulsChance))
+					if (TerjeEvent(soulsChance) && soulsCount > 0)
 					{
 						killerPlayer.GetTerjeSouls().AddCount(soulsCount);
 					}

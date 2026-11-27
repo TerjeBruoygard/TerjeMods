@@ -52,9 +52,7 @@ class TerjePlayerModifierSepsis : TerjePlayerModifierBase
 			
 			if (sepsisValue > 1)
 			{
-				float sepsisLightSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_SEPSIS_LIGHT_SYMPTOM_CHANCE, sepsisLightSymptomChance);
-				if (Math.RandomFloat01() < sepsisLightSymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_SEPSIS_LIGHT_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_PAIN_LIGHT);
 				}
@@ -62,9 +60,7 @@ class TerjePlayerModifierSepsis : TerjePlayerModifierBase
 			
 			if (sepsisValue > 2)
 			{
-				float sepsisHeavySymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_SEPSIS_HEAVY_SYMPTOM_CHANCE, sepsisHeavySymptomChance);
-				if (Math.RandomFloat01() < sepsisHeavySymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_SEPSIS_HEAVY_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_HOT);
 				}
@@ -82,9 +78,7 @@ class TerjePlayerModifierSepsis : TerjePlayerModifierBase
 					return;
 				}
 				
-				float sepsisCriticalSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_SEPSIS_CRITICAL_SYMPTOM_CHANCE, sepsisCriticalSymptomChance);
-				if (Math.RandomFloat01() < sepsisCriticalSymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_SEPSIS_CRITICAL_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_PAIN_HEAVY);
 				}

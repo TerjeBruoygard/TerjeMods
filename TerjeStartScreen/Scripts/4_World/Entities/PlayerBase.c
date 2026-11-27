@@ -89,7 +89,7 @@ modded class PlayerBase
 					
 					int soulsCount = GetTerjeSettingInt(TerjeSettingsCollection.STARTSCREEN_SOULS_SURVT_COUNT);
 					float soulsChance = GetTerjeSettingFloat(TerjeSettingsCollection.STARTSCREEN_SOULS_SURVT_CHANCE);
-					if ((soulsCount > 0) && (Math.RandomFloat01() < soulsChance))
+					if (TerjeEvent(soulsChance) && soulsCount > 0)
 					{
 						GetTerjeSouls().AddCount(soulsCount);
 					}
@@ -226,7 +226,7 @@ modded class PlayerBase
 						soulsChance = GetTerjeSettingFloat(TerjeSettingsCollection.STARTSCREEN_SOULS_KILLAI_CHANCE);
 					}
 					
-					if ((soulsCount > 0) && (Math.RandomFloat01() < soulsChance))
+					if (TerjeEvent(soulsChance) && soulsCount > 0)
 					{
 						killerPlayer.GetTerjeSouls().AddCount(soulsCount);
 					}

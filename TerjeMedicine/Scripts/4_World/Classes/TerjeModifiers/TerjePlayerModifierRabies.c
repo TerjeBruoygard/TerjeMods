@@ -93,9 +93,7 @@ class TerjePlayerModifierRabies : TerjePlayerModifierBase
 			
 			if (rabiesLevel >= 1)
 			{
-				float rabiesLightSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_RABIES_LIGHT_SYMPTOM_CHANCE, rabiesLightSymptomChance);
-				if (Math.RandomFloat01() < rabiesLightSymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_RABIES_LIGHT_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_HOT);
 				}
@@ -103,9 +101,7 @@ class TerjePlayerModifierRabies : TerjePlayerModifierBase
 			
 			if (rabiesLevel >= 2)
 			{
-				float rabiesHeavySymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_RABIES_HEAVY_SYMPTOM_CHANCE, rabiesHeavySymptomChance);
-				if (Math.RandomFloat01() < rabiesHeavySymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_RABIES_HEAVY_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_HAND_SHIVER);
 				}
@@ -123,9 +119,7 @@ class TerjePlayerModifierRabies : TerjePlayerModifierBase
 					return;
 				}
 				
-				float rabiesCriticalSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_RABIES_CRITICAL_SYMPTOM_CHANCE, rabiesCriticalSymptomChance);
-				if (Math.RandomFloat01() < rabiesCriticalSymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_RABIES_CRITICAL_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_GASP);
 				}

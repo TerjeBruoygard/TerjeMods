@@ -346,7 +346,8 @@ modded class PlayerBase
 			if (GetHealth("RightLeg", "Health") <= 1 || GetHealth("LeftLeg", "Health") <= 1 || GetHealth("RightFoot", "Health") <= 1 || GetHealth("LeftFoot", "Health") <= 1)
 			{
 				float strbonesPerkModifier;
-				if (GetTerjeSkills().GetPerkValue("athlc", "strbones", strbonesPerkModifier) && Math.RandomFloat01() > Math.Clamp(1.0 + strbonesPerkModifier, 0.0, 1.0))
+				GetTerjeSkills().GetPerkValue("athlc", "strbones", strbonesPerkModifier);
+				if (TerjeEvent(Math.Clamp(1.0 + strbonesPerkModifier, 0.0, 1.0)))
 				{
 					// Prevent bones broke
 					if (GetHealth("RightLeg", "Health") <= 1)

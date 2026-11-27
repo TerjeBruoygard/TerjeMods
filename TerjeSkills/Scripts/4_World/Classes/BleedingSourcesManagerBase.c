@@ -7,14 +7,16 @@ modded class BleedingSourcesManagerBase
 			float perkValue;
 			if (selection_name == "RightFoot" || selection_name == "LeftFoot")
 			{
-				if (m_Player.GetTerjeSkills().GetPerkValue("surv", "rghfeet", perkValue) && Math.RandomFloat01() <= Math.AbsFloat(perkValue) )
+				m_Player.GetTerjeSkills().GetPerkValue("surv", "rghfeet", perkValue)
+				if (TerjeEvent(Math.AbsFloat(perkValue)))
 				{
 					return false;
 				}
 			}
 			else if (selection_name == "LeftForeArmRoll" || selection_name == "RightForeArmRoll")
 			{
-				if (m_Player.GetTerjeSkills().GetPerkValue("surv", "rghhands", perkValue) && Math.RandomFloat01() <= Math.AbsFloat(perkValue) )
+				m_Player.GetTerjeSkills().GetPerkValue("surv", "rghhands", perkValue)
+				if (TerjeEvent(Math.AbsFloat(perkValue)))
 				{
 					return false;
 				}

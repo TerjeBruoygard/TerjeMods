@@ -72,9 +72,7 @@ class TerjePlayerModifierZVirus : TerjePlayerModifierBase
 			
 			if (zombieValue > 1)
 			{
-				float zombieLightSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_Z_VIRUS_LIGHT_SYMPTOM_CHANCE, zombieLightSymptomChance);
-				if (Math.RandomFloat01() < zombieLightSymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_Z_VIRUS_LIGHT_SYMPTOM_CHANCE) * deltaTime))
 				{
 					float zvirusVomitForceModifier = 0.25;
 					GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_Z_VIRUS_VOMIT_FORCE_MODIFIER, zvirusVomitForceModifier);					
@@ -84,9 +82,7 @@ class TerjePlayerModifierZVirus : TerjePlayerModifierBase
 			
 			if (zombieValue > 2)
 			{
-				float zombieHeavySymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_Z_VIRUS_HEAVY_SYMPTOM_CHANCE, zombieHeavySymptomChance);
-				if (Math.RandomFloat01() < zombieHeavySymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_Z_VIRUS_HEAVY_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_PAIN_LIGHT);
 					player.GetBleedingManagerServer().AttemptAddBleedingSource( Math.RandomIntInclusive(0, 5) );
@@ -108,9 +104,7 @@ class TerjePlayerModifierZVirus : TerjePlayerModifierBase
 				m_zedVoiceTimer += deltaTime;
 				if (m_zedVoiceTimer > 5)
 				{
-					float zombieCriticalSymptomChance = 0;
-					GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_Z_VIRUS_CRITICAL_SYMPTOM_CHANCE, zombieCriticalSymptomChance);
-					if (Math.RandomFloat01() < zombieCriticalSymptomChance * deltaTime)
+					if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_Z_VIRUS_CRITICAL_SYMPTOM_CHANCE) * deltaTime))
 					{
 						m_zedVoiceTimer = 0;
 						

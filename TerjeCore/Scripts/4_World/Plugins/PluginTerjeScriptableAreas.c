@@ -121,7 +121,7 @@ class PluginTerjeScriptableAreas : PluginBase
 		}
 		
 		TerjeXmlObject nodeChance = areaXml.GetChildByNodeName("SpawnChance");
-		if ((nodeChance != null) && (nodeChance.GetValue().ToFloat() < Math.RandomFloat01()))
+		if ((nodeChance != null) && TerjeEvent(nodeChance.GetValue().ToFloat()))
 		{
 			return;
 		}

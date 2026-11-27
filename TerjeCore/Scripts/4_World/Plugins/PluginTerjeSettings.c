@@ -183,6 +183,18 @@ string GetTerjeSettingString(int id)
 	return "";
 }
 
+bool TerjeEvent(float eventChance)
+{
+	eventChance = Math.Clamp(eventChance, 0, 1);
+	return eventChance > 0 && Math.RandomFloat01() <= eventChance;
+}
+
+bool TerjeEventInverse(float eventChance)
+{
+	eventChance = Math.Clamp(eventChance, 0, 1);
+	return eventChance < 1 && Math.RandomFloat01() >= eventChance;
+}
+
 bool GetTerjeSettingString(int id, out string result)
 {
 	ref TerjeSettingValueBase setting = GetTerjeSettingsPlugin().GetSettingsCollection().Get(id);

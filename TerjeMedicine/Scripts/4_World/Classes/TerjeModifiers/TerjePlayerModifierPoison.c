@@ -109,9 +109,7 @@ class TerjePlayerModifierPoison : TerjePlayerModifierBase
 			
 			if (poisonLevel == 1)
 			{
-				float poisonLightSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_LIGHT_SYMPTOM_CHANCE, poisonLightSymptomChance);
-				if (Math.RandomFloat01() < poisonLightSymptomChance * deltaTime || m_firstSymptomTime > 5)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_LIGHT_SYMPTOM_CHANCE) * deltaTime) || m_firstSymptomTime > 5)
 				{
 					GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_VOMIT_FORCE_MODIFIER, poisonVomitForceModifier);
 					player.CallTerjeVomitSymptom(Math.RandomIntInclusive(3, 5), poisonVomitForceModifier * 0.5);
@@ -120,9 +118,7 @@ class TerjePlayerModifierPoison : TerjePlayerModifierBase
 			}
 			else if (poisonLevel == 2)
 			{
-				float poisonHeavySymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_HEAVY_SYMPTOM_CHANCE, poisonHeavySymptomChance);
-				if (Math.RandomFloat01() < poisonHeavySymptomChance * deltaTime || m_firstSymptomTime > 3)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_HEAVY_SYMPTOM_CHANCE) * deltaTime) || m_firstSymptomTime > 3)
 				{
 					GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_VOMIT_FORCE_MODIFIER, poisonVomitForceModifier);
 					player.CallTerjeVomitSymptom(Math.RandomIntInclusive(4, 8), poisonVomitForceModifier * 1.0);
@@ -141,9 +137,7 @@ class TerjePlayerModifierPoison : TerjePlayerModifierBase
 					return;
 				}
 				
-				float poisonCriticalSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_CRITICAL_SYMPTOM_CHANCE, poisonCriticalSymptomChance);
-				if (Math.RandomFloat01() < poisonCriticalSymptomChance * deltaTime || m_firstSymptomTime > 1)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_CRITICAL_SYMPTOM_CHANCE) * deltaTime) || m_firstSymptomTime > 1)
 				{
 					GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_POISON_VOMIT_FORCE_MODIFIER, poisonVomitForceModifier);
 					player.CallTerjeVomitSymptom(Math.RandomIntInclusive(5, 10), poisonVomitForceModifier * 2.5);

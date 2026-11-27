@@ -201,7 +201,7 @@ class TerjePlayerModifierWounds : TerjePlayerModifierBase
 			float dirtyBandageSepsisTimer = player.GetTerjeStats().GetBandagesSepsisTimer();
 			if (dirtyBandageSepsisTimer > GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_DIRTY_BANDAGE_INFECTION_TIMEOUT))
 			{
-				if (Math.RandomFloat01() < dirtyBandageInfectionChance * perkSepsisresMod * dirtyBandages * deltaTime)
+				if (TerjeEvent(dirtyBandageInfectionChance * perkSepsisresMod * dirtyBandages * deltaTime))
 				{
 					player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.1);
 				}
@@ -317,7 +317,7 @@ class TerjePlayerModifierWounds : TerjePlayerModifierBase
 			float dirtySutureSepsisTimer = player.GetTerjeStats().GetSuturesSepsisTimer();
 			if (dirtySutureSepsisTimer > GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_DIRTY_SUTURE_INFECTION_TIMEOUT))
 			{
-				if (Math.RandomFloat01() < dirtySutureInfectionChance * perkSepsisresMod * suturesDirty * deltaTime)
+				if (TerjeEvent(dirtySutureInfectionChance * perkSepsisresMod * suturesDirty * deltaTime))
 				{
 					player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.05);
 				}
@@ -431,7 +431,7 @@ class TerjePlayerModifierWounds : TerjePlayerModifierBase
 			float dirtySutureBandagedSepsisTimer = player.GetTerjeStats().GetSuturesBandagedSepsisTimer();
 			if (dirtySutureBandagedSepsisTimer > GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_DIRTY_SUTURE_BANDAGED_INFECTION_TIMEOUT))
 			{
-				if (Math.RandomFloat01() < dirtySutureBandagedInfectionChance * perkSepsisresMod * suturesBandagedDirty * deltaTime)
+				if (TerjeEvent(dirtySutureBandagedInfectionChance * perkSepsisresMod * suturesBandagedDirty * deltaTime))
 				{
 					player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.05);
 				}

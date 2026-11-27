@@ -59,8 +59,7 @@ class TerjeDamageHandler
 						
 						if (IsStrengthExperienceRequired(ammo, ammoType))
 						{
-							float strengthMeleeHeavyGainChance;
-							if (GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STRENGTH_MELEE_HEAVY_GAIN_CHANCE, strengthMeleeHeavyGainChance) && Math.RandomFloat01() < strengthMeleeHeavyGainChance)
+							if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STRENGTH_MELEE_HEAVY_GAIN_CHANCE)))
 							{
 								int strengthMeleeHeavyGainExp;
 								if (GetTerjeSettingInt(TerjeSettingsCollection.SKILLS_STRENGTH_MELEE_HEAVY_GAIN_EXP, strengthMeleeHeavyGainExp))
@@ -80,8 +79,7 @@ class TerjeDamageHandler
 						
 						if (IsStrengthExperienceRequired(ammo, ammoType))
 						{
-							float strengthMeleeLightGainChance;
-							if (GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STRENGTH_MELEE_LIGHT_GAIN_CHANCE, strengthMeleeLightGainChance) && Math.RandomFloat01() < strengthMeleeLightGainChance)
+							if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.SKILLS_STRENGTH_MELEE_LIGHT_GAIN_CHANCE)))
 							{
 								int strengthMeleeLightGainExp;
 								if (GetTerjeSettingInt(TerjeSettingsCollection.SKILLS_STRENGTH_MELEE_LIGHT_GAIN_EXP, strengthMeleeLightGainExp))

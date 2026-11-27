@@ -80,9 +80,7 @@ class TerjeSyringeFull extends Inventory_Base
 				}
 			}
 			
-			float dirtySyringeSepsisChance = 0;
-			GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_DIRTY_SYRINGE_SEPSIS_CHANCE, dirtySyringeSepsisChance);	
-			if (!IsDisinfected() && (Math.RandomFloat01() < (dirtySyringeSepsisChance * operatorPerkSterilityMod * perkSepsisresMod)))
+			if (!IsDisinfected() && TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_DIRTY_SYRINGE_SEPSIS_CHANCE) * operatorPerkSterilityMod * perkSepsisresMod))
 			{
 				if (player.GetTerjeStats()) player.GetTerjeStats().SetSepsisValue(player.GetTerjeStats().GetSepsisValue() + 0.1);
 			}

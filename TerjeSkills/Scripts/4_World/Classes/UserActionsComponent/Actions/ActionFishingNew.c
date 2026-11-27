@@ -16,7 +16,7 @@ modded class ActionFishingNew
 		
 		EntityAI result = super.TrySpawnCatch(action_data);
 		
-		if (catchChance < Math.RandomFloat01())
+		if (TerjeEventInverse(catchChance))
 		{
 			if (result) result.Delete(); // cleanup
 			return null;
@@ -53,7 +53,7 @@ modded class ActionFishingNew
 					if (g_Game.IsDedicatedServer() && player && player.GetTerjeSkills() && player.GetTerjeSkills().GetPerkValue("fish", "fishmluck", perkValue))
 					{
 						// Spawn extra fish
-						if (Math.RandomFloat01() < (perkValue * 0.5))
+						if (TerjeEvent(perkValue * 0.5))
 						{
 							spawnExtraFish = true;
 						}

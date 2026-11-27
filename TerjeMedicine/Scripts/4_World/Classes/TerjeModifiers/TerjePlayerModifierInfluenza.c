@@ -157,18 +157,14 @@ class TerjePlayerModifierInfluenza : TerjePlayerModifierBase
 			
 			if (influenzaLevel == 1)
 			{
-				float influenzaLightSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_INFLUENZA_LIGHT_SYMPTOM_CHANCE, influenzaLightSymptomChance);
-				if (Math.RandomFloat01() < influenzaLightSymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_INFLUENZA_LIGHT_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_SNEEZE);
 				}
 			}
 			else if (influenzaLevel == 2)
 			{
-				float influenzaHeavySymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_INFLUENZA_HEAVY_SYMPTOM_CHANCE, influenzaHeavySymptomChance);
-				if (Math.RandomFloat01() < influenzaHeavySymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_INFLUENZA_HEAVY_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_COUGH);
 				}
@@ -185,9 +181,7 @@ class TerjePlayerModifierInfluenza : TerjePlayerModifierBase
 					return;
 				}
 				
-				float influenzaCriticalSymptomChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_INFLUENZA_CRITICAL_SYMPTOM_CHANCE, influenzaCriticalSymptomChance);
-				if (Math.RandomFloat01() < influenzaCriticalSymptomChance * deltaTime)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_INFLUENZA_CRITICAL_SYMPTOM_CHANCE) * deltaTime))
 				{
 					player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs.SYMPTOM_COUGH);
 				}

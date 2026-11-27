@@ -52,9 +52,7 @@ class TerjePlayerModifierContusion : TerjePlayerModifierBase
 			
 			if (contusionValue > 2)
 			{
-				float contusionUnconsciousChance = 0;
-				GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_CONTUSION_UNCONSCIOUS_CHANCE, contusionUnconsciousChance);
-				if (Math.RandomFloat01() < contusionUnconsciousChance)
+				if (TerjeEvent(GetTerjeSettingFloat(TerjeSettingsCollection.MEDICINE_CONTUSION_UNCONSCIOUS_CHANCE)))
 				{
 					SetPlayerShock(player, TerjeDamageSource.CONTUSION, 0);
 				}
