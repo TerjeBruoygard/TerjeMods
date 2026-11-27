@@ -1,4 +1,4 @@
-modded class HeavyMetalMdfr : ModifierBase
+modded class HeavyMetalMdfr
 {
 	override protected bool ActivateCondition(PlayerBase player)
 	{
@@ -13,7 +13,7 @@ modded class HeavyMetalMdfr : ModifierBase
 	override void OnTick(PlayerBase player, float deltaT);
 }
 
-modded class HeavyMetalPhase1Mdfr : HeavyMetalMdfr
+modded class HeavyMetalPhase1Mdfr
 {
 	override protected bool ActivateCondition(PlayerBase player)
 	{
@@ -28,7 +28,7 @@ modded class HeavyMetalPhase1Mdfr : HeavyMetalMdfr
 	override void OnTick(PlayerBase player, float deltaT);
 }
 
-modded class HeavyMetalPhase2Mdfr : HeavyMetalMdfr
+modded class HeavyMetalPhase2Mdfr
 {
 	override protected bool ActivateCondition(PlayerBase player)
 	{
@@ -43,7 +43,7 @@ modded class HeavyMetalPhase2Mdfr : HeavyMetalMdfr
 	override void OnTick(PlayerBase player, float deltaT);
 }
 
-modded class HeavyMetalPhase3Mdfr : HeavyMetalMdfr
+modded class HeavyMetalPhase3Mdfr
 {
 	override protected bool ActivateCondition(PlayerBase player)
 	{

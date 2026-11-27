@@ -1,4 +1,4 @@
-modded class PneumoniaMdfr : ModifierBase
+modded class PneumoniaMdfr
 {
 	override protected bool ActivateCondition(PlayerBase player)
 	{
