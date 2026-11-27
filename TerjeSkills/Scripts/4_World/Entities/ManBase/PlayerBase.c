@@ -239,6 +239,12 @@ modded class PlayerBase
 		float result = super.GetWeightSpecialized(forceRecalc);	
 		if (GetTerjeSkills() != null)
 		{
+			float ltarmorPerkValue = 0;
+			if (GetTerjeSkills().GetPerkValue("strng", "ltarmor", ltarmorPerkValue))
+			{
+				result += (TerjeCalculateVestAndHelmetWeight() * ltarmorPerkValue);
+			}
+			
 			float weightModifier = 1.0;
 			float strengthSkillModifier = 0;
 			if (GetTerjeSkills().GetSkillModifierValue("strng", "maxweightmod", strengthSkillModifier))
@@ -255,12 +261,6 @@ modded class PlayerBase
 			if (weightModifier > 1.0)
 			{
 				result /= weightModifier;
-			}
-			
-			float ltarmorPerkValue = 0;
-			if (GetTerjeSkills().GetPerkValue("strng", "ltarmor", ltarmorPerkValue))
-			{
-				result += (TerjeCalculateVestAndHelmetWeight() * ltarmorPerkValue);
 			}
 		}
 		
